@@ -1,0 +1,277 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0b0b0c;
+  --bg2: #131316;
+  --yellow: #f4c92c;
+  --yellow-dark: #d9ad1a;
+  --white: #ffffff;
+  --muted: #b9b9bd;
+  --radius: 12px;
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--white);
+}
+
+a { text-decoration: none; }
+
+/* ===== Page ===== */
+.notfound-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at top, #1c1c20 0%, var(--bg) 55%);
+  display: flex;
+  flex-direction: column;
+}
+
+.nf-logo {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--white);
+  padding: 26px 40px 0;
+}
+
+.nf-logo .logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+
+/* Sky / clouds */
+.sky-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255,255,255,0.045);
+  border-radius: 50%;
+  filter: blur(3px);
+}
+
+.cloud.c1 { width: 220px; height: 220px; top: 8%; left: 6%; animation: driftBig 26s ease-in-out infinite; }
+.cloud.c2 { width: 140px; height: 140px; top: 60%; left: 12%; animation: driftBig 20s ease-in-out infinite reverse; }
+.cloud.c3 { width: 180px; height: 180px; top: 15%; right: 8%; animation: driftBig 24s ease-in-out infinite; }
+.cloud.c4 { width: 110px; height: 110px; top: 70%; right: 16%; animation: driftBig 18s ease-in-out infinite reverse; }
+
+@keyframes driftBig {
+  0%, 100% { transform: translate(0,0); }
+  50% { transform: translate(24px, -18px); }
+}
+
+/* Dashed route + plane */
+.dashed-route {
+  position: absolute;
+  top: 8%;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+#routePath {
+  fill: none;
+  stroke: rgba(244,201,44,0.5);
+  stroke-width: 2;
+  stroke-dasharray: 6 10;
+  stroke-linecap: round;
+  animation: dashMove 4s linear infinite;
+}
+
+@keyframes dashMove { to { stroke-dashoffset: -160; } }
+
+.plane-wrap {
+  position: absolute;
+  z-index: 2;
+  font-size: 26px;
+  color: var(--yellow);
+  offset-path: path('M 40 220 Q 250 60 450 180 T 860 100');
+  offset-rotate: auto;
+  top: 8%;
+  left: 0;
+  width: 900px;
+  max-width: none;
+  animation: flyAcross 9s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes flyAcross {
+  0% { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
+}
+
+/* Balloon / suitcase drifting */
+.balloon {
+  position: absolute;
+  bottom: -60px;
+  right: 8%;
+  font-size: 34px;
+  z-index: 1;
+  animation: floatUp 10s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-40px) rotate(4deg); }
+  100% { transform: translateY(0) rotate(-4deg); }
+}
+
+/* ===== Content ===== */
+.nf-content {
+  position: relative;
+  z-index: 3;
+  margin: auto;
+  text-align: center;
+  padding: 40px 24px;
+  max-width: 560px;
+}
+
+.nf-number {
+  font-family: var(--font-display);
+  font-size: 120px;
+  font-weight: 800;
+  color: var(--yellow);
+  line-height: 1;
+  letter-spacing: 4px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  animation: numberPop 0.7s cubic-bezier(.2,1.4,.4,1) both;
+}
+
+@keyframes numberPop {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.nf-globe {
+  display: inline-block;
+  animation: spinGlobe 6s linear infinite;
+}
+
+@keyframes spinGlobe { to { transform: rotate(360deg); } }
+
+.nf-content h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 12px;
+  animation: slideUp 0.7s ease 0.15s both;
+}
+
+.nf-content > p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 12px;
+  line-height: 1.6;
+  animation: slideUp 0.7s ease 0.3s both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Search */
+.nf-search {
+  display: flex;
+  margin: 30px auto 8px;
+  max-width: 420px;
+  background: var(--bg2);
+  border: 1px solid #26262a;
+  border-radius: var(--radius);
+  overflow: hidden;
+  animation: slideUp 0.7s ease 0.4s both;
+}
+
+.nf-search input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--white);
+  padding: 14px 16px;
+  font-size: 13.5px;
+}
+
+.nf-search button {
+  background: var(--yellow);
+  color: #191919;
+  border: none;
+  padding: 0 20px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.nf-search button:hover { background: var(--yellow-dark); }
+
+.nf-suggestions {
+  min-height: 18px;
+  font-size: 12.5px;
+  color: var(--yellow);
+  margin-bottom: 20px;
+}
+
+/* Actions */
+.nf-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 18px;
+  animation: slideUp 0.7s ease 0.5s both;
+}
+
+.btn-primary, .btn-outline {
+  padding: 13px 26px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 13.5px;
+  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--yellow);
+  color: #191919;
+}
+
+.btn-primary:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+
+.btn-outline {
+  border: 1px solid #2a2a2c;
+  color: var(--white);
+}
+
+.btn-outline:hover { border-color: var(--yellow); transform: translateY(-2px); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .nf-number { font-size: 76px; }
+  .nf-content h2 { font-size: 19px; }
+  .nf-actions { flex-direction: column; }
+  .plane-wrap { display: none; }
+}
