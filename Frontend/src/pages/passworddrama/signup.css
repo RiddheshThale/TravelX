@@ -76,6 +76,15 @@ a:hover { text-decoration: underline; }
   font-size: 15px;
 }
 
+.logo-icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: var(--yellow);
+  padding: 4px;
+}
+
 .visual-copy {
   position: relative;
   z-index: 2;

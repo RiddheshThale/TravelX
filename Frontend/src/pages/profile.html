@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile – TravelX</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo">Travel<span>X</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="india.html">India</a></li>
+      <li><a href="international.html">International</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="auth-buttons">
+      <a href="profile.html" class="btn btn-primary">Profile</a>
+      <a href="settings.html" class="btn btn-outline">Settings</a>
+    </div>
+  </nav>
+
+  <div class="profile-container">
+    <div class="profile-header">
+      <div class="avatar">TX</div>
+      <div class="profile-info">
+        <h1 id="profileName">Rahul Sharma</h1>
+        <p>rahul.sharma@example.com</p>
+        <p>Member since Jan 2024 • 12 trips</p>
+      </div>
+    </div>
+
+    <div class="profile-tabs">
+      <button class="tab-btn active" data-tab="bookings">My Bookings</button>
+      <button class="tab-btn" data-tab="wishlist">Wishlist</button>
+      <button class="tab-btn" data-tab="rewards">Rewards</button>
+      <button class="tab-btn" data-tab="personal">Personal Info</button>
+    </div>
+
+    <div id="bookings" class="tab-content active">
+      <h3>Upcoming Trips</h3>
+      <div class="card" style="margin-top:1rem;">
+        <div class="card-body">
+          <h3>Delhi → Goa</h3>
+          <p>15 Aug 2026 • IndiGo 6E-234</p>
+          <p class="price">₹4,250</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1rem;">
+        <div class="card-body">
+          <h3>Mumbai Hotel – The Taj</h3>
+          <p>20-22 Sep 2026 • 2 Nights</p>
+          <p class="price">₹12,800</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="wishlist" class="tab-content">
+      <h3>Saved Destinations</h3>
+      <p style="margin-top:1rem;">Paris • Bali • Leh • Singapore</p>
+    </div>
+
+    <div id="rewards" class="tab-content">
+      <h3>TravelX Rewards</h3>
+      <p style="margin-top:1rem;">Points: <strong>2,450</strong></p>
+      <p>Tier: Silver</p>
+    </div>
+
+    <div id="personal" class="tab-content">
+      <h3>Personal Information</h3>
+      <div class="form-group" style="margin-top:1rem;">
+        <label>Full Name</label>
+        <input type="text" value="Rahul Sharma">
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" value="+91 98765 43210">
+      </div>
+      <button class="btn btn-primary">Update Info</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign In · TravelX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="signin.css" />
+</head>
+<body>
+
+<div class="auth-page">
+
+  <!-- Visual side -->
+  <aside class="auth-visual">
+    <div class="visual-overlay"></div>
+    <div class="visual-clouds">
+      <span class="cloud c1"></span>
+      <span class="cloud c2"></span>
+      <span class="cloud c3"></span>
+    </div>
+    <svg class="flight-path" viewBox="0 0 500 700" preserveAspectRatio="none">
+      <path id="flightPathLine" d="M 460 640 C 320 520, 440 380, 280 300 C 140 230, 200 100, 40 40" />
+      <g class="plane">
+        <text x="0" y="0" font-size="26">✈</text>
+      </g>
+    </svg>
+
+    <a href="index.html" class="visual-logo">
+      <img src="TravelX\Frontend\public\images\logofor-app.png" alt="TravelX logo" class="logo-icon-img" /> TravelX
+    </a>
+
+    <div class="visual-copy">
+      <h2>Welcome back,<br />explorer.</h2>
+      <p>Sign in to pick up your saved trips, wishlist, and member-only fares.</p>
+    </div>
+
+    <div class="visual-stats">
+      <div><strong>50+</strong><span>Destinations</span></div>
+      <div><strong>200k</strong><span>Travellers</span></div>
+      <div><strong>4.7★</strong><span>Rated</span></div>
+    </div>
+  </aside>
+
+  <!-- Form side -->
+  <main class="auth-form-panel">
+    <div class="form-wrap">
+
+      <div class="mobile-logo">
+        <img src="images/logo.png" alt="TravelX logo" class="logo-icon-img" /> TravelX
+      </div>
+
+      <h1>Sign in to your account</h1>
+      <p class="subtext">Good to see you again — your next trip is waiting.</p>
+
+      <div class="social-row">
+        <button type="button" class="social-btn">
+          <span class="g-icon">G</span> Continue with Google
+        </button>
+        <button type="button" class="social-btn">
+          <span class="f-icon">f</span> Continue with Facebook
+        </button>
+      </div>
+
+      <div class="divider"><span>or sign in with email</span></div>
+
+      <form id="signinForm" novalidate>
+
+        <div class="field">
+          <input type="email" id="email" placeholder=" " autocomplete="email" required />
+          <label for="email">Email address</label>
+          <span class="error-msg" id="err-email">Enter a valid email address</span>
+        </div>
+
+        <div class="field">
+          <input type="password" id="password" placeholder=" " autocomplete="current-password" required />
+          <label for="password">Password</label>
+          <button type="button" class="toggle-eye" data-target="password" aria-label="Show password">👁</button>
+          <span class="error-msg" id="err-password">Enter your password</span>
+        </div>
+
+        <div class="row-between">
+          <label class="checkbox-row">
+            <input type="checkbox" id="remember" />
+            <span class="custom-check"></span>
+            Remember me
+          </label>
+          <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span class="btn-text">Sign In</span>
+          <span class="btn-spinner"></span>
+        </button>
+      </form>
+
+      <p class="switch-link">New to TravelX? <a href="signup.html">Create an account</a></p>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="signin.js"></script>
+</body>
+</html>
