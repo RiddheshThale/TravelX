@@ -1,56 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>404 · Page Not Found | TravelX</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="Page-notFound.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 · Page Not Found | TravelX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="Page-notFound.css" />
 </head>
+
 <body>
 
-<div class="notfound-page" id="notfoundPage">
+  <div class="notfound-page" id="notfoundPage">
 
-  <a href="index.html" class="nf-logo">
-    <img src="../images/logo.png" alt="TravelX logo" class="logo-icon-img" /> TravelX
-  </a>
+    <a href="index.html" class="nf-logo">
+      <img src="/FrontEnd/public/images/logo.png" alt="TravelX logo" class="logo-icon-img" /> TravelX
+    </a>
 
-  <div class="sky-layer" id="skyLayer">
-    <span class="cloud c1"></span>
-    <span class="cloud c2"></span>
-    <span class="cloud c3"></span>
-    <span class="cloud c4"></span>
+    <div class="sky-layer" id="skyLayer">
+      <span class="cloud c1"></span>
+      <span class="cloud c2"></span>
+      <span class="cloud c3"></span>
+      <span class="cloud c4"></span>
+    </div>
+
+    <svg class="dashed-route" viewBox="0 0 900 300" preserveAspectRatio="none">
+      <path id="routePath" d="M 40 220 Q 250 60 450 180 T 860 100" />
+    </svg>
+
+    <div class="plane-wrap" id="planeWrap">✈</div>
+
+    <main class="nf-content">
+      <h1 class="nf-number">
+        <span>4</span><span class="nf-globe">0</span><span>4</span>
+      </h1>
+      <h2>Looks like you're off the map</h2>
+      <p>The page you're looking for has drifted somewhere we can't find it. Let's get you back on route.</p>
+
+      <div class="nf-search">
+        <input type="text" id="destSearch" placeholder="Search a destination instead… (e.g. Bali)" />
+        <button id="destSearchBtn" type="button">Search</button>
+      </div>
+      <p class="nf-suggestions" id="suggestions"></p>
+
+      <div class="nf-actions">
+        <a href="index.html" class="btn-primary">Back to Home</a>
+        <a href="signin.html" class="btn-outline">Sign In</a>
+      </div>
+    </main>
+
+    <div class="balloon" id="balloon">🧳</div>
   </div>
 
-  <svg class="dashed-route" viewBox="0 0 900 300" preserveAspectRatio="none">
-    <path id="routePath" d="M 40 220 Q 250 60 450 180 T 860 100" />
-  </svg>
-
-  <div class="plane-wrap" id="planeWrap">✈</div>
-
-  <main class="nf-content">
-    <h1 class="nf-number">
-      <span>4</span><span class="nf-globe">0</span><span>4</span>
-    </h1>
-    <h2>Looks like you're off the map</h2>
-    <p>The page you're looking for has drifted somewhere we can't find it. Let's get you back on route.</p>
-
-    <div class="nf-search">
-      <input type="text" id="destSearch" placeholder="Search a destination instead… (e.g. Bali)" />
-      <button id="destSearchBtn" type="button">Search</button>
-    </div>
-    <p class="nf-suggestions" id="suggestions"></p>
-
-    <div class="nf-actions">
-      <a href="index.html" class="btn-primary">Back to Home</a>
-      <a href="signin.html" class="btn-outline">Sign In</a>
-    </div>
-  </main>
-
-  <div class="balloon" id="balloon">🧳</div>
-</div>
-
-<script src="Page-notFound.js"></script>
+  <script src="Page-notFound.js"></script>
 </body>
+
 </html>

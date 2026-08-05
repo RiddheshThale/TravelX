@@ -1,123 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Create Account · TravelX</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="signup.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account · TravelX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="signup.css" />
 </head>
+
 <body>
 
-<div class="auth-page">
+  <div class="auth-page">
 
-  <!-- Visual side -->
-  <aside class="auth-visual">
-    <div class="visual-overlay"></div>
-    <div class="visual-clouds">
-      <span class="cloud c1"></span>
-      <span class="cloud c2"></span>
-      <span class="cloud c3"></span>
-    </div>
-    <svg class="flight-path" viewBox="0 0 500 700" preserveAspectRatio="none">
-      <path id="flightPathLine" d="M 40 640 C 180 520, 60 380, 220 300 C 360 230, 300 100, 460 40" />
-      <g id="plane" class="plane">
-        <text x="0" y="0" font-size="26">✈</text>
-      </g>
-    </svg>
+    <!-- Visual side -->
+    <aside class="auth-visual">
+      <div class="visual-overlay"></div>
+      <div class="visual-clouds">
+        <span class="cloud c1"></span>
+        <span class="cloud c2"></span>
+        <span class="cloud c3"></span>
+      </div>
+      <svg class="flight-path" viewBox="0 0 500 700" preserveAspectRatio="none">
+        <path id="flightPathLine" d="M 40 640 C 180 520, 60 380, 220 300 C 360 230, 300 100, 460 40" />
+        <g id="plane" class="plane">
+          <text x="0" y="0" font-size="26">✈</text>
+        </g>
+      </svg>
 
-    <a href="index.html" class="visual-logo">
-      <img src="images/logo.png" alt="TravelX logo" class="logo-icon-img" /> TravelX
-    </a>
+      <a href="index.html" class="visual-logo">
+        <img src="/FrontEnd/public/images/logo.png" alt="TravelX logo" class="logo-icon-img" /> TravelX
+      </a>
 
-    <div class="visual-copy">
-      <h2>Your next journey<br />starts with an account.</h2>
-      <p>Save trips, unlock member fares, and pick up your search on any device.</p>
-    </div>
-
-    <div class="visual-stats">
-      <div><strong>50+</strong><span>Destinations</span></div>
-      <div><strong>200k</strong><span>Travellers</span></div>
-      <div><strong>4.7★</strong><span>Rated</span></div>
-    </div>
-  </aside>
-
-  <!-- Form side -->
-  <main class="auth-form-panel">
-    <div class="form-wrap">
-
-      <div class="mobile-logo">
-        <img src="images/logo.png" alt="TravelX logo" class="logo-icon-img" /> TravelX
+      <div class="visual-copy">
+        <h2>Your next journey<br />starts with an account.</h2>
+        <p>Save trips, unlock member fares, and pick up your search on any device.</p>
       </div>
 
-      <h1>Create your account</h1>
-      <p class="subtext">Join thousands of travelers exploring the world with us.</p>
-
-      <div class="social-row">
-        <button type="button" class="social-btn">
-          <span class="g-icon">G</span> Continue with Google
-        </button>
-        <button type="button" class="social-btn">
-          <span class="f-icon">f</span> Continue with Facebook
-        </button>
+      <div class="visual-stats">
+        <div><strong>50+</strong><span>Destinations</span></div>
+        <div><strong>200k</strong><span>Travellers</span></div>
+        <div><strong>4.7★</strong><span>Rated</span></div>
       </div>
+    </aside>
 
-      <div class="divider"><span>or sign up with email</span></div>
+    <!-- Form side -->
+    <main class="auth-form-panel">
+      <div class="form-wrap">
 
-      <form id="signupForm" novalidate>
-
-        <div class="field">
-          <input type="text" id="fullName" placeholder=" " autocomplete="name" required />
-          <label for="fullName">Full name</label>
-          <span class="error-msg" id="err-fullName">Please enter your name</span>
+        <div class="mobile-logo">
+          <img src="/FrontEnd/public/images/logo.png" alt="TravelX logo" class="logo-icon-img" /> TravelX
         </div>
 
-        <div class="field">
-          <input type="email" id="email" placeholder=" " autocomplete="email" required />
-          <label for="email">Email address</label>
-          <span class="error-msg" id="err-email">Enter a valid email address</span>
+        <h1>Create your account</h1>
+        <p class="subtext">Join thousands of travelers exploring the world with us.</p>
+
+        <div class="social-row">
+          <button type="button" class="social-btn">
+            <span class="g-icon">G</span> Continue with Google
+          </button>
+          <button type="button" class="social-btn">
+            <span class="f-icon">f</span> Continue with Facebook
+          </button>
         </div>
 
-        <div class="field">
-          <input type="password" id="password" placeholder=" " autocomplete="new-password" required />
-          <label for="password">Password</label>
-          <button type="button" class="toggle-eye" data-target="password" aria-label="Show password">👁</button>
-          <span class="error-msg" id="err-password">Minimum 8 characters</span>
-        </div>
+        <div class="divider"><span>or sign up with email</span></div>
 
-        <div class="strength-meter" id="strengthMeter">
-          <div class="strength-bar"><span></span></div>
-          <small id="strengthLabel">Password strength</small>
-        </div>
+        <form id="signupForm" novalidate>
 
-        <div class="field">
-          <input type="password" id="confirmPassword" placeholder=" " autocomplete="new-password" required />
-          <label for="confirmPassword">Confirm password</label>
-          <button type="button" class="toggle-eye" data-target="confirmPassword" aria-label="Show password">👁</button>
-          <span class="error-msg" id="err-confirmPassword">Passwords do not match</span>
-        </div>
+          <div class="field">
+            <input type="text" id="fullName" placeholder=" " autocomplete="name" required />
+            <label for="fullName">Full name</label>
+            <span class="error-msg" id="err-fullName">Please enter your name</span>
+          </div>
 
-        <label class="checkbox-row">
-          <input type="checkbox" id="terms" required />
-          <span class="custom-check"></span>
-          I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
-        </label>
+          <div class="field">
+            <input type="email" id="email" placeholder=" " autocomplete="email" required />
+            <label for="email">Email address</label>
+            <span class="error-msg" id="err-email">Enter a valid email address</span>
+          </div>
 
-        <button type="submit" class="submit-btn" id="submitBtn">
-          <span class="btn-text">Create Account</span>
-          <span class="btn-spinner"></span>
-        </button>
-      </form>
+          <div class="field">
+            <input type="password" id="password" placeholder=" " autocomplete="new-password" required />
+            <label for="password">Password</label>
+            <button type="button" class="toggle-eye" data-target="password" aria-label="Show password">👁</button>
+            <span class="error-msg" id="err-password">Minimum 8 characters</span>
+          </div>
 
-      <p class="switch-link">Already have an account? <a href="signin.html">Sign in</a></p>
-    </div>
-  </main>
-</div>
+          <div class="strength-meter" id="strengthMeter">
+            <div class="strength-bar"><span></span></div>
+            <small id="strengthLabel">Password strength</small>
+          </div>
 
-<div class="toast" id="toast"></div>
-<div class="confetti-layer" id="confetti"></div>
+          <div class="field">
+            <input type="password" id="confirmPassword" placeholder=" " autocomplete="new-password" required />
+            <label for="confirmPassword">Confirm password</label>
+            <button type="button" class="toggle-eye" data-target="confirmPassword"
+              aria-label="Show password">👁</button>
+            <span class="error-msg" id="err-confirmPassword">Passwords do not match</span>
+          </div>
 
-<script src="signup.js"></script>
+          <label class="checkbox-row">
+            <input type="checkbox" id="terms" required />
+            <span class="custom-check"></span>
+            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+          </label>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="btn-text">Create Account</span>
+            <span class="btn-spinner"></span>
+          </button>
+        </form>
+
+        <p class="switch-link">Already have an account? <a href="signin.html">Sign in</a></p>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <div class="confetti-layer" id="confetti"></div>
+
+  <script src="signup.js"></script>
 </body>
+
 </html>
