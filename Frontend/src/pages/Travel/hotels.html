@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotels — Wanderlust Travel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="travel.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="destinations.html" class="navbar-brand">
+      <div class="navbar-logo">✈</div>
+      Wanderlust
+    </a>
+    <ul class="navbar-links">
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="hotels.html" class="active">Hotels</a></li>
+      <li><a href="flights.html">Flights</a></li>
+    </ul>
+    <a href="#" class="signup-btn">Sign Up</a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </nav>
+
+  <header class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1400&q=80');">
+    <div class="page-hero-content">
+      <div class="breadcrumb"><a href="#">Home</a> / Hotels</div>
+      <h1>Find Hotels</h1>
+      <p>From boutique stays to luxury resorts — book verified properties worldwide.</p>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="section-inner">
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label>Destination</label>
+          <input type="text" placeholder="City or hotel name">
+        </div>
+        <div class="filter-group">
+          <label>Check-in</label>
+          <input type="date">
+        </div>
+        <div class="filter-group">
+          <label>Check-out</label>
+          <input type="date">
+        </div>
+        <div class="filter-group">
+          <label>Guests</label>
+          <select>
+            <option>2 Adults</option>
+            <option>1 Adult</option>
+            <option>2 Adults + 1 Child</option>
+            <option>Family (4)</option>
+          </select>
+        </div>
+        <button class="btn-primary">Search hotels</button>
+      </div>
+
+      <div class="section-header">
+        <h2>TOP-RATED STAYS</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="cards-grid">
+        <a href="hotel-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Resort">
+            <span class="card-badge">5★</span>
+          </div>
+          <div class="card-body">
+            <h3>Azure Cliff Resort</h3>
+            <div class="card-meta"><span class="stars">★★★★★</span> · Uluwatu, Bali</div>
+            <div class="amenities">
+              <span class="amenity">Pool</span>
+              <span class="amenity">Spa</span>
+              <span class="amenity">Ocean view</span>
+            </div>
+            <p class="card-desc">Cliffside infinity pool, private beach access and villas with private plunge pools.</p>
+            <div class="card-footer">
+              <div class="card-price">$240 <span>/ night</span></div>
+              <span class="card-link">Book →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="hotel-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt="Boutique hotel">
+            <span class="card-badge">4★</span>
+          </div>
+          <div class="card-body">
+            <h3>Maison Lumière</h3>
+            <div class="card-meta"><span class="stars">★★★★☆</span> · Le Marais, Paris</div>
+            <div class="amenities">
+              <span class="amenity">Wi‑Fi</span>
+              <span class="amenity">Breakfast</span>
+              <span class="amenity">Central</span>
+            </div>
+            <p class="card-desc">Design boutique hotel near Place des Vosges with rooftop terrace and café.</p>
+            <div class="card-footer">
+              <div class="card-price">$195 <span>/ night</span></div>
+              <span class="card-link">Book →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="hotel-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80" alt="Mountain lodge">
+            <span class="card-badge">4★</span>
+          </div>
+          <div class="card-body">
+            <h3>Alpine Peak Lodge</h3>
+            <div class="card-meta"><span class="stars">★★★★★</span> · Interlaken, Switzerland</div>
+            <div class="amenities">
+              <span class="amenity">Sauna</span>
+              <span class="amenity">Mountain view</span>
+              <span class="amenity">Parking</span>
+            </div>
+            <p class="card-desc">Chalet-style lodge with spa, restaurant and easy access to Jungfrau region trains.</p>
+            <div class="card-footer">
+              <div class="card-price">$280 <span>/ night</span></div>
+              <span class="card-link">Book →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="hotel-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&q=80" alt="City hotel">
+            <span class="card-badge">5★</span>
+          </div>
+          <div class="card-body">
+            <h3>Shinjuku Sky Hotel</h3>
+            <div class="card-meta"><span class="stars">★★★★★</span> · Tokyo, Japan</div>
+            <div class="amenities">
+              <span class="amenity">Gym</span>
+              <span class="amenity">City view</span>
+              <span class="amenity">Restaurant</span>
+            </div>
+            <p class="card-desc">Modern high-rise with skyline views, onsen-style baths and direct metro access.</p>
+            <div class="card-footer">
+              <div class="card-price">$210 <span>/ night</span></div>
+              <span class="card-link">Book →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="hotel-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="Beach hotel">
+            <span class="card-badge">4★</span>
+          </div>
+          <div class="card-body">
+            <h3>Caldera View Suites</h3>
+            <div class="card-meta"><span class="stars">★★★★★</span> · Oia, Santorini</div>
+            <div class="amenities">
+              <span class="amenity">Pool</span>
+              <span class="amenity">Sunset view</span>
+              <span class="amenity">Breakfast</span>
+            </div>
+            <p class="card-desc">Cave suites with private terraces overlooking the caldera and famous Oia sunsets.</p>
+            <div class="card-footer">
+              <div class="card-price">$320 <span>/ night</span></div>
+              <span class="card-link">Book →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="hotel-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80" alt="Heritage hotel">
+            <span class="card-badge">5★</span>
+          </div>
+          <div class="card-body">
+            <h3>Rajputana Palace</h3>
+            <div class="card-meta"><span class="stars">★★★★★</span> · Jaipur, India</div>
+            <div class="amenities">
+              <span class="amenity">Pool</span>
+              <span class="amenity">Heritage</span>
+              <span class="amenity">Dining</span>
+            </div>
+            <p class="card-desc">Restored heritage palace with courtyard pools, royal suites and Rajasthani cuisine.</p>
+            <div class="card-footer">
+              <div class="card-price">$175 <span>/ night</span></div>
+              <span class="card-link">Book →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="pagination">
+        <span class="active">1</span>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">→</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="destinations.html" class="navbar-brand">
+          <div class="navbar-logo">✈</div>
+          Wanderlust
+        </a>
+        <p>Your trusted partner for unforgettable journeys — flights, hotels, packages and curated destinations worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="hotels.html">Hotels</a></li>
+          <li><a href="flights.html">Flights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Cancellation</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Wanderlust Travel. All rights reserved.</div>
+  </footer>
+</body>
+</html>

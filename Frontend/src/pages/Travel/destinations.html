@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinations — Wanderlust Travel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="travel.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="destinations.html" class="navbar-brand">
+      <div class="navbar-logo">✈</div>
+      Wanderlust
+    </a>
+    <ul class="navbar-links">
+      <li><a href="destinations.html" class="active">Destinations</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="hotels.html">Hotels</a></li>
+      <li><a href="flights.html">Flights</a></li>
+    </ul>
+    <a href="#" class="signup-btn">Sign Up</a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </nav>
+
+  <header class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1400&q=80');">
+    <div class="page-hero-content">
+      <div class="breadcrumb"><a href="#">Home</a> / Destinations</div>
+      <h1>Explore Destinations</h1>
+      <p>Discover handpicked places across the globe — beaches, mountains, cities and hidden gems.</p>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="section-inner">
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label>Region</label>
+          <select>
+            <option>All Regions</option>
+            <option>Asia</option>
+            <option>Europe</option>
+            <option>Americas</option>
+            <option>Middle East</option>
+            <option>Africa</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Type</label>
+          <select>
+            <option>Any Type</option>
+            <option>Beach</option>
+            <option>Mountain</option>
+            <option>City</option>
+            <option>Adventure</option>
+            <option>Cultural</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Budget</label>
+          <select>
+            <option>Any Budget</option>
+            <option>Under $500</option>
+            <option>$500 – $1500</option>
+            <option>$1500+</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Search</label>
+          <input type="text" placeholder="City or country...">
+        </div>
+        <button class="btn-primary">Search</button>
+      </div>
+
+      <div class="section-header">
+        <h2>POPULAR DESTINATIONS</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="cards-grid">
+        <a href="destination-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80" alt="Taj Mahal">
+            <span class="card-badge">India</span>
+          </div>
+          <div class="card-body">
+            <h3>Agra &amp; Taj Mahal</h3>
+            <div class="card-meta"><span class="stars">★★★★★</span> · 4.9 · Cultural</div>
+            <p class="card-desc">Marvel at the white marble wonder and explore Mughal heritage across Agra and nearby forts.</p>
+            <div class="card-footer">
+              <div class="card-price">$489 <span>/ person</span></div>
+              <span class="card-link">View →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="destination-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80" alt="Paris">
+            <span class="card-badge">France</span>
+          </div>
+          <div class="card-body">
+            <h3>Paris</h3>
+            <div class="card-meta"><span class="stars">★★★★★</span> · 4.8 · City</div>
+            <p class="card-desc">Romance, museums, cafés and the Eiffel Tower — the City of Light awaits every season.</p>
+            <div class="card-footer">
+              <div class="card-price">$920 <span>/ person</span></div>
+              <span class="card-link">View →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="destination-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80" alt="Bali">
+            <span class="card-badge">Indonesia</span>
+          </div>
+          <div class="card-body">
+            <h3>Bali</h3>
+            <div class="card-meta"><span class="stars">★★★★☆</span> · 4.7 · Beach</div>
+            <p class="card-desc">Temples, rice terraces, surf beaches and wellness retreats on the Island of the Gods.</p>
+            <div class="card-footer">
+              <div class="card-price">$650 <span>/ person</span></div>
+              <span class="card-link">View →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="destination-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=80" alt="Tokyo">
+            <span class="card-badge">Japan</span>
+          </div>
+          <div class="card-body">
+            <h3>Tokyo</h3>
+            <div class="card-meta"><span class="stars">★★★★★</span> · 4.9 · City</div>
+            <p class="card-desc">Neon nights, temples, ramen alleys and futuristic districts in Japan’s vibrant capital.</p>
+            <div class="card-footer">
+              <div class="card-price">$1,150 <span>/ person</span></div>
+              <span class="card-link">View →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="destination-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80" alt="Santorini">
+            <span class="card-badge">Greece</span>
+          </div>
+          <div class="card-body">
+            <h3>Santorini</h3>
+            <div class="card-meta"><span class="stars">★★★★★</span> · 4.8 · Beach</div>
+            <p class="card-desc">Whitewashed cliffs, caldera sunsets and Aegean blues on the most iconic Greek island.</p>
+            <div class="card-footer">
+              <div class="card-price">$980 <span>/ person</span></div>
+              <span class="card-link">View →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="destination-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Swiss Alps">
+            <span class="card-badge">Switzerland</span>
+          </div>
+          <div class="card-body">
+            <h3>Swiss Alps</h3>
+            <div class="card-meta"><span class="stars">★★★★★</span> · 4.9 · Mountain</div>
+            <p class="card-desc">Alpine peaks, lakes and charming villages — year-round hiking and winter sports.</p>
+            <div class="card-footer">
+              <div class="card-price">$1,280 <span>/ person</span></div>
+              <span class="card-link">View →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="pagination">
+        <span class="active">1</span>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">→</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="destinations.html" class="navbar-brand">
+          <div class="navbar-logo">✈</div>
+          Wanderlust
+        </a>
+        <p>Your trusted partner for unforgettable journeys — flights, hotels, packages and curated destinations worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="hotels.html">Hotels</a></li>
+          <li><a href="flights.html">Flights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Cancellation</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Wanderlust Travel. All rights reserved.</div>
+  </footer>
+</body>
+</html>

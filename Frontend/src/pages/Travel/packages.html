@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packages — Wanderlust Travel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="travel.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="destinations.html" class="navbar-brand">
+      <div class="navbar-logo">✈</div>
+      Wanderlust
+    </a>
+    <ul class="navbar-links">
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="packages.html" class="active">Packages</a></li>
+      <li><a href="hotels.html">Hotels</a></li>
+      <li><a href="flights.html">Flights</a></li>
+    </ul>
+    <a href="#" class="signup-btn">Sign Up</a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </nav>
+
+  <header class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1400&q=80');">
+    <div class="page-hero-content">
+      <div class="breadcrumb"><a href="#">Home</a> / Packages</div>
+      <h1>Travel Packages</h1>
+      <p>All-inclusive trips with flights, stays and experiences — curated for every style of traveller.</p>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="section-inner">
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label>Duration</label>
+          <select>
+            <option>Any duration</option>
+            <option>3–5 days</option>
+            <option>6–9 days</option>
+            <option>10+ days</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Style</label>
+          <select>
+            <option>All styles</option>
+            <option>Honeymoon</option>
+            <option>Family</option>
+            <option>Adventure</option>
+            <option>Luxury</option>
+            <option>Budget</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>From</label>
+          <select>
+            <option>Mumbai</option>
+            <option>Delhi</option>
+            <option>Bangalore</option>
+            <option>Any city</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Max budget</label>
+          <input type="text" placeholder="e.g. 1500">
+        </div>
+        <button class="btn-primary">Filter</button>
+      </div>
+
+      <div class="section-header">
+        <h2>FEATURED PACKAGES</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="cards-grid">
+        <a href="package-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80" alt="Bali package">
+            <span class="card-badge">7 Nights</span>
+          </div>
+          <div class="card-body">
+            <h3>Bali Bliss Escape</h3>
+            <div class="card-meta">Indonesia · Honeymoon · Flights included</div>
+            <p class="card-desc">Ubud + Seminyak stay, private villa nights, spa day and Nusa Penida boat trip.</p>
+            <ul class="includes-list">
+              <li>Return flights · 4★ hotels</li>
+              <li>Daily breakfast · Airport transfers</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">$899 <span>/ person</span></div>
+              <span class="card-link">Details →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="package-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80" alt="Paris package">
+            <span class="card-badge">5 Nights</span>
+          </div>
+          <div class="card-body">
+            <h3>Paris City Break</h3>
+            <div class="card-meta">France · City · Louvre skip-the-line</div>
+            <p class="card-desc">Central hotel near Louvre, Seine cruise, Eiffel Tower tickets and Métro pass.</p>
+            <ul class="includes-list">
+              <li>Return flights · 4★ hotel</li>
+              <li>City pass · Guided walking tour</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">$1,190 <span>/ person</span></div>
+              <span class="card-link">Details →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="package-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Alps package">
+            <span class="card-badge">6 Nights</span>
+          </div>
+          <div class="card-body">
+            <h3>Swiss Alps Adventure</h3>
+            <div class="card-meta">Switzerland · Adventure · Train pass</div>
+            <p class="card-desc">Interlaken base, Jungfraujoch day, lake cruise and scenic GoldenPass train.</p>
+            <ul class="includes-list">
+              <li>Flights · Mountain hotel</li>
+              <li>Swiss Travel Pass · Guided hikes</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">$1,450 <span>/ person</span></div>
+              <span class="card-link">Details →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="package-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80" alt="India package">
+            <span class="card-badge">8 Nights</span>
+          </div>
+          <div class="card-body">
+            <h3>Golden Triangle Classic</h3>
+            <div class="card-meta">India · Cultural · Private driver</div>
+            <p class="card-desc">Delhi, Agra &amp; Jaipur with heritage hotels, guided monuments and local experiences.</p>
+            <ul class="includes-list">
+              <li>Hotels · AC car &amp; guide</li>
+              <li>Breakfast · Monument tickets</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">$720 <span>/ person</span></div>
+              <span class="card-link">Details →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="package-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80" alt="Greece package">
+            <span class="card-badge">7 Nights</span>
+          </div>
+          <div class="card-body">
+            <h3>Greek Island Hopper</h3>
+            <div class="card-meta">Greece · Beach · Ferry included</div>
+            <p class="card-desc">Athens + Santorini + Mykonos with inter-island ferries and cliffside hotels.</p>
+            <ul class="includes-list">
+              <li>Flights · 3 islands · Ferries</li>
+              <li>Breakfast · Sunset cruise</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">$1,320 <span>/ person</span></div>
+              <span class="card-link">Details →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="package-details.html" class="card">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=80" alt="Japan package">
+            <span class="card-badge">9 Nights</span>
+          </div>
+          <div class="card-body">
+            <h3>Japan Highlights</h3>
+            <div class="card-meta">Japan · Culture · JR Pass</div>
+            <p class="card-desc">Tokyo, Kyoto &amp; Osaka with JR Pass, temple tours and street-food evenings.</p>
+            <ul class="includes-list">
+              <li>Flights · 3★–4★ hotels</li>
+              <li>7-day JR Pass · Guides</li>
+            </ul>
+            <div class="card-footer">
+              <div class="card-price">$1,890 <span>/ person</span></div>
+              <span class="card-link">Details →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="pagination">
+        <span class="active">1</span>
+        <a href="#">2</a>
+        <a href="#">→</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="destinations.html" class="navbar-brand">
+          <div class="navbar-logo">✈</div>
+          Wanderlust
+        </a>
+        <p>Your trusted partner for unforgettable journeys — flights, hotels, packages and curated destinations worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="hotels.html">Hotels</a></li>
+          <li><a href="flights.html">Flights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Cancellation</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Wanderlust Travel. All rights reserved.</div>
+  </footer>
+</body>
+</html>

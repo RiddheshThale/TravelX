@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flights — Wanderlust Travel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="travel.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="destinations.html" class="navbar-brand">
+      <div class="navbar-logo">✈</div>
+      Wanderlust
+    </a>
+    <ul class="navbar-links">
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="hotels.html">Hotels</a></li>
+      <li><a href="flights.html" class="active">Flights</a></li>
+    </ul>
+    <a href="#" class="signup-btn">Sign Up</a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </nav>
+
+  <header class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1400&q=80');">
+    <div class="page-hero-content">
+      <div class="breadcrumb"><a href="#">Home</a> / Flights</div>
+      <h1>Search Flights</h1>
+      <p>Compare fares across airlines and book with flexible options.</p>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="section-inner">
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label>From</label>
+          <input type="text" placeholder="City or airport" value="Mumbai (BOM)">
+        </div>
+        <div class="filter-group">
+          <label>To</label>
+          <input type="text" placeholder="City or airport" value="Bali (DPS)">
+        </div>
+        <div class="filter-group">
+          <label>Depart</label>
+          <input type="date">
+        </div>
+        <div class="filter-group">
+          <label>Return</label>
+          <input type="date">
+        </div>
+        <div class="filter-group">
+          <label>Passengers</label>
+          <select>
+            <option>1 Adult</option>
+            <option selected>2 Adults</option>
+            <option>2 Adults + 1 Child</option>
+          </select>
+        </div>
+        <button class="btn-primary">Search</button>
+      </div>
+
+      <div class="section-header">
+        <h2>AVAILABLE FLIGHTS</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="flight-list">
+        <div class="flight-row">
+          <div class="airline">
+            <div class="airline-logo">AI</div>
+            <div>
+              <div class="airline-name">Air India</div>
+              <div class="airline-code">AI 342</div>
+            </div>
+          </div>
+          <div class="flight-path">
+            <div class="flight-time">
+              <div class="time">08:40</div>
+              <div class="city">BOM</div>
+            </div>
+            <div class="flight-line">
+              <div class="duration">9h 25m</div>
+              <div class="bar"></div>
+              <div class="stops">1 stop · SIN</div>
+            </div>
+            <div class="flight-time">
+              <div class="time">20:35</div>
+              <div class="city">DPS</div>
+            </div>
+          </div>
+          <div class="flight-price-box">
+            <div class="price">$412</div>
+            <a href="flight-details.html" class="btn-primary">Select</a>
+          </div>
+        </div>
+
+        <div class="flight-row">
+          <div class="airline">
+            <div class="airline-logo">SQ</div>
+            <div>
+              <div class="airline-name">Singapore Airlines</div>
+              <div class="airline-code">SQ 422</div>
+            </div>
+          </div>
+          <div class="flight-path">
+            <div class="flight-time">
+              <div class="time">11:15</div>
+              <div class="city">BOM</div>
+            </div>
+            <div class="flight-line">
+              <div class="duration">8h 50m</div>
+              <div class="bar"></div>
+              <div class="stops">1 stop · SIN</div>
+            </div>
+            <div class="flight-time">
+              <div class="time">22:35</div>
+              <div class="city">DPS</div>
+            </div>
+          </div>
+          <div class="flight-price-box">
+            <div class="price">$489</div>
+            <a href="flight-details.html" class="btn-primary">Select</a>
+          </div>
+        </div>
+
+        <div class="flight-row">
+          <div class="airline">
+            <div class="airline-logo">6E</div>
+            <div>
+              <div class="airline-name">IndiGo</div>
+              <div class="airline-code">6E 1058</div>
+            </div>
+          </div>
+          <div class="flight-path">
+            <div class="flight-time">
+              <div class="time">14:20</div>
+              <div class="city">BOM</div>
+            </div>
+            <div class="flight-line">
+              <div class="duration">11h 10m</div>
+              <div class="bar"></div>
+              <div class="stops">1 stop · BKK</div>
+            </div>
+            <div class="flight-time">
+              <div class="time">03:00+1</div>
+              <div class="city">DPS</div>
+            </div>
+          </div>
+          <div class="flight-price-box">
+            <div class="price">$358</div>
+            <a href="flight-details.html" class="btn-primary">Select</a>
+          </div>
+        </div>
+
+        <div class="flight-row">
+          <div class="airline">
+            <div class="airline-logo">EK</div>
+            <div>
+              <div class="airline-name">Emirates</div>
+              <div class="airline-code">EK 507</div>
+            </div>
+          </div>
+          <div class="flight-path">
+            <div class="flight-time">
+              <div class="time">04:25</div>
+              <div class="city">BOM</div>
+            </div>
+            <div class="flight-line">
+              <div class="duration">12h 40m</div>
+              <div class="bar"></div>
+              <div class="stops">1 stop · DXB</div>
+            </div>
+            <div class="flight-time">
+              <div class="time">19:35</div>
+              <div class="city">DPS</div>
+            </div>
+          </div>
+          <div class="flight-price-box">
+            <div class="price">$545</div>
+            <a href="flight-details.html" class="btn-primary">Select</a>
+          </div>
+        </div>
+
+        <div class="flight-row">
+          <div class="airline">
+            <div class="airline-logo">GA</div>
+            <div>
+              <div class="airline-name">Garuda Indonesia</div>
+              <div class="airline-code">GA 871</div>
+            </div>
+          </div>
+          <div class="flight-path">
+            <div class="flight-time">
+              <div class="time">23:50</div>
+              <div class="city">BOM</div>
+            </div>
+            <div class="flight-line">
+              <div class="duration">10h 05m</div>
+              <div class="bar"></div>
+              <div class="stops">1 stop · CGK</div>
+            </div>
+            <div class="flight-time">
+              <div class="time">12:25+1</div>
+              <div class="city">DPS</div>
+            </div>
+          </div>
+          <div class="flight-price-box">
+            <div class="price">$398</div>
+            <a href="flight-details.html" class="btn-primary">Select</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="destinations.html" class="navbar-brand">
+          <div class="navbar-logo">✈</div>
+          Wanderlust
+        </a>
+        <p>Your trusted partner for unforgettable journeys — flights, hotels, packages and curated destinations worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="hotels.html">Hotels</a></li>
+          <li><a href="flights.html">Flights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Cancellation</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Wanderlust Travel. All rights reserved.</div>
+  </footer>
+</body>
+</html>
