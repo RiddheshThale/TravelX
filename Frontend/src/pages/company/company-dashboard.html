@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company Dashboard | Voyageora Partners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="company-dashboard.css" />
+</head>
+
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">🏢</div>
+        <span>Partner Hub</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-label">Overview</div>
+        <a href="company-dashboard.html" class="active"><span class="icon">📊</span> Dashboard</a>
+        <a href="#bookings" data-tab-target><span class="icon">📅</span> Bookings</a>
+        <a href="#listings" data-tab-target><span class="icon">🎒</span> My Listings</a>
+        <div class="nav-label">Business</div>
+        <a href="#earnings" data-tab-target><span class="icon">💰</span> Earnings</a>
+        <a href="#reviews" data-tab-target><span class="icon">⭐</span> Reviews</a>
+        <a href="#settings" data-tab-target><span class="icon">⚙️</span> Company Settings</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="#" class="logout-btn"><span>🚪</span> Logout</a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main -->
+    <div class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+          <h1>Company Dashboard</h1>
+          <span class="status-pill" id="companyStatus">Verified Partner</span>
+        </div>
+        <div class="topbar-right">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="table-search" placeholder="Search bookings, listings…" />
+          </div>
+          <div class="user-menu">
+            <div class="user-avatar">M</div>
+            <div>
+              <span class="user-name">Manali Adventures Co.</span>
+              <span class="user-sub">Tour Operator</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon yellow">🎒</div>
+            <div class="stat-value" id="statListings">18</div>
+            <div class="stat-label">Active Listings</div>
+            <div class="stat-change up">↑ 2 added this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">💰</div>
+            <div class="stat-value" id="statRevenue">₹6.4L</div>
+            <div class="stat-label">Revenue (This Month)</div>
+            <div class="stat-change up">↑ 14.2% vs last month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon blue">📅</div>
+            <div class="stat-value" id="statBookings">92</div>
+            <div class="stat-label">Bookings (This Month)</div>
+            <div class="stat-change up">↑ 9 this week</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon red">⭐</div>
+            <div class="stat-value" id="statRating">4.6</div>
+            <div class="stat-label">Average Rating</div>
+            <div class="stat-change down">↓ 0.1 from last month</div>
+          </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="chart-card">
+          <div class="section-header">
+            <h2>Earnings Overview (Last 7 Days)</h2>
+          </div>
+          <div class="chart-placeholder">
+            <div class="chart-bar" data-height="40%"><span>Mon</span></div>
+            <div class="chart-bar" data-height="62%"><span>Tue</span></div>
+            <div class="chart-bar" data-height="48%"><span>Wed</span></div>
+            <div class="chart-bar" data-height="85%"><span>Thu</span></div>
+            <div class="chart-bar" data-height="58%"><span>Fri</span></div>
+            <div class="chart-bar" data-height="95%"><span>Sat</span></div>
+            <div class="chart-bar" data-height="70%"><span>Sun</span></div>
+          </div>
+        </div>
+
+        <!-- Recent Bookings -->
+        <div class="section-header" id="bookings">
+          <h2>Recent Bookings</h2>
+          <a href="../Booking/booking-dashboard.html" class="btn-outline btn-sm">View Booking Dashboard</a>
+        </div>
+        <div class="table-card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Customer</th>
+                  <th>Package / Service</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#VG-30021</td>
+                  <td>Ritika Sharma</td>
+                  <td>Manali Snow Trek – 4D/3N</td>
+                  <td>₹14,200</td>
+                  <td><span class="status confirmed">Confirmed</span></td>
+                  <td>07 Aug 2026</td>
+                </tr>
+                <tr>
+                  <td>#VG-30018</td>
+                  <td>Arjun Kapoor</td>
+                  <td>Solang Valley Adventure Pack</td>
+                  <td>₹8,900</td>
+                  <td><span class="status pending">Pending</span></td>
+                  <td>07 Aug 2026</td>
+                </tr>
+                <tr>
+                  <td>#VG-30012</td>
+                  <td>Fatima Noor</td>
+                  <td>Manali–Kasol Getaway – 5D/4N</td>
+                  <td>₹22,750</td>
+                  <td><span class="status confirmed">Confirmed</span></td>
+                  <td>06 Aug 2026</td>
+                </tr>
+                <tr>
+                  <td>#VG-30005</td>
+                  <td>Dev Malhotra</td>
+                  <td>Rohtang Pass Day Trip</td>
+                  <td>₹3,400</td>
+                  <td><span class="status cancelled">Cancelled</span></td>
+                  <td>05 Aug 2026</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- My Listings -->
+        <div class="section-header" id="listings">
+          <h2>My Listings</h2>
+          <button class="btn-gold btn-sm" onclick="openModal('addListingModal')">+ Add New Listing</button>
+        </div>
+        <div class="listing-grid">
+          <div class="listing-card">
+            <div class="listing-thumb" style="background-image:url('https://picsum.photos/seed/manali-snow/400/300')">
+              <span class="status live">Live</span>
+            </div>
+            <div class="listing-body">
+              <h3>Manali Snow Trek</h3>
+              <div class="listing-meta">4D / 3N · Adventure</div>
+              <div class="listing-footer">
+                <span class="listing-price">₹14,200</span>
+                <div class="row-actions">
+                  <button class="icon-btn-sm" title="Edit">✏️</button>
+                  <button class="icon-btn-sm btn-delete" title="Delete">🗑️</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="listing-card">
+            <div class="listing-thumb" style="background-image:url('https://picsum.photos/seed/solang-valley/400/300')">
+              <span class="status review">In Review</span>
+            </div>
+            <div class="listing-body">
+              <h3>Solang Valley Adventure Pack</h3>
+              <div class="listing-meta">1D · Adventure Sports</div>
+              <div class="listing-footer">
+                <span class="listing-price">₹8,900</span>
+                <div class="row-actions">
+                  <button class="icon-btn-sm" title="Edit">✏️</button>
+                  <button class="icon-btn-sm btn-delete" title="Delete">🗑️</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="listing-card">
+            <div class="listing-thumb" style="background-image:url('https://picsum.photos/seed/kasol-getaway/400/300')">
+              <span class="status live">Live</span>
+            </div>
+            <div class="listing-body">
+              <h3>Manali–Kasol Getaway</h3>
+              <div class="listing-meta">5D / 4N · Leisure</div>
+              <div class="listing-footer">
+                <span class="listing-price">₹22,750</span>
+                <div class="row-actions">
+                  <button class="icon-btn-sm" title="Edit">✏️</button>
+                  <button class="icon-btn-sm btn-delete" title="Delete">🗑️</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="listing-card">
+            <div class="listing-thumb" style="background-image:url('https://picsum.photos/seed/rohtang-pass/400/300')">
+              <span class="status rejected">Rejected</span>
+            </div>
+            <div class="listing-body">
+              <h3>Rohtang Pass Day Trip</h3>
+              <div class="listing-meta">1D · Sightseeing</div>
+              <div class="listing-footer">
+                <span class="listing-price">₹3,400</span>
+                <div class="row-actions">
+                  <button class="icon-btn-sm" title="Edit">✏️</button>
+                  <button class="icon-btn-sm btn-delete" title="Delete">🗑️</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Listing Modal -->
+  <div class="modal-overlay" id="addListingModal">
+    <div class="modal-box">
+      <h2>Add New Listing</h2>
+      <form id="addListingForm">
+        <div class="form-group">
+          <label for="listingName">Listing name</label>
+          <input type="text" id="listingName" placeholder="e.g. Kasol River Camp" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="listingType">Type</label>
+            <select id="listingType">
+              <option>Package</option>
+              <option>Hotel</option>
+              <option>Activity</option>
+              <option>Transport</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="listingPrice">Price (₹)</label>
+            <input type="number" id="listingPrice" placeholder="9999" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="listingDesc">Description</label>
+          <textarea id="listingDesc" rows="3" placeholder="Short description shown to travelers"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-outline btn-sm" onclick="closeModal('addListingModal')">Cancel</button>
+          <button type="submit" class="btn-gold btn-sm">Submit for Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="company-dashboard.js"></script>
+</body>
+
+</html>
