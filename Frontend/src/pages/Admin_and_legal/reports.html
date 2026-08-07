@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reports | Voyageora Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">✈️</div>
+        <span>Voyageora</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-label">Main</div>
+        <a href="admin-dashboard.html"><span class="icon">📊</span> Dashboard</a>
+        <a href="manage-bookings.html"><span class="icon">📅</span> Bookings</a>
+        <a href="manage-packages.html"><span class="icon">🎒</span> Packages</a>
+        <a href="manage-hotels.html"><span class="icon">🏨</span> Hotels</a>
+        <a href="manage-flights.html"><span class="icon">✈️</span> Flights</a>
+        <div class="nav-label">Management</div>
+        <a href="manage-users.html"><span class="icon">👥</span> Users</a>
+        <a href="reports.html" class="active"><span class="icon">📈</span> Reports</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="#" class="logout-btn"><span>🚪</span> Logout</a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <div class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle">☰</button>
+          <h1>Reports & Analytics</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="user-menu">
+            <div class="user-avatar">A</div>
+            <span class="user-name">Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="filter-bar" style="margin-bottom:28px;">
+          <div class="form-group">
+            <label>Period</label>
+            <select>
+              <option>Last 7 Days</option>
+              <option>Last 30 Days</option>
+              <option>This Month</option>
+              <option>Last Quarter</option>
+              <option>This Year</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>From</label>
+            <input type="date" />
+          </div>
+          <div class="form-group">
+            <label>To</label>
+            <input type="date" />
+          </div>
+          <button class="btn-primary btn-sm">Generate</button>
+          <button class="btn-outline btn-sm">Export CSV</button>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon yellow">📅</div>
+            <div class="stat-value">1,248</div>
+            <div class="stat-label">Total Bookings</div>
+            <div class="stat-change up">↑ 12%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">💰</div>
+            <div class="stat-value">₹42.8L</div>
+            <div class="stat-label">Gross Revenue</div>
+            <div class="stat-change up">↑ 8.4%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon blue">🎒</div>
+            <div class="stat-value">412</div>
+            <div class="stat-label">Packages Sold</div>
+            <div class="stat-change up">↑ 15%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon red">❌</div>
+            <div class="stat-value">89</div>
+            <div class="stat-label">Cancellations</div>
+            <div class="stat-change down">↓ 4%</div>
+          </div>
+        </div>
+
+        <!-- Revenue Chart -->
+        <div class="chart-card">
+          <div class="section-header">
+            <h2>Revenue Trend (Last 7 Days)</h2>
+          </div>
+          <div class="chart-placeholder">
+            <div class="chart-bar" data-height="35%"><span>Mon</span></div>
+            <div class="chart-bar" data-height="55%"><span>Tue</span></div>
+            <div class="chart-bar" data-height="48%"><span>Wed</span></div>
+            <div class="chart-bar" data-height="82%"><span>Thu</span></div>
+            <div class="chart-bar" data-height="70%"><span>Fri</span></div>
+            <div class="chart-bar" data-height="95%"><span>Sat</span></div>
+            <div class="chart-bar" data-height="60%"><span>Sun</span></div>
+          </div>
+        </div>
+
+        <!-- Category Breakdown -->
+        <div class="section-header">
+          <h2>Bookings by Category</h2>
+        </div>
+        <div class="table-card" style="margin-bottom:28px;">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Bookings</th>
+                  <th>Revenue</th>
+                  <th>Avg. Value</th>
+                  <th>Share</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Holiday Packages</td>
+                  <td>412</td>
+                  <td>₹18.4L</td>
+                  <td>₹44,660</td>
+                  <td>43%</td>
+                </tr>
+                <tr>
+                  <td>Hotels</td>
+                  <td>386</td>
+                  <td>₹12.1L</td>
+                  <td>₹31,347</td>
+                  <td>28%</td>
+                </tr>
+                <tr>
+                  <td>Flights</td>
+                  <td>450</td>
+                  <td>₹12.3L</td>
+                  <td>₹27,333</td>
+                  <td>29%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Top Destinations -->
+        <div class="section-header">
+          <h2>Top Destinations</h2>
+        </div>
+        <div class="table-card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Destination</th>
+                  <th>Bookings</th>
+                  <th>Revenue</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Goa</td>
+                  <td>186</td>
+                  <td>₹7.2L</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Dubai</td>
+                  <td>94</td>
+                  <td>₹6.5L</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Kashmir</td>
+                  <td>78</td>
+                  <td>₹4.8L</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Kerala</td>
+                  <td>65</td>
+                  <td>₹3.1L</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Rajasthan</td>
+                  <td>52</td>
+                  <td>₹2.9L</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

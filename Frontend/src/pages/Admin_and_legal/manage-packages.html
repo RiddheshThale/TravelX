@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Packages | Voyageora Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">✈️</div>
+        <span>Voyageora</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-label">Main</div>
+        <a href="admin-dashboard.html"><span class="icon">📊</span> Dashboard</a>
+        <a href="manage-bookings.html"><span class="icon">📅</span> Bookings</a>
+        <a href="manage-packages.html" class="active"><span class="icon">🎒</span> Packages</a>
+        <a href="manage-hotels.html"><span class="icon">🏨</span> Hotels</a>
+        <a href="manage-flights.html"><span class="icon">✈️</span> Flights</a>
+        <div class="nav-label">Management</div>
+        <a href="manage-users.html"><span class="icon">👥</span> Users</a>
+        <a href="reports.html"><span class="icon">📈</span> Reports</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="#" class="logout-btn"><span>🚪</span> Logout</a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <div class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle">☰</button>
+          <h1>Manage Packages</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="table-search" placeholder="Search packages..." />
+          </div>
+          <div class="user-menu">
+            <div class="user-avatar">A</div>
+            <span class="user-name">Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="section-header">
+          <h2>Holiday Packages</h2>
+          <button class="btn-primary" onclick="openModal('addPackageModal')">+ Add Package</button>
+        </div>
+
+        <div class="filter-bar">
+          <div class="form-group">
+            <label>Destination</label>
+            <select>
+              <option value="">All</option>
+              <option>Goa</option>
+              <option>Kashmir</option>
+              <option>Kerala</option>
+              <option>Rajasthan</option>
+              <option>International</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select>
+              <option value="">All</option>
+              <option>Active</option>
+              <option>Inactive</option>
+            </select>
+          </div>
+          <button class="btn-primary btn-sm">Filter</button>
+        </div>
+
+        <div class="table-card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Package Name</th>
+                  <th>Destination</th>
+                  <th>Duration</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#PK-101</td>
+                  <td>Goa Bliss Getaway</td>
+                  <td>Goa</td>
+                  <td>4N / 5D</td>
+                  <td>₹28,500</td>
+                  <td><span class="status active">Active</span></td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#PK-102</td>
+                  <td>Kashmir Paradise</td>
+                  <td>Kashmir</td>
+                  <td>6N / 7D</td>
+                  <td>₹45,200</td>
+                  <td><span class="status active">Active</span></td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#PK-103</td>
+                  <td>Kerala Backwaters</td>
+                  <td>Kerala</td>
+                  <td>5N / 6D</td>
+                  <td>₹32,800</td>
+                  <td><span class="status active">Active</span></td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#PK-104</td>
+                  <td>Royal Rajasthan</td>
+                  <td>Rajasthan</td>
+                  <td>7N / 8D</td>
+                  <td>₹52,000</td>
+                  <td><span class="status inactive">Inactive</span></td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#PK-105</td>
+                  <td>Dubai Desert Escape</td>
+                  <td>Dubai</td>
+                  <td>4N / 5D</td>
+                  <td>₹68,900</td>
+                  <td><span class="status active">Active</span></td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="pagination">
+          <span class="active">1</span>
+          <a href="#">2</a>
+          <a href="#">→</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Package Modal -->
+  <div class="modal-overlay" id="addPackageModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Add New Package</h3>
+        <button class="modal-close" onclick="closeModal('addPackageModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label>Package Name</label>
+            <input type="text" placeholder="e.g. Goa Bliss Getaway" />
+          </div>
+          <div class="form-group">
+            <label>Destination</label>
+            <input type="text" placeholder="Goa" />
+          </div>
+          <div class="form-group">
+            <label>Duration</label>
+            <input type="text" placeholder="4N / 5D" />
+          </div>
+          <div class="form-group">
+            <label>Price (₹)</label>
+            <input type="number" placeholder="28500" />
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select>
+              <option>Active</option>
+              <option>Inactive</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Description</label>
+            <textarea placeholder="Package highlights and inclusions..."></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" onclick="closeModal('addPackageModal')">Cancel</button>
+        <button class="btn-primary" onclick="closeModal('addPackageModal')">Save Package</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Flights | Voyageora Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">✈️</div>
+        <span>Voyageora</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-label">Main</div>
+        <a href="admin-dashboard.html"><span class="icon">📊</span> Dashboard</a>
+        <a href="manage-bookings.html"><span class="icon">📅</span> Bookings</a>
+        <a href="manage-packages.html"><span class="icon">🎒</span> Packages</a>
+        <a href="manage-hotels.html"><span class="icon">🏨</span> Hotels</a>
+        <a href="manage-flights.html" class="active"><span class="icon">✈️</span> Flights</a>
+        <div class="nav-label">Management</div>
+        <a href="manage-users.html"><span class="icon">👥</span> Users</a>
+        <a href="reports.html"><span class="icon">📈</span> Reports</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="#" class="logout-btn"><span>🚪</span> Logout</a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <div class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle">☰</button>
+          <h1>Manage Flights</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="table-search" placeholder="Search flights..." />
+          </div>
+          <div class="user-menu">
+            <div class="user-avatar">A</div>
+            <span class="user-name">Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="section-header">
+          <h2>Flight Inventory</h2>
+          <button class="btn-primary" onclick="openModal('addFlightModal')">+ Add Flight</button>
+        </div>
+
+        <div class="filter-bar">
+          <div class="form-group">
+            <label>Airline</label>
+            <select>
+              <option value="">All Airlines</option>
+              <option>IndiGo</option>
+              <option>Air India</option>
+              <option>Emirates</option>
+              <option>Vistara</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Route</label>
+            <input type="text" placeholder="e.g. DEL-BOM" />
+          </div>
+          <button class="btn-primary btn-sm">Filter</button>
+        </div>
+
+        <div class="table-card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Flight No.</th>
+                  <th>Airline</th>
+                  <th>Route</th>
+                  <th>Departure</th>
+                  <th>Arrival</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>6E-2041</td>
+                  <td>IndiGo</td>
+                  <td>DEL → BOM</td>
+                  <td>08:30</td>
+                  <td>10:45</td>
+                  <td>₹5,890</td>
+                  <td><span class="status active">Active</span></td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>AI-865</td>
+                  <td>Air India</td>
+                  <td>BOM → BLR</td>
+                  <td>14:15</td>
+                  <td>15:50</td>
+                  <td>₹4,250</td>
+                  <td><span class="status active">Active</span></td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>EK-507</td>
+                  <td>Emirates</td>
+                  <td>BLR → DXB</td>
+                  <td>22:40</td>
+                  <td>00:55+1</td>
+                  <td>₹21,800</td>
+                  <td><span class="status active">Active</span></td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>UK-995</td>
+                  <td>Vistara</td>
+                  <td>DEL → GOI</td>
+                  <td>11:20</td>
+                  <td>13:55</td>
+                  <td>₹7,120</td>
+                  <td><span class="status inactive">Inactive</span></td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>6E-518</td>
+                  <td>IndiGo</td>
+                  <td>HYD → DEL</td>
+                  <td>06:00</td>
+                  <td>08:10</td>
+                  <td>₹5,450</td>
+                  <td><span class="status active">Active</span></td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="pagination">
+          <span class="active">1</span>
+          <a href="#">2</a>
+          <a href="#">→</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="addFlightModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Add New Flight</h3>
+        <button class="modal-close" onclick="closeModal('addFlightModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Flight Number</label>
+            <input type="text" placeholder="6E-2041" />
+          </div>
+          <div class="form-group">
+            <label>Airline</label>
+            <select>
+              <option>IndiGo</option>
+              <option>Air India</option>
+              <option>Emirates</option>
+              <option>Vistara</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>From</label>
+            <input type="text" placeholder="DEL" />
+          </div>
+          <div class="form-group">
+            <label>To</label>
+            <input type="text" placeholder="BOM" />
+          </div>
+          <div class="form-group">
+            <label>Departure Time</label>
+            <input type="time" />
+          </div>
+          <div class="form-group">
+            <label>Arrival Time</label>
+            <input type="time" />
+          </div>
+          <div class="form-group">
+            <label>Price (₹)</label>
+            <input type="number" placeholder="5890" />
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select>
+              <option>Active</option>
+              <option>Inactive</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" onclick="closeModal('addFlightModal')">Cancel</button>
+        <button class="btn-primary" onclick="closeModal('addFlightModal')">Save Flight</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

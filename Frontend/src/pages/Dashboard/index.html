@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TravelX — Explore the World, Book Flights, Hotels &amp; Packages</title>
+<meta name="description" content="Discover 120+ destinations with TravelX. Compare flights, hotels and curated holiday packages at the best prices, with 24x7 support and free cancellation." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <div class="logo">
+      <img src="/Frontend/public/images/logo.png" alt="TravelX">
+      <span>TravelX</span>
+    </div>
+    <a href="#top" class="logo">Travel<span class="gold-text">X</span></a>
+
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#top" class="active">Home</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#packages">Packages</a>
+      <a href="#hotels">Hotels</a>
+      <a href="#flights">Flights</a>
+      <a href="#guide">Travel Guide</a>
+      <a href="#offers">Offers</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchToggle" aria-label="Search">🔍</button>
+      <select class="lang" aria-label="Language">
+        <option>EN</option><option>HI</option><option>FR</option><option>AR</option>
+      </select>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <button class="btn-ghost">Login</button>
+      <button class="btn-gold">Sign Up</button>
+      <button class="icon-btn burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+
+  <div class="nav-search" id="navSearch">
+    <div class="container">
+      <input type="text" id="globalSearch" placeholder="Search destinations, hotels, packages…" />
+      <ul id="searchResults" class="search-results"></ul>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <span class="chip">✨ Travel beyond boundaries</span>
+    <h1>Explore the World with <span class="gold-text">TravelX</span></h1>
+    <p>Find flights, hotels, holiday packages and unforgettable experiences — all in one place, at the best prices.</p>
+
+    <div class="hero-btns">
+      <button class="btn-gold big">Explore Packages →</button>
+      <button class="btn-ghost big">▶ Watch Video</button>
+    </div>
+
+    <div class="popular">
+      <strong>🔥 Popular</strong>
+      <span>🏖 Goa</span><span>🏔 Manali</span><span>🌆 Dubai</span>
+      <span>🏝 Bali</span><span>🏞 Kashmir</span><span>🏛 Jaipur</span>
+    </div>
+
+    <!-- Booking tabs -->
+    <div class="tabs" id="tabs">
+      <button class="tab active">✈ Flights</button>
+      <button class="tab">🏨 Hotels</button>
+      <button class="tab">🧳 Packages</button>
+      <button class="tab">🚗 Car Rental</button>
+      <button class="tab">🎡 Activities</button>
+    </div>
+
+    <form class="search-bar" id="bookingForm">
+      <div class="search-field">
+        <label>📍 Destination</label>
+        <input type="text" id="destInput" placeholder="Where to?" autocomplete="off" />
+        <ul class="suggestions" id="destSuggestions"></ul>
+      </div>
+      <div class="search-field"><label>📅 Check-in</label><input type="date" /></div>
+      <div class="search-field"><label>📅 Check-out</label><input type="date" /></div>
+      <div class="search-field"><label>👥 Travellers</label>
+        <select><option>2 Adults</option><option>1 Adult</option><option>2 Adults, 1 Child</option><option>4 Adults</option></select>
+      </div>
+      <div class="search-field"><label>⭐ Class</label>
+        <select><option>Economy</option><option>Business</option><option>First</option></select>
+      </div>
+      <button class="btn-gold search-btn" type="submit">🔍 Search</button>
+    </form>
+
+    <div class="stats">
+      <div class="stat"><h3 class="gold-text" data-count="50000">0</h3><p>Happy Travellers</p></div>
+      <div class="stat"><h3 class="gold-text" data-count="120">0</h3><p>Destinations</p></div>
+      <div class="stat"><h3 class="gold-text" data-count="2500">0</h3><p>Hotels</p></div>
+      <div class="stat"><h3 class="gold-text">4.9★</h3><p>Customer Rating</p></div>
+    </div>
+
+    <div class="badges">
+      <span>🛡 Best Price Guarantee</span><span>🔒 Secure Payments</span>
+      <span>☎ 24×7 Support</span><span>✅ Free Cancellation</span>
+    </div>
+  </div>
+</section>
+<se
+
+<!-- ==================== INTERNATIONAL ==================== -->
+<div class="trips"></div>
+  <section class="intl-section">
+    <div class="intl-inner">
+
+      <!-- Left: cards carousel -->
+      <div class="intl-cards-wrap">
+        <button class="intl-arrow intl-prev" id="intlPrev" aria-label="Previous">◀</button>
+
+        <div class="intl-track" id="intlTrack">
+          <div class="intl-card">
+            <div class="intl-img">
+              <img src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=600&q=80" alt="Turkey" />
+            </div>
+            <h3>Turkey <span>*****</span></h3>
+            <p>Turkey is where ancient history meets modern charm. From the colorful streets of Istanbul to the surreal landscapes of Cappadocia, Turkey offers a rich blend of culture, architecture, and flavors. It's perfect for travelers who love heritage, vibrant markets, and breathtaking views in one destination.</p>
+          </div>
+
+          <div class="intl-card">
+            <div class="intl-img">
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80" alt="Bali" />
+            </div>
+            <h3>Bali <span>*****</span></h3>
+            <p>Bali is a tropical paradise known for its serene beaches, lush rice terraces, and spiritual vibe. With stunning sunsets, traditional temples, and a relaxed lifestyle, Bali is ideal for both adventure seekers and those looking for peace and rejuvenation.</p>
+          </div>
+
+          <div class="intl-card">
+            <div class="intl-img">
+              <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=600&q=80" alt="Thailand" />
+            </div>
+            <h3>Thailand <span>*****</span></h3>
+            <p>Thailand is famous for its lively cities, golden temples, and crystal-clear beaches. From the bustling streets of Bangkok to the calm islands and rich street food culture, Thailand delivers an unforgettable mix of excitement, beauty, and warm hospitality.</p>
+          </div>
+
+          <div class="intl-card">
+            <div class="intl-img">
+              <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=600&q=80" alt="Japan" />
+            </div>
+            <h3>Japan <span>*****</span></h3>
+            <p>Japan blends ancient temples with futuristic cities. From cherry blossoms in Kyoto to neon streets of Tokyo, experience unmatched culture, cuisine, and hospitality in the Land of the Rising Sun.</p>
+          </div>
+
+          <div class="intl-card">
+            <div class="intl-img">
+              <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=600&q=80" alt="Italy" />
+            </div>
+            <h3>Italy <span>*****</span></h3>
+            <p>Italy is a dream for history and food lovers. Explore Rome's ancient ruins, Venice's canals, and Tuscany's vineyards while savoring world-famous pasta, pizza, and gelato.</p>
+          </div>
+        </div>
+
+        <button class="intl-arrow intl-next" id="intlNext" aria-label="Next">▶</button>
+      </div>
+
+      <!-- Right: text content -->
+      <div class="intl-content">
+        <h2>INTERNATIONAL</h2>
+        <p>An international trip offers a unique opportunity to explore new countries, cultures, and ways of life beyond familiar surroundings. From experiencing diverse cuisines and local traditions to visiting iconic landmarks and natural destinations, international travel enriches perspectives and creates lasting memories. With proper planning—including passport validity, visa requirements, and travel insurance—every journey can be smooth, safe, and well-organized.</p>
+        <p>More than just travel, international trips contribute to personal growth and global awareness. Navigating new environments, understanding different cultures, and adapting to international standards build confidence and independence. Whether for leisure, cultural discovery, or adventure, an international trip delivers a well-balanced experience of comfort, learning, and unforgettable moments—perfectly tailored for today's global traveler.</p>
+
+        <div class="intl-stats">
+          <div class="stat"><strong>50+</strong> Destination*</div>
+          <div class="stat"><strong>200+</strong> Tourists</div>
+          <div class="stat"><strong>200+</strong> Hotels</div>
+        </div>
+
+        <a href="#" class="btn-discover">Discover more</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== INDIA EXPLORATIONS ==================== -->
+  <section class="india-section">
+    <div class="section-head">
+      <h2>India Explorations</h2>
+      <div class="line"></div>
+      <span class="arrow">→</span>
+    </div>
+
+    <div class="explorations-grid">
+
+      <div class="featured-card">
+        <div class="featured-slides" id="featuredSlides">
+          <div class="featured-slide active" data-name="Coorg">
+            <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74070?auto=format&fit=crop&w=1200&q=80" alt="Coorg" />
+          </div>
+          <div class="featured-slide" data-name="Kerala">
+            <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80" alt="Kerala" />
+          </div>
+          <div class="featured-slide" data-name="Himachal">
+            <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80" alt="Himachal" />
+          </div>
+          <div class="featured-slide" data-name="Varanasi">
+            <img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1200&q=80" alt="Varanasi" />
+          </div>
+        </div>
+
+        <div class="featured-label">
+          <span class="name" id="featuredName">Coorg</span>
+          <div class="featured-nav">
+            <button id="prevBtn" aria-label="Previous">◀</button>
+            <button id="nextBtn" aria-label="Next">▶</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="destinations-grid">
+        <a href="#" class="dest-card">
+          <img src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=600&q=80" alt="Ladakh" />
+          <div class="overlay"><span class="label">Ladakh</span></div>
+        </a>
+        <a href="#" class="dest-card">
+          <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=600&q=80" alt="Rajasthan" />
+          <div class="overlay"><span class="label">Rajasthan</span></div>
+        </a>
+        <a href="#" class="dest-card">
+          <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=600&q=80" alt="Spiti" />
+          <div class="overlay"><span class="label">Spiti</span></div>
+        </a>
+        <a href="#" class="dest-card">
+          <img src="https://images.unsplash.com/photo-1590077428593-a55bb26729d8?auto=format&fit=crop&w=600&q=80" alt="Meghalaya" />
+          <div class="overlay"><span class="label">Meghalaya</span></div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- ================= WHY US ================= -->
+<section class="section alt" id="guide">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Travel Guide</span>
+      <h2>Why Choose <span class="gold-text">TravelX</span></h2>
+    </div>
+    <div class="grid grid-4" id="whyGrid"></div>
+  </div>
+</section>
+
+<!-- ================= PACKAGES ================= -->
+<section class="section" id="packages">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Curated</span>
+      <h2>Holiday <span class="gold-text">Packages</span></h2>
+    </div>
+    <div class="filters" id="pkgFilters">
+      <button class="filter active" data-f="all">All</button>
+      <button class="filter" data-f="beach">Beach</button>
+      <button class="filter" data-f="mountain">Mountain</button>
+      <button class="filter" data-f="luxury">Luxury</button>
+      <button class="filter" data-f="international">International</button>
+    </div>
+    <div class="grid grid-3" id="pkgGrid"></div>
+  </div>
+</section>
+
+<!-- ================= FLIGHTS ================= -->
+<section class="section alt" id="flights">
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow">Fly cheap</span><h2>Flight <span class="gold-text">Deals</span></h2></div>
+    <div class="grid grid-3" id="flightGrid"></div>
+  </div>
+</section>
+
+<!-- ================= HOTELS ================= -->
+<section class="section" id="hotels">
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow">Stay well</span><h2>Featured <span class="gold-text">Hotels</span></h2></div>
+    <div class="grid grid-3" id="hotelGrid"></div>
+  </div>
+</section>
+
+<!-- ================= OFFERS ================= -->
+<section class="section alt" id="offers">
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow">Limited time</span><h2>Exclusive <span class="gold-text">Offers</span></h2></div>
+    <div class="grid grid-3" id="offerGrid"></div>
+    <div class="countdown reveal">
+      <p>Monsoon Sale ends in</p>
+      <div class="clock"><span id="cd-d">00</span>d : <span id="cd-h">00</span>h : <span id="cd-m">00</span>m : <span id="cd-s">00</span>s</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow">Reviews</span><h2>What Travellers <span class="gold-text">Say</span></h2></div>
+    <div class="slider">
+      <div class="slides" id="slides"></div>
+      <div class="slider-nav"><button id="prev">‹</button><button id="next">›</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARTNERS MARQUEE ================= -->
+<section class="marquee-wrap">
+  <div class="marquee" id="marquee"></div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section alt">
+  <div class="container narrow">
+    <div class="section-head reveal"><span class="eyebrow">Help</span><h2>Frequently Asked <span class="gold-text">Questions</span></h2></div>
+    <div class="faq" id="faq"></div>
+  </div>
+</section>
+
+<!-- ================= NEWSLETTER + CONTACT ================= -->
+<section class="section" id="contact">
+  <div class="container narrow cta reveal">
+    <h2>Get travel deals in your <span class="gold-text">inbox</span></h2>
+    <p>Join 50,000+ travellers. No spam, unsubscribe anytime.</p>
+    <form class="newsletter" id="newsletter">
+      <input type="email" placeholder="you@example.com" required />
+      <button class="btn-gold" type="submit">Subscribe</button>
+    </form>
+    <p class="note" id="nlNote"></p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="#top" class="logo">Travel<span class="gold-text">X</span></a>
+      <p>Your trusted partner for flights, hotels and unforgettable holidays across 120+ destinations.</p>
+      <div class="socials"><span>f</span><span>in</span><span>ig</span><span>x</span></div>
+    </div>
+    <div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Press</a><a href="#">Blog</a></div>
+    <div><h4>Support</h4><a href="#">Help Center</a><a href="#">Cancellation</a><a href="#">Refunds</a><a href="#contact">Contact</a></div>
+    <div><h4>Contact</h4><p>📞 +91 98765 43210</p><p>✉ hello@travelx.com</p><p>📍 Kolkata, India</p></div>
+  </div>
+  <div class="container copyright"><p>© 2026 TravelX. All rights reserved.</p></div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>

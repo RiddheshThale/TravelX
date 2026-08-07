@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Users | Voyageora Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">✈️</div>
+        <span>Voyageora</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-label">Main</div>
+        <a href="admin-dashboard.html"><span class="icon">📊</span> Dashboard</a>
+        <a href="manage-bookings.html"><span class="icon">📅</span> Bookings</a>
+        <a href="manage-packages.html"><span class="icon">🎒</span> Packages</a>
+        <a href="manage-hotels.html"><span class="icon">🏨</span> Hotels</a>
+        <a href="manage-flights.html"><span class="icon">✈️</span> Flights</a>
+        <div class="nav-label">Management</div>
+        <a href="manage-users.html" class="active"><span class="icon">👥</span> Users</a>
+        <a href="reports.html"><span class="icon">📈</span> Reports</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="#" class="logout-btn"><span>🚪</span> Logout</a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <div class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle">☰</button>
+          <h1>Manage Users</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="table-search" placeholder="Search users..." />
+          </div>
+          <div class="user-menu">
+            <div class="user-avatar">A</div>
+            <span class="user-name">Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="section-header">
+          <h2>All Users</h2>
+          <button class="btn-primary" onclick="openModal('addUserModal')">+ Add User</button>
+        </div>
+
+        <div class="filter-bar">
+          <div class="form-group">
+            <label>Status</label>
+            <select>
+              <option value="">All</option>
+              <option>Active</option>
+              <option>Inactive</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Role</label>
+            <select>
+              <option value="">All Roles</option>
+              <option>Customer</option>
+              <option>Admin</option>
+            </select>
+          </div>
+          <button class="btn-primary btn-sm">Filter</button>
+        </div>
+
+        <div class="table-card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Joined</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#U-1001</td>
+                  <td>Priya Sharma</td>
+                  <td>priya@email.com</td>
+                  <td>+91 98765 11111</td>
+                  <td>Customer</td>
+                  <td><span class="status active">Active</span></td>
+                  <td>12 Jan 2026</td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#U-1002</td>
+                  <td>Rahul Mehta</td>
+                  <td>rahul@email.com</td>
+                  <td>+91 98765 22222</td>
+                  <td>Customer</td>
+                  <td><span class="status active">Active</span></td>
+                  <td>05 Feb 2026</td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#U-1003</td>
+                  <td>Ananya Patel</td>
+                  <td>ananya@email.com</td>
+                  <td>+91 98765 33333</td>
+                  <td>Customer</td>
+                  <td><span class="status inactive">Inactive</span></td>
+                  <td>18 Mar 2026</td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#U-1004</td>
+                  <td>Admin User</td>
+                  <td>admin@voyageora.com</td>
+                  <td>+91 98765 00000</td>
+                  <td>Admin</td>
+                  <td><span class="status active">Active</span></td>
+                  <td>01 Jan 2025</td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#U-1005</td>
+                  <td>Vikram Singh</td>
+                  <td>vikram@email.com</td>
+                  <td>+91 98765 44444</td>
+                  <td>Customer</td>
+                  <td><span class="status active">Active</span></td>
+                  <td>22 Apr 2026</td>
+                  <td class="actions">
+                    <button class="btn-outline btn-sm">Edit</button>
+                    <button class="btn-danger btn-sm btn-delete">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="pagination">
+          <span class="active">1</span>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">→</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add User Modal -->
+  <div class="modal-overlay" id="addUserModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Add New User</h3>
+        <button class="modal-close" onclick="closeModal('addUserModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="John Doe" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="john@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="+91 98765 43210" />
+          </div>
+          <div class="form-group">
+            <label>Role</label>
+            <select>
+              <option>Customer</option>
+              <option>Admin</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Password</label>
+            <input type="password" placeholder="••••••••" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" onclick="closeModal('addUserModal')">Cancel</button>
+        <button class="btn-primary" onclick="closeModal('addUserModal')">Save User</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
