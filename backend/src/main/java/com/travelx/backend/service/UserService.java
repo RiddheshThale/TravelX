@@ -2,18 +2,17 @@ package com.travelx.backend.service;
 
 import com.travelx.backend.entity.User;
 import com.travelx.backend.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 
-  private final UserRepository userRepository;
+  @Autowired
+  private UserRepository userRepository;
 
-  public UserService(UserRepository userRepository) {
-    this.userRepository = userRepository;
-  }
-
-  public User registerUser(User user) {
+  public User saveUser(User user) {
     return userRepository.save(user);
   }
+
 }
