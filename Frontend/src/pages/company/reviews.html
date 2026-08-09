@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Reviews | Voyageora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="company-pages.css" />
+</head>
+
+<body>
+  <nav class="cp-navbar">
+    <a href="../../../index.html" class="cp-logo">
+      <img src="../../../public/images/logo.png" alt="Voyageora logo" />
+      <span class="gold-text">TravelX</span>
+    </a>
+    <div class="cp-links">
+      <a href="reviews.html" class="active">Reviews</a>
+      <a href="our-team.html">Our Team</a>
+      <a href="careers.html">Careers</a>
+      <a href="company-dashboard.html">Partner Dashboard</a>
+    </div>
+    <div class="cp-cta">
+      <button type="button" class="btn-gold" onclick="openModal('writeReviewModal')">Write a Review</button>
+      <button class="cp-nav-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
+
+  <header class="cp-hero">
+    <div class="breadcrumb"><a href="../../../index.html">Home</a> / Reviews</div>
+    <h1>What Travellers Say About Us</h1>
+    <p>Real reviews from real trips — see why thousands of travellers book with Voyageora every year.</p>
+  </header>
+
+  <main class="cp-section" id="reviewsPage">
+    <div class="cp-section-inner">
+      <div class="rating-summary">
+        <div class="rating-score">
+          <div class="num">4.7</div>
+          <div class="stars">★★★★★</div>
+          <div class="count">Based on 2,340 reviews</div>
+        </div>
+        <div class="rating-bars">
+          <div class="rating-bar-row"><span>5★</span><span class="track"><span class="fill"
+                style="width:78%"></span></span><span>78%</span></div>
+          <div class="rating-bar-row"><span>4★</span><span class="track"><span class="fill"
+                style="width:14%"></span></span><span>14%</span></div>
+          <div class="rating-bar-row"><span>3★</span><span class="track"><span class="fill"
+                style="width:5%"></span></span><span>5%</span></div>
+          <div class="rating-bar-row"><span>2★</span><span class="track"><span class="fill"
+                style="width:2%"></span></span><span>2%</span></div>
+          <div class="rating-bar-row"><span>1★</span><span class="track"><span class="fill"
+                style="width:1%"></span></span><span>1%</span></div>
+        </div>
+      </div>
+
+      <div class="review-filter-bar">
+        <div class="chips">
+          <button type="button" class="chip active" data-rating="all">All Reviews</button>
+          <button type="button" class="chip" data-rating="5">5 Stars</button>
+          <button type="button" class="chip" data-rating="4">4 Stars</button>
+          <button type="button" class="chip" data-rating="3">3 Stars &amp; below</button>
+        </div>
+      </div>
+
+      <div class="review-grid">
+        <div class="review-card" data-rating="5">
+          <div class="review-card-top">
+            <div class="review-avatar">R</div>
+            <div>
+              <div class="review-name">Ritika Sharma</div>
+              <div class="review-date">2 weeks ago</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Amazing travel experience! Everything from trip planning to hotel bookings and local
+            guidance was perfectly managed. The team was responsive and professional throughout our Manali trip.</p>
+          <span class="review-trip-tag">Manali Snow Trek</span>
+        </div>
+
+        <div class="review-card" data-rating="5">
+          <div class="review-card-top">
+            <div class="review-avatar">A</div>
+            <div>
+              <div class="review-name">Arjun Kapoor</div>
+              <div class="review-date">3 weeks ago</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">One of the best travel platforms I've used. The itinerary was well-planned and support
+            was available throughout our adventure. Will definitely book again.</p>
+          <span class="review-trip-tag">Solang Valley Adventure</span>
+        </div>
+
+        <div class="review-card" data-rating="4">
+          <div class="review-card-top">
+            <div class="review-avatar">F</div>
+            <div>
+              <div class="review-name">Fatima Noor</div>
+              <div class="review-date">1 month ago</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★☆</div>
+          <p class="review-text">Great service overall and the resort was beautiful. Only downside was a slight delay in
+            our airport pickup, but the team resolved it quickly and apologetically.</p>
+          <span class="review-trip-tag">Manali–Kasol Getaway</span>
+        </div>
+
+        <div class="review-card" data-rating="5">
+          <div class="review-card-top">
+            <div class="review-avatar">D</div>
+            <div>
+              <div class="review-name">Dev Malhotra</div>
+              <div class="review-date">1 month ago</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Fantastic attention to detail. From visa help to day-trip planning, everything was
+            smooth. The trip exceeded expectations and I'll be booking through Voyageora again.</p>
+          <span class="review-trip-tag">Rohtang Pass Day Trip</span>
+        </div>
+
+        <div class="review-card extra-hidden" data-rating="3">
+          <div class="review-card-top">
+            <div class="review-avatar">S</div>
+            <div>
+              <div class="review-name">Sana Iyer</div>
+              <div class="review-date">2 months ago</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★☆☆</div>
+          <p class="review-text">Good value for money but communication could be faster during peak season. The actual
+            trip itself was enjoyable and well organized on the ground.</p>
+          <span class="review-trip-tag">Coorg Coffee Trail</span>
+        </div>
+
+        <div class="review-card extra-hidden" data-rating="5">
+          <div class="review-card-top">
+            <div class="review-avatar">K</div>
+            <div>
+              <div class="review-name">Karan Verma</div>
+              <div class="review-date">2 months ago</div>
+            </div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Booked a last-minute trip to Kerala and the team pulled together an incredible
+            itinerary within a day. Highly recommend for spontaneous travellers!</p>
+          <span class="review-trip-tag">Kerala Backwaters</span>
+        </div>
+      </div>
+
+      <div class="load-more-wrap">
+        <button type="button" id="loadMoreBtn" class="btn-outline">Load More Reviews</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="cp-footer">© 2026 Voyageora. All rights reserved.</footer>
+
+  <!-- Write a review modal -->
+  <div class="modal-overlay" id="writeReviewModal">
+    <div class="modal-box">
+      <button type="button" class="modal-x" onclick="closeModal('writeReviewModal')" aria-label="Close">✕</button>
+      <h2>Share Your Experience</h2>
+      <form id="reviewForm">
+        <label
+          style="font-size:var(--fs-xs); color:var(--muted); font-weight:600; display:block; margin-bottom:8px;">Your
+          rating</label>
+        <div class="star-input" id="starInput">
+          <span data-value="1" class="filled">★</span>
+          <span data-value="2" class="filled">★</span>
+          <span data-value="3" class="filled">★</span>
+          <span data-value="4" class="filled">★</span>
+          <span data-value="5" class="filled">★</span>
+        </div>
+        <div class="form-group">
+          <label for="reviewerName">Your name</label>
+          <input type="text" id="reviewerName" placeholder="e.g. Priya Nair" required />
+        </div>
+        <div class="form-group">
+          <label for="reviewText">Your review</label>
+          <textarea id="reviewText" rows="4" placeholder="Tell other travellers about your trip…" required></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-outline" onclick="closeModal('writeReviewModal')">Cancel</button>
+          <button type="submit" class="btn-gold">Submit Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="company-pages.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Bookings | Voyageora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="booking.css" />
+</head>
+
+<body>
+  <header class="bk-topbar">
+    <a href="../../../public/images/logo.png" class="bk-logo">
+      <img src="../../../public/images/logo.png" alt="Voyageora logo" />
+      <span class="gold-text">TravelX</span>
+    </a>
+    <span class="bk-help">Need help? <a href="../User/contact.html">Contact support</a></span>
+  </header>
+
+  <main class="bk-page" id="historyPage" style="max-width:960px;">
+    <div class="history-header">
+      <h1>My Bookings</h1>
+      <div class="history-search">
+        <span>🔍</span>
+        <input type="text" id="historySearch" placeholder="Search by trip or booking ID…" />
+      </div>
+    </div>
+
+    <div class="history-tabs" role="tablist" aria-label="Filter bookings">
+      <button type="button" class="active" data-status="all">All</button>
+      <button type="button" data-status="confirmed">Upcoming</button>
+      <button type="button" data-status="completed">Completed</button>
+      <button type="button" data-status="cancelled">Cancelled</button>
+    </div>
+
+    <div class="booking-grid" style="margin-top:20px;">
+      <div class="booking-card" data-id="#VG-30021" data-status="confirmed">
+        <img src="https://picsum.photos/seed/manali-snow/200/200" alt="Manali Snow Trek" />
+        <div>
+          <span class="status confirmed">Confirmed</span>
+          <h3>Manali Snow Trek</h3>
+          <div class="meta">#VG-30021 · 4D/3N · Travel date: 18 Sep 2026 · 2 travellers</div>
+          <span class="price">₹14,910</span>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn-outline btn-sm btn-view-details">View Details</button>
+          <button type="button" class="btn-outline btn-sm btn-cancel-booking">Cancel</button>
+        </div>
+      </div>
+
+      <div class="booking-card" data-id="#VG-29874" data-status="completed">
+        <img src="https://picsum.photos/seed/kasol-getaway/200/200" alt="Manali–Kasol Getaway" />
+        <div>
+          <span class="status completed">Completed</span>
+          <h3>Manali–Kasol Getaway</h3>
+          <div class="meta">#VG-29874 · 5D/4N · Travel date: 02 Jun 2026 · 4 travellers</div>
+          <span class="price">₹22,750</span>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn-outline btn-sm btn-view-details">View Details</button>
+          <button type="button" class="btn-outline btn-sm"
+            onclick="alert('Demo: your invoice would download here.')">Download Invoice</button>
+        </div>
+      </div>
+
+      <div class="booking-card" data-id="#VG-29650" data-status="cancelled">
+        <img src="https://picsum.photos/seed/rohtang-pass/200/200" alt="Rohtang Pass Day Trip" />
+        <div>
+          <span class="status cancelled">Cancelled</span>
+          <h3>Rohtang Pass Day Trip</h3>
+          <div class="meta">#VG-29650 · 1D · Travel date: 14 May 2026 · 1 traveller</div>
+          <span class="price">₹3,400</span>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn-outline btn-sm btn-view-details">View Details</button>
+          <a href="booking.html" class="btn-gold btn-sm" style="text-align:center;">Book Again</a>
+        </div>
+      </div>
+
+      <div class="booking-card" data-id="#VG-29510" data-status="confirmed">
+        <img src="https://picsum.photos/seed/solang-valley/200/200" alt="Solang Valley Adventure Pack" />
+        <div>
+          <span class="status confirmed">Confirmed</span>
+          <h3>Solang Valley Adventure Pack</h3>
+          <div class="meta">#VG-29510 · 1D · Travel date: 30 Sep 2026 · 3 travellers</div>
+          <span class="price">₹8,900</span>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn-outline btn-sm btn-view-details">View Details</button>
+          <button type="button" class="btn-outline btn-sm btn-cancel-booking">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state" id="historyEmpty" style="display:none;">
+      <div class="icon">🧳</div>
+      <h3>No bookings found</h3>
+      <p>Try a different search or filter.</p>
+    </div>
+  </main>
+
+  <!-- Booking detail modal -->
+  <div class="modal-overlay" id="bookingDetailModal">
+    <div class="modal-box">
+      <button type="button" class="modal-x" onclick="closeModal('bookingDetailModal')" aria-label="Close">✕</button>
+      <h2 id="detailTripName">Trip name</h2>
+      <div class="summary-line"><span>Booking ID</span><span id="detailBookingId">—</span></div>
+      <div class="summary-line"><span>Details</span><span id="detailMeta">—</span></div>
+      <div class="summary-line total"><span>Amount</span><span id="detailPrice">₹0</span></div>
+      <div class="modal-actions">
+        <button type="button" class="btn-outline btn-sm" onclick="closeModal('bookingDetailModal')">Close</button>
+        <button type="button" class="btn-gold btn-sm"
+          onclick="alert('Demo: your invoice would download here.')">Download Invoice</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="booking.js"></script>
+</body>
+
+</html>

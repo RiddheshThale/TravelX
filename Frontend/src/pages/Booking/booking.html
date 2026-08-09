@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Trip | Voyageora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="booking.css" />
+</head>
+
+<body>
+  <header class="bk-topbar">
+    <a href="../../../public/images/logo.png" class="bk-logo">
+      <img src="../../../public/images/logo.png" alt="Voyageora logo" />
+      <span class="gold-text">TravelX</span>
+    </a>
+    <span class="bk-help">Need help? <a href="../User/contact.html">Contact support</a></span>
+  </header>
+
+  <nav class="step-indicator" aria-label="Booking progress">
+    <div class="step active"><span class="step-num">1</span><span class="step-label">Trip Details</span></div>
+    <span class="step-line"></span>
+    <div class="step"><span class="step-num">2</span><span class="step-label">Checkout</span></div>
+    <span class="step-line"></span>
+    <div class="step"><span class="step-num">3</span><span class="step-label">Payment</span></div>
+    <span class="step-line"></span>
+    <div class="step"><span class="step-num">4</span><span class="step-label">Confirmation</span></div>
+  </nav>
+
+  <main class="bk-page">
+    <div class="bk-grid">
+      <!-- Traveller details form -->
+      <div>
+        <div class="card">
+          <h2>Traveller Details</h2>
+          <p class="card-sub">Tell us who's travelling so we can prepare your booking.</p>
+
+          <form id="bookingForm" data-trip-name="Manali Snow Trek" data-price-per-person="14200"
+            data-trip-image="https://picsum.photos/seed/manali-snow/200/200" novalidate>
+            <div class="form-group">
+              <label for="travellerName">Full name</label>
+              <input type="text" id="travellerName" placeholder="e.g. Ritika Sharma" required />
+              <span class="field-error">Please enter the traveller's name</span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="travellerEmail">Email address</label>
+                <input type="email" id="travellerEmail" placeholder="you@example.com" required />
+                <span class="field-error">Enter a valid email address</span>
+              </div>
+              <div class="form-group">
+                <label for="travellerPhone">Phone number</label>
+                <input type="tel" id="travellerPhone" placeholder="+91 98765 43210" required />
+                <span class="field-error">Enter a valid phone number</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="travelDate">Travel date</label>
+                <input type="date" id="travelDate" required />
+                <span class="field-error">Please choose a travel date</span>
+              </div>
+              <div class="form-group">
+                <label>Travellers</label>
+                <div class="counter">
+                  <button type="button" id="travellerMinus" aria-label="Decrease travellers">−</button>
+                  <span id="travellerCount">2</span>
+                  <button type="button" id="travellerPlus" aria-label="Increase travellers">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="specialRequests">Special requests (optional)</label>
+              <textarea id="specialRequests" rows="3"
+                placeholder="Dietary needs, accessibility, celebration, etc."></textarea>
+            </div>
+
+            <button type="submit" class="btn-gold">Continue to Checkout →</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Trip summary -->
+      <div class="card summary-card">
+        <h2>Trip Summary</h2>
+        <div class="summary-trip">
+          <img src="https://picsum.photos/seed/manali-snow/200/200" alt="Manali Snow Trek" />
+          <div>
+            <h3>Manali Snow Trek</h3>
+            <p>4D / 3N · Adventure · Himachal Pradesh</p>
+          </div>
+        </div>
+
+        <div class="summary-line"><span>Travellers</span><span id="sumTravellers">2</span></div>
+        <div class="summary-line"><span>Subtotal</span><span id="sumSubtotal">₹0</span></div>
+        <div class="summary-line"><span>Taxes &amp; fees (5%)</span><span id="sumTaxes">₹0</span></div>
+        <div class="summary-line total"><span>Total</span><span id="sumTotal">₹0</span></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="booking.js"></script>
+</body>
+
+</html>

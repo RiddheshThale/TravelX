@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | Voyageora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="information.css" />
+</head>
+
+<body>
+  <nav class="cp-navbar">
+    <a href="../../../index.html" class="cp-logo">
+      <img src="../../../public/images/logo.png" alt="Voyageora logo" />
+      Voyage<span class="gold-text">ora</span>
+    </a>
+    <div class="cp-links">
+      <a href="travel-guide.html">Travel Guide</a>
+      <a href="blogs.html">Blog</a>
+      <a href="faq.html" class="active">FAQ</a>
+      <a href="../company/reviews.html">Reviews</a>
+    </div>
+    <div class="cp-cta">
+      <a href="../Booking/booking.html" class="btn-gold">Plan a Trip</a>
+      <button class="cp-nav-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
+
+  <header class="cp-hero">
+    <div class="breadcrumb"><a href="../../../index.html">Home</a> / FAQ</div>
+    <h1>Frequently Asked Questions</h1>
+    <p>Quick answers about booking, payments, cancellations, and your account.</p>
+    <div class="hero-search">
+      <input type="text" id="faqSearch" placeholder="Search for an answer…" />
+      <button type="button">Search</button>
+    </div>
+  </header>
+
+  <main class="cp-section" id="faqPage">
+    <div class="cp-section-inner cp-section-narrow">
+      <div class="faq-tabs">
+        <button type="button" class="active" data-category="all">All</button>
+        <button type="button" data-category="booking">Booking</button>
+        <button type="button" data-category="payments">Payments</button>
+        <button type="button" data-category="cancellations">Cancellations</button>
+        <button type="button" data-category="account">Account</button>
+        <button type="button" data-category="documents">Travel Documents</button>
+      </div>
+
+      <div class="faq-item" data-category="booking">
+        <button type="button" class="faq-trigger">How do I book a trip on Voyageora?<span class="plus">+</span></button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">Browse a destination or package, choose your travel date and number of
+            travellers, and continue through checkout and payment. You'll get an instant confirmation by email once
+            payment is complete.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="booking">
+        <button type="button" class="faq-trigger">Can I book for someone else?<span class="plus">+</span></button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">Yes — just enter the traveller's details (not your own) during checkout. The
+            confirmation and e-ticket will be issued in their name.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="payments">
+        <button type="button" class="faq-trigger">What payment methods do you accept?<span
+            class="plus">+</span></button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">We accept major debit/credit cards, UPI (Google Pay, PhonePe, Paytm), and
+            netbanking with all major Indian banks.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="payments">
+        <button type="button" class="faq-trigger">Is it safe to enter my card details?<span
+            class="plus">+</span></button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">Yes. All payments are processed over a 256-bit encrypted connection and we never
+            store your full card number on our servers.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="payments">
+        <button type="button" class="faq-trigger">Do you offer EMI or pay-later options?<span
+            class="plus">+</span></button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">EMI options are available on select bank cards for bookings above ₹10,000 — this
+            will show automatically at checkout if you're eligible.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="cancellations">
+        <button type="button" class="faq-trigger">What's your cancellation policy?<span class="plus">+</span></button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">Free cancellation up to 7 days before travel for most packages. Cancellations
+            within 7 days may be subject to a partial fee — exact terms are shown on each listing before you book.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="cancellations">
+        <button type="button" class="faq-trigger">How long do refunds take?<span class="plus">+</span></button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">Approved refunds are processed within 5–7 business days and returned to your
+            original payment method.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="account">
+        <button type="button" class="faq-trigger">How do I view my past bookings?<span class="plus">+</span></button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">Head to "My Bookings" from your account menu to see upcoming, completed, and
+            cancelled trips, plus downloadable invoices.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="account">
+        <button type="button" class="faq-trigger">I forgot my password — what do I do?<span
+            class="plus">+</span></button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">Use the "Forgot password?" link on the sign-in page to receive a reset link by
+            email. It expires after 15 minutes for security.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="documents">
+        <button type="button" class="faq-trigger">Do I need a visa for domestic trips?<span
+            class="plus">+</span></button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">No visa is required for domestic travel within India — just a valid
+            government-issued photo ID. International trips vary by destination; see our Travel Guide for details.</div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-category="documents">
+        <button type="button" class="faq-trigger">What ID do I need to carry while travelling?<span
+            class="plus">+</span></button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">A valid government photo ID (Aadhaar, passport, driving licence, or voter ID) is
+            required at most hotels and for domestic flights.</div>
+        </div>
+      </div>
+
+      <div class="empty-state" id="faqEmpty" style="display:none;">
+        <div class="icon">❓</div>
+        <h3>No questions match your search</h3>
+        <p>Try a different keyword or category.</p>
+      </div>
+
+      <div class="faq-cta">
+        <h2>Still need help?</h2>
+        <p>Our support team typically replies within a few hours.</p>
+        <a href="../User/contact.html" class="btn-gold">Contact Support</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="cp-footer">© 2026 Voyageora. All rights reserved.</footer>
+
+  <script src="information.js"></script>
+</body>
+
+</html>

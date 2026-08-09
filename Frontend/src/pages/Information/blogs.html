@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Voyageora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="information.css" />
+</head>
+
+<body>
+  <nav class="cp-navbar">
+    <a href="../../../index.html" class="cp-logo">
+      <img src="../../../public/images/logo.png" alt="Voyageora logo" />
+      <span class="gold-text">TravelX</span>
+    </a>
+    <div class="cp-links">
+      <a href="travel-guide.html">Travel Guide</a>
+      <a href="blogs.html" class="active">Blog</a>
+      <a href="faq.html">FAQ</a>
+      <a href="../company/reviews.html">Reviews</a>
+    </div>
+    <div class="cp-cta">
+      <a href="../Booking/booking.html" class="btn-gold">Plan a Trip</a>
+      <button class="cp-nav-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
+
+  <header class="cp-hero">
+    <div class="breadcrumb"><a href="../../../index.html">Home</a> / Blog</div>
+    <h1>Travel Stories &amp; Tips</h1>
+    <p>Field notes, itineraries, and honest advice from our team and fellow travellers.</p>
+  </header>
+
+  <main class="cp-section" id="blogsPage">
+    <div class="cp-section-inner">
+      <a href="blog-details.html" class="featured-post" style="display:grid;">
+        <img src="https://picsum.photos/seed/featured-manali/700/500" alt="Featured post" />
+        <div>
+          <span class="cat-tag">Adventure</span>
+          <h2>7 Days in Himachal: A First-Timer's Guide to the Mountains</h2>
+          <p>From acclimatizing in Manali to chasing snow in Solang Valley — everything we learned planning a week-long
+            mountain trip for beginners.</p>
+          <div class="post-byline">
+            <div class="post-avatar">F</div>
+            <span>Fatima Noor · Aug 3, 2026 · 8 min read</span>
+          </div>
+          <span class="btn-outline">Read Full Story</span>
+        </div>
+      </a>
+
+      <div class="blog-toolbar">
+        <div class="chip-row" style="margin-bottom:0;">
+          <button type="button" class="chip active" data-category="all">All Posts</button>
+          <button type="button" class="chip" data-category="destinations">Destinations</button>
+          <button type="button" class="chip" data-category="adventure">Adventure</button>
+          <button type="button" class="chip" data-category="food">Food</button>
+          <button type="button" class="chip" data-category="budget">Budget Travel</button>
+          <button type="button" class="chip" data-category="solo">Solo Travel</button>
+        </div>
+        <div class="blog-search">
+          <span>🔍</span>
+          <input type="text" id="blogSearch" placeholder="Search articles…" />
+        </div>
+      </div>
+
+      <div class="blog-grid">
+        <a href="blog-details.html" class="blog-card" data-category="destinations">
+          <div class="blog-thumb" style="background-image:url('https://picsum.photos/seed/blog-kasol/400/300')"></div>
+          <div class="blog-body">
+            <span class="cat-tag">Destinations</span>
+            <h3>Why Kasol Should Be on Every Backpacker's List</h3>
+            <p>Riverside cafés, pine forests, and a laid-back pace — here's what makes Kasol special.</p>
+            <div class="post-byline">
+              <div class="post-avatar">K</div><span>Karan Verma · 5 min read</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="blog-details.html" class="blog-card" data-category="food">
+          <div class="blog-thumb" style="background-image:url('https://picsum.photos/seed/blog-food/400/300')"></div>
+          <div class="blog-body">
+            <span class="cat-tag">Food</span>
+            <h3>A Food Lover's Guide to Himachali Cuisine</h3>
+            <p>From siddu to trout curry — the dishes you shouldn't leave the mountains without trying.</p>
+            <div class="post-byline">
+              <div class="post-avatar">P</div><span>Priya Nair · 6 min read</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="blog-details.html" class="blog-card" data-category="budget">
+          <div class="blog-thumb" style="background-image:url('https://picsum.photos/seed/blog-budget/400/300')"></div>
+          <div class="blog-body">
+            <span class="cat-tag">Budget Travel</span>
+            <h3>How We Did Manali in ₹8,000 for 4 Days</h3>
+            <p>A real, itemized budget breakdown — stays, food, transport, and where we saved.</p>
+            <div class="post-byline">
+              <div class="post-avatar">D</div><span>Dev Malhotra · 7 min read</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="blog-details.html" class="blog-card" data-category="adventure">
+          <div class="blog-thumb" style="background-image:url('https://picsum.photos/seed/blog-trek/400/300')"></div>
+          <div class="blog-body">
+            <span class="cat-tag">Adventure</span>
+            <h3>Beginner's Guide to Snow Trekking in Himachal</h3>
+            <p>What to expect on your first trek — gear, fitness prep, and altitude tips.</p>
+            <div class="post-byline">
+              <div class="post-avatar">A</div><span>Arjun Kapoor · 6 min read</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="blog-details.html" class="blog-card" data-category="solo">
+          <div class="blog-thumb" style="background-image:url('https://picsum.photos/seed/blog-solo/400/300')"></div>
+          <div class="blog-body">
+            <span class="cat-tag">Solo Travel</span>
+            <h3>Travelling Solo to the Mountains: What I Wish I Knew</h3>
+            <p>Honest reflections on safety, loneliness, and the freedom of a solo mountain trip.</p>
+            <div class="post-byline">
+              <div class="post-avatar">S</div><span>Sana Iyer · 9 min read</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="blog-details.html" class="blog-card extra-hidden" data-category="destinations">
+          <div class="blog-thumb" style="background-image:url('https://picsum.photos/seed/blog-kerala/400/300')"></div>
+          <div class="blog-body">
+            <span class="cat-tag">Destinations</span>
+            <h3>Kerala's Backwaters: A Slow Travel Itinerary</h3>
+            <p>Houseboats, spice plantations, and why you should slow down in God's Own Country.</p>
+            <div class="post-byline">
+              <div class="post-avatar">R</div><span>Ritika Sharma · 8 min read</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="blog-details.html" class="blog-card extra-hidden" data-category="food">
+          <div class="blog-thumb" style="background-image:url('https://picsum.photos/seed/blog-streetfood/400/300')">
+          </div>
+          <div class="blog-body">
+            <span class="cat-tag">Food</span>
+            <h3>The Ultimate Street Food Crawl in Old Delhi</h3>
+            <p>Our favourite stalls, what to order, and how to eat like a local without the stomach ache.</p>
+            <div class="post-byline">
+              <div class="post-avatar">K</div><span>Karan Verma · 5 min read</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="empty-state" id="blogsEmpty" style="display:none;">
+        <div class="icon">📖</div>
+        <h3>No articles match your search</h3>
+        <p>Try a different keyword or category.</p>
+      </div>
+
+      <div class="load-more-wrap">
+        <button type="button" id="loadMoreBtn" class="btn-outline">Load More Articles</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="cp-footer">© 2026 Voyageora. All rights reserved.</footer>
+
+  <script src="information.js"></script>
+</body>
+
+</html>

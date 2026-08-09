@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment | Voyageora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="booking.css" />
+</head>
+
+<body>
+  <header class="bk-topbar">
+    <a href="../../../public/images/logo.png" class="bk-logo">
+      <img src="../../../public/images/logo.png" alt="Voyageora logo" />
+      <span class="gold-text">TravelX</span>
+    </a>
+    <span class="bk-help">Need help? <a href="../User/contact.html">Contact support</a></span>
+  </header>
+
+  <nav class="step-indicator" aria-label="Booking progress">
+    <div class="step done"><span class="step-num">✓</span><span class="step-label">Trip Details</span></div>
+    <span class="step-line done"></span>
+    <div class="step done"><span class="step-num">✓</span><span class="step-label">Checkout</span></div>
+    <span class="step-line done"></span>
+    <div class="step active"><span class="step-num">3</span><span class="step-label">Payment</span></div>
+    <span class="step-line"></span>
+    <div class="step"><span class="step-num">4</span><span class="step-label">Confirmation</span></div>
+  </nav>
+
+  <main class="bk-page" id="paymentPage" style="max-width:640px;">
+    <div class="card">
+      <h2>Choose Payment Method</h2>
+      <p class="card-sub">Amount payable: <strong id="payTotal" style="color:var(--gold2);">₹0</strong></p>
+
+      <div class="pay-tabs">
+        <button type="button" class="pay-tab active" data-panel="panelCard">
+          <span class="pay-icon">💳</span> Card
+        </button>
+        <button type="button" class="pay-tab" data-panel="panelUpi">
+          <span class="pay-icon">📱</span> UPI
+        </button>
+        <button type="button" class="pay-tab" data-panel="panelNetbanking">
+          <span class="pay-icon">🏦</span> Netbanking
+        </button>
+      </div>
+
+      <!-- Card -->
+      <div class="pay-panel active" id="panelCard">
+        <div class="form-group">
+          <label for="cardName">Name on card</label>
+          <input type="text" id="cardName" placeholder="Ritika Sharma" />
+        </div>
+        <div class="form-group">
+          <label for="cardNumber">Card number</label>
+          <input type="text" id="cardNumber" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="19" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cardExpiry">Expiry</label>
+            <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" />
+          </div>
+          <div class="form-group">
+            <label for="cardCvv">CVV</label>
+            <input type="password" id="cardCvv" inputmode="numeric" placeholder="•••" maxlength="3" />
+          </div>
+        </div>
+      </div>
+
+      <!-- UPI -->
+      <div class="pay-panel" id="panelUpi">
+        <div class="form-group">
+          <label for="upiId">UPI ID</label>
+          <input type="text" id="upiId" placeholder="yourname@upi" />
+        </div>
+        <label style="font-size:var(--fs-xs); color:var(--muted); font-weight:600;">or pay with</label>
+        <div class="upi-apps">
+          <button type="button">Google Pay</button>
+          <button type="button">PhonePe</button>
+          <button type="button">Paytm</button>
+        </div>
+      </div>
+
+      <!-- Netbanking -->
+      <div class="pay-panel" id="panelNetbanking">
+        <div class="form-group">
+          <label for="bankSelect">Select your bank</label>
+          <select id="bankSelect">
+            <option>State Bank of India</option>
+            <option>HDFC Bank</option>
+            <option>ICICI Bank</option>
+            <option>Axis Bank</option>
+            <option>Kotak Mahindra Bank</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="button" id="payNowBtn" class="btn-gold" style="margin-top:8px;">Pay Now</button>
+      <div class="secure-note">🔒 256-bit encrypted · PCI DSS compliant</div>
+    </div>
+  </main>
+
+  <!-- Processing overlay -->
+  <div class="pay-overlay" id="payOverlay">
+    <div class="spinner-ring"></div>
+    <p>Processing your payment — please don't close this window…</p>
+  </div>
+
+  <script src="booking.js"></script>
+</body>
+
+</html>

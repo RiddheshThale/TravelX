@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Guide | Voyageora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="information.css" />
+</head>
+
+<body>
+  <nav class="cp-navbar">
+    <a href="../../../index.html" class="cp-logo">
+      <img src="../../../public/images/logo.png" alt="Voyageora logo" />
+      <span class="gold-text">TravelX</span>
+    </a>
+    <div class="cp-links">
+      <a href="travel-guide.html" class="active">Travel Guide</a>
+      <a href="blogs.html">Blog</a>
+      <a href="faq.html">FAQ</a>
+      <a href="../company/reviews.html">Reviews</a>
+    </div>
+    <div class="cp-cta">
+      <a href="../Booking/booking.html" class="btn-gold">Plan a Trip</a>
+      <button class="cp-nav-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
+
+  <header class="cp-hero">
+    <div class="breadcrumb"><a href="../../../index.html">Home</a> / Travel Guide</div>
+    <h1>Your Complete Travel Guide</h1>
+    <p>Everything you need to know before you go — visas, packing, budgeting, and local know-how from our team.</p>
+  </header>
+
+  <main class="cp-section" id="guidePage">
+    <div class="cp-section-inner">
+      <div class="chip-row">
+        <button type="button" class="chip active" data-category="all">All Guides</button>
+        <button type="button" class="chip" data-category="documents">Visa &amp; Documents</button>
+        <button type="button" class="chip" data-category="packing">Packing Tips</button>
+        <button type="button" class="chip" data-category="timing">Best Time to Visit</button>
+        <button type="button" class="chip" data-category="budget">Budgeting</button>
+        <button type="button" class="chip" data-category="safety">Safety</button>
+      </div>
+
+      <div class="guide-grid">
+        <div class="guide-card" data-category="documents">
+          <div class="guide-thumb" style="background-image:url('https://picsum.photos/seed/guide-visa/400/300')"><span
+              class="cat-tag">Documents</span></div>
+          <div class="guide-body">
+            <h3>Visa Requirements Explained, Country by Country</h3>
+            <p>A plain-English breakdown of visa-on-arrival, e-visas, and full embassy applications.</p>
+            <div class="guide-meta"><span>6 min read</span><a href="../company/reviews.html" class="read-link">Read
+                Guide →</a></div>
+          </div>
+        </div>
+
+        <div class="guide-card" data-category="packing">
+          <div class="guide-thumb" style="background-image:url('https://picsum.photos/seed/guide-packing/400/300')">
+            <span class="cat-tag">Packing</span></div>
+          <div class="guide-body">
+            <h3>The Only Carry-On Packing List You'll Need</h3>
+            <p>Pack for a week (or a month) in one bag — our field-tested checklist for every climate.</p>
+            <div class="guide-meta"><span>4 min read</span><a href="../company/reviews.html" class="read-link">Read
+                Guide →</a></div>
+          </div>
+        </div>
+
+        <div class="guide-card" data-category="timing">
+          <div class="guide-thumb" style="background-image:url('https://picsum.photos/seed/guide-season/400/300')"><span
+              class="cat-tag">Timing</span></div>
+          <div class="guide-body">
+            <h3>Best Time to Visit Manali &amp; Himachal Pradesh</h3>
+            <p>Snow season vs monsoon vs shoulder season — what to expect month by month.</p>
+            <div class="guide-meta"><span>5 min read</span><a href="../company/reviews.html" class="read-link">Read
+                Guide →</a></div>
+          </div>
+        </div>
+
+        <div class="guide-card" data-category="budget">
+          <div class="guide-thumb" style="background-image:url('https://picsum.photos/seed/guide-budget/400/300')"><span
+              class="cat-tag">Budgeting</span></div>
+          <div class="guide-body">
+            <h3>How to Budget a 5-Day Domestic Trip</h3>
+            <p>A realistic cost breakdown for stays, food, transport, and activities.</p>
+            <div class="guide-meta"><span>7 min read</span><a href="../company/reviews.html" class="read-link">Read
+                Guide →</a></div>
+          </div>
+        </div>
+
+        <div class="guide-card" data-category="safety">
+          <div class="guide-thumb" style="background-image:url('https://picsum.photos/seed/guide-safety/400/300')"><span
+              class="cat-tag">Safety</span></div>
+          <div class="guide-body">
+            <h3>Solo Travel Safety Tips That Actually Help</h3>
+            <p>Practical advice on staying safe and connected while travelling alone.</p>
+            <div class="guide-meta"><span>6 min read</span><a href="../company/reviews.html" class="read-link">Read
+                Guide →</a></div>
+          </div>
+        </div>
+
+        <div class="guide-card" data-category="documents">
+          <div class="guide-thumb" style="background-image:url('https://picsum.photos/seed/guide-insurance/400/300')">
+            <span class="cat-tag">Documents</span></div>
+          <div class="guide-body">
+            <h3>Do You Need Travel Insurance? A Quick Guide</h3>
+            <p>When it's worth it, what it typically covers, and how to choose a plan.</p>
+            <div class="guide-meta"><span>5 min read</span><a href="../company/reviews.html" class="read-link">Read
+                Guide →</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tips-accordion">
+        <div class="cp-section-head">
+          <h2>Quick Travel Tips</h2>
+          <p>Fast answers to the questions we hear most before a trip.</p>
+        </div>
+
+        <div class="acc-item">
+          <button type="button" class="acc-trigger">How far in advance should I book?<span
+              class="plus">+</span></button>
+          <div class="acc-panel">
+            <div class="acc-panel-inner">For domestic trips, 2–4 weeks ahead usually gets you the best rates. For
+              peak-season international trips, aim for 2–3 months.</div>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button type="button" class="acc-trigger">What should I pack for a snow trek?<span
+              class="plus">+</span></button>
+          <div class="acc-panel">
+            <div class="acc-panel-inner">Layered thermals, a waterproof outer shell, insulated boots, gloves, and
+              sunglasses — even snow days are bright. Full checklist in our Packing Tips guide above.</div>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button type="button" class="acc-trigger">Do I need cash or is card enough?<span
+              class="plus">+</span></button>
+          <div class="acc-panel">
+            <div class="acc-panel-inner">Carry some local cash for smaller towns and markets, but most hotels,
+              restaurants, and larger vendors accept cards or UPI.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="cp-footer">© 2026 Voyageora. All rights reserved.</footer>
+
+  <script src="information.js"></script>
+</body>
+
+</html>

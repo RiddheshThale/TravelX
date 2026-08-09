@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | Voyageora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="booking.css" />
+</head>
+
+<body>
+  <header class="bk-topbar">
+    <a href="../../../public/images/logo.png" class="bk-logo">
+      <img src="../../../public/images/logo.png" alt="Voyageora logo" />
+      <span class="gold-text">travelX</span>
+    </a>
+    <span class="bk-help">Need help? <a href="../User/contact.html">Contact support</a></span>
+  </header>
+
+  <nav class="step-indicator" aria-label="Booking progress">
+    <div class="step done"><span class="step-num">✓</span><span class="step-label">Trip Details</span></div>
+    <span class="step-line done"></span>
+    <div class="step active"><span class="step-num">2</span><span class="step-label">Checkout</span></div>
+    <span class="step-line"></span>
+    <div class="step"><span class="step-num">3</span><span class="step-label">Payment</span></div>
+    <span class="step-line"></span>
+    <div class="step"><span class="step-num">4</span><span class="step-label">Confirmation</span></div>
+  </nav>
+
+  <main class="bk-page" id="checkoutPage">
+    <div class="bk-grid">
+      <div>
+        <div class="card">
+          <h2>Review Your Trip</h2>
+          <p class="card-sub">Double-check the details below before moving to payment.</p>
+
+          <div class="summary-trip">
+            <img id="coTripImage" src="https://picsum.photos/seed/manali-snow/200/200" alt="Trip" />
+            <div>
+              <h3 id="coTripName">Manali Snow Trek</h3>
+              <p>4D / 3N · Adventure · Himachal Pradesh</p>
+            </div>
+          </div>
+
+          <div class="summary-line"><span>Traveller</span><span id="coTravellerName">—</span></div>
+          <div class="summary-line"><span>Travel date</span><span id="coTravelDate">—</span></div>
+          <div class="summary-line"><span>Travellers</span><span id="coTravellers">—</span></div>
+
+          <p class="card-sub" style="margin-top:18px;">
+            <a href="booking.html" class="btn-link">← Edit traveller details</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Have a promo code?</h2>
+          <form id="promoForm" class="promo-row">
+            <input type="text" id="promoInput" placeholder="Try VOYAGE10, WELCOME500, or GOLD15" />
+            <button type="submit" class="btn-outline btn-sm">Apply</button>
+          </form>
+          <p id="promoMsg"></p>
+        </div>
+      </div>
+
+      <div class="card summary-card">
+        <h2>Order Summary</h2>
+        <div class="summary-line"><span>Subtotal</span><span id="coSubtotal">₹0</span></div>
+        <div class="summary-line"><span>Taxes &amp; fees</span><span id="coTaxes">₹0</span></div>
+        <div class="summary-line" id="coDiscountLine" style="display:none;"><span class="discount">Promo
+            discount</span><span class="discount" id="coDiscount">₹0</span></div>
+        <div class="summary-line total"><span>Total</span><span id="coTotal">₹0</span></div>
+
+        <button type="button" id="goToPayment" class="btn-gold" style="margin-top:18px;">Proceed to Payment →</button>
+        <div class="secure-note">🔒 Your details are encrypted &amp; secure</div>
+      </div>
+    </div>
+  </main>
+
+  <script src="booking.js"></script>
+</body>
+
+</html>

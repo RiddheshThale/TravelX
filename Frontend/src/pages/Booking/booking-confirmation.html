@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking Confirmed | TravelX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="booking.css" />
+</head>
+
+<body>
+  <header class="bk-topbar">
+    <a href="../../../public/images/logo.png" class="bk-logo">
+      <img src="../../../public/images/logo.png" alt="Voyageora logo" />
+      <span class="gold-text">TravelX</span>
+    </a>
+    <span class="bk-help">Need help? <a href="../User/contact.html">Contact support</a></span>
+  </header>
+
+  <nav class="step-indicator" aria-label="Booking progress">
+    <div class="step done"><span class="step-num">✓</span><span class="step-label">Trip Details</span></div>
+    <span class="step-line done"></span>
+    <div class="step done"><span class="step-num">✓</span><span class="step-label">Checkout</span></div>
+    <span class="step-line done"></span>
+    <div class="step done"><span class="step-num">✓</span><span class="step-label">Payment</span></div>
+    <span class="step-line done"></span>
+    <div class="step active"><span class="step-num">4</span><span class="step-label">Confirmation</span></div>
+  </nav>
+
+  <main class="bk-page" id="confirmPage">
+    <div class="confirm-wrap">
+      <div class="confirm-badge">
+        <svg class="confirm-svg" viewBox="0 0 52 52">
+          <circle class="confirm-circle" cx="26" cy="26" r="24" />
+          <path class="confirm-check" d="M14 27 l8 8 l16 -16" />
+        </svg>
+      </div>
+
+      <h1>Booking Confirmed!</h1>
+      <p class="lead">Your trip is booked. A confirmation email with your e-ticket has been sent to your inbox.</p>
+
+      <div class="confirm-id">Booking ID <strong id="confBookingId">VG-30021</strong></div>
+
+      <div class="card" style="text-align:left;">
+        <div class="summary-line"><span>Trip</span><span id="confTripName">Manali Snow Trek</span></div>
+        <div class="summary-line"><span>Travel date</span><span id="confTravelDate">—</span></div>
+        <div class="summary-line"><span>Travellers</span><span id="confTravellers">—</span></div>
+        <div class="summary-line total"><span>Amount paid</span><span id="confTotal">₹0</span></div>
+      </div>
+
+      <div class="confirm-actions">
+        <button type="button" id="downloadInvoiceBtn" class="btn-outline">⬇ Download Invoice</button>
+        <a href="booking-history.html" class="btn-gold">View My Bookings</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="booking.js"></script>
+</body>
+
+</html>

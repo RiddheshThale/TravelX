@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers | Voyageora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="company-pages.css" />
+</head>
+
+<body>
+  <nav class="cp-navbar">
+    <a href="../../../public/images/logo.png" class="cp-logo">
+      <img src="../../../public/images/logo.png" alt="Voyageora logo" />
+      <span class="gold-text">TravelX</span>
+    </a>
+    <div class="cp-links">
+      <a href="reviews.html">Reviews</a>
+      <a href="our-team.html">Our Team</a>
+      <a href="careers.html" class="active">Careers</a>
+      <a href="company-dashboard.html">Partner Dashboard</a>
+    </div>
+    <div class="cp-cta">
+      <a href="#openRoles" class="btn-gold">See Open Roles</a>
+      <button class="cp-nav-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
+
+  <header class="cp-hero">
+    <div class="breadcrumb"><a href="../../../index.html">Home</a> / Careers</div>
+    <h1>Build the Future of Travel With Us</h1>
+    <p>We're a remote-friendly team on a mission to make booking trips feel as good as taking them. Come help us build
+      it.</p>
+  </header>
+
+  <main class="cp-section" id="careersPage">
+    <div class="cp-section-inner">
+      <div class="cp-section-head">
+        <h2>Life at Voyageora</h2>
+        <p>A few things our team says make this a great place to work.</p>
+      </div>
+
+      <div class="culture-grid">
+        <div class="culture-card">
+          <div class="culture-icon">🌍</div>
+          <h3>Remote-first</h3>
+          <p>Work from anywhere — we're spread across four time zones already.</p>
+        </div>
+        <div class="culture-card">
+          <div class="culture-icon">✈️</div>
+          <h3>Travel credits</h3>
+          <p>Annual credit toward your own trips, because we practice what we sell.</p>
+        </div>
+        <div class="culture-card">
+          <div class="culture-icon">📈</div>
+          <h3>Real ownership</h3>
+          <p>Equity for every full-time hire and a real say in what we build next.</p>
+        </div>
+        <div class="culture-card">
+          <div class="culture-icon">🩺</div>
+          <h3>Health &amp; wellness</h3>
+          <p>Full health coverage and a flexible, no-questions-asked leave policy.</p>
+        </div>
+      </div>
+
+      <div class="cp-section-head" id="openRoles" style="margin-top:60px;">
+        <h2>Open Positions</h2>
+        <p>16 people-first roles across engineering, operations, and support.</p>
+      </div>
+
+      <div class="jobs-filter-bar">
+        <div class="jobs-search">
+          <span>🔍</span>
+          <input type="text" id="jobsSearch" placeholder="Search roles…" />
+        </div>
+        <select class="jobs-select" id="deptSelect">
+          <option value="all">All Departments</option>
+          <option value="engineering">Engineering</option>
+          <option value="operations">Trip Operations</option>
+          <option value="support">Customer Support</option>
+          <option value="design">Design</option>
+        </select>
+        <select class="jobs-select" id="locSelect">
+          <option value="all">All Locations</option>
+          <option value="remote">Remote</option>
+          <option value="delhi">New Delhi</option>
+          <option value="bengaluru">Bengaluru</option>
+        </select>
+      </div>
+
+      <div class="job-list">
+        <div class="job-card" data-dept="engineering" data-location="remote"
+          data-description="You'll own core booking-flow features end to end — from checkout to payments to confirmation — working closely with design and trip operations.">
+          <div>
+            <h3>Senior Frontend Engineer</h3>
+            <div class="job-meta"><span>Engineering</span><span>Remote</span><span>Full-time</span></div>
+          </div>
+          <button type="button" class="btn-outline btn-view-job">View Role</button>
+        </div>
+
+        <div class="job-card" data-dept="engineering" data-location="bengaluru"
+          data-description="Design and scale the APIs powering search, pricing, and inventory across hundreds of travel partners.">
+          <div>
+            <h3>Backend Engineer — Platform</h3>
+            <div class="job-meta"><span>Engineering</span><span>Bengaluru</span><span>Full-time</span></div>
+          </div>
+          <button type="button" class="btn-outline btn-view-job">View Role</button>
+        </div>
+
+        <div class="job-card" data-dept="operations" data-location="delhi"
+          data-description="Vet new tour operators and hotel partners, negotiate rates, and keep our listings accurate and delightful.">
+          <div>
+            <h3>Trip Operations Associate</h3>
+            <div class="job-meta"><span>Trip Operations</span><span>New Delhi</span><span>Full-time</span></div>
+          </div>
+          <button type="button" class="btn-outline btn-view-job">View Role</button>
+        </div>
+
+        <div class="job-card" data-dept="support" data-location="remote"
+          data-description="Be the friendly voice travellers reach out to before, during, and after their trip — over chat, email, and phone.">
+          <div>
+            <h3>Customer Support Specialist</h3>
+            <div class="job-meta"><span>Customer Support</span><span>Remote</span><span>Full-time</span></div>
+          </div>
+          <button type="button" class="btn-outline btn-view-job">View Role</button>
+        </div>
+
+        <div class="job-card" data-dept="design" data-location="remote"
+          data-description="Shape the visual language of Voyageora across web, email, and our partner dashboard.">
+          <div>
+            <h3>Product Designer</h3>
+            <div class="job-meta"><span>Design</span><span>Remote</span><span>Full-time</span></div>
+          </div>
+          <button type="button" class="btn-outline btn-view-job">View Role</button>
+        </div>
+
+        <div class="job-card" data-dept="operations" data-location="bengaluru"
+          data-description="Manage partner relationships and onboarding for hotels and tour operators in South India.">
+          <div>
+            <h3>Partner Success Manager</h3>
+            <div class="job-meta"><span>Trip Operations</span><span>Bengaluru</span><span>Full-time</span></div>
+          </div>
+          <button type="button" class="btn-outline btn-view-job">View Role</button>
+        </div>
+      </div>
+
+      <div class="empty-state" id="jobsEmpty" style="display:none;">
+        <div class="icon">🔍</div>
+        <h3>No roles match your search</h3>
+        <p>Try a different keyword, department, or location.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="cp-footer">© 2026 Voyageora. All rights reserved.</footer>
+
+  <!-- Job detail + apply modal -->
+  <div class="modal-overlay" id="jobDetailModal">
+    <div class="modal-box">
+      <button type="button" class="modal-x" onclick="closeModal('jobDetailModal')" aria-label="Close">✕</button>
+      <h2 id="jobModalTitle">Role title</h2>
+      <div class="job-meta" id="jobModalMeta" style="margin-bottom:16px;"></div>
+      <div class="job-detail-body">
+        <p id="jobModalDesc">Role description goes here.</p>
+        <h3>What we look for</h3>
+        <ul>
+          <li>2+ years of relevant experience</li>
+          <li>Comfort working async across time zones</li>
+          <li>A bias toward shipping and iterating quickly</li>
+        </ul>
+      </div>
+
+      <form id="applyForm" style="margin-top:20px;">
+        <div class="form-group">
+          <label for="applicantName">Full name</label>
+          <input type="text" id="applicantName" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label for="applicantEmail">Email</label>
+          <input type="email" id="applicantEmail" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="applicantLink">Resume / portfolio link</label>
+          <input type="url" id="applicantLink" placeholder="https://…" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-outline" onclick="closeModal('jobDetailModal')">Close</button>
+          <button type="submit" class="btn-gold">Apply Now</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="company-pages.js"></script>
+</body>
+
+</html>
