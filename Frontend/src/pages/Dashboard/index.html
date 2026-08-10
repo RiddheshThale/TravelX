@@ -12,344 +12,843 @@
 </head>
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- ============ NAVBAR ============ -->
 <header class="navbar" id="navbar">
   <div class="container nav-inner">
-    <div class="logo">
-      <img src="/Frontend/public/images/logo.png" alt="TravelX">
-      <span>TravelX</span>
-    </div>
-    <a href="#top" class="logo">Travel<span class="gold-text">X</span></a>
-
+    <div class="nav-logo">
+      <img src="Frontend\public\images\logofor-app.png"/>
+    </div> <span class="gold-text"><bold>TravelX</bold></span>
 
     <nav class="nav-links" id="navLinks">
-      <a href="#top" class="active">Home</a>
-      <a href="#destinations">Destinations</a>
-      <a href="#packages">Packages</a>
-      <a href="#hotels">Hotels</a>
-      <a href="#flights">Flights</a>
-      <a href="#guide">Travel Guide</a>
-      <a href="#offers">Offers</a>
-      <a href="#contact">Contact</a>
+      <a href="#home" class="active">🏠 Home</a>
+
+      <span class="nav-item">
+        <a href="#destinations">🌐 Destinations ▾</a>
+        <div class="mega-menu">
+          <div class="mega-col">
+            <h5>By Region</h5>
+            <a href="#destinations">India</a>
+            <a href="#international">International</a>
+            <a href="#packages">Weekend Trips</a>
+          </div>
+          <div class="mega-col">
+            <h5>By Vibe</h5>
+            <a href="#categories">Beach</a>
+            <a href="#categories">Mountains</a>
+            <a href="#categories">Adventure</a>
+          </div>
+          <div class="mega-col">
+            <h5>By Travellers</h5>
+            <a href="#packages">Honeymoon</a>
+            <a href="#packages">Family</a>
+            <a href="#packages">Solo</a>
+          </div>
+        </div>
+      </span>
+
+      <span class="nav-item">
+        <a href="#packages">📦 Packages ▾</a>
+        <div class="mega-menu">
+          <div class="mega-col">
+            <h5>Popular</h5>
+            <a href="#packages">Family</a>
+            <a href="#packages">Luxury</a>
+            <a href="#packages">Budget</a>
+          </div>
+          <div class="mega-col">
+            <h5>Curated</h5>
+            <a href="#packages">Adventure</a>
+            <a href="#packages">Honeymoon</a>
+            <a href="#packages">Group Tours</a>
+          </div>
+        </div>
+      </span>
+
+      <a href="#hotels">🏨 Hotels</a>
+      <a href="#flights">✈ Flights</a>
+      <a href="#blog">📰 Travel Guide</a>
+      <a href="#offers">🎁 Offers</a>
+      <a href="#contact">📞 Contact</a>
     </nav>
 
     <div class="nav-actions">
       <button class="icon-btn" id="searchToggle" aria-label="Search">🔍</button>
       <select class="lang" aria-label="Language">
-        <option>EN</option><option>HI</option><option>FR</option><option>AR</option>
+        <option>🌐 EN</option>
+        <option>🌐 HI</option>
+        <option>🌐 FR</option>
       </select>
       <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
-      <button class="btn-ghost">Login</button>
-      <button class="btn-gold">Sign Up</button>
+      <button class="icon-btn has-badge" aria-label="Notifications">🔔<i class="badge">3</i></button>
+      <button class="icon-btn has-badge" aria-label="Wishlist">🤍<i class="badge">7</i></button>
+
+      <div class="user-menu">
+        <button class="user-chip"><span class="avatar">A</span> Aarav ▾</button>
+        <div class="user-dropdown">
+          <a href="#">My Profile</a>
+          <a href="#">My Bookings</a>
+          <a href="#">Wishlist</a>
+          <a href="#">Sign Out</a>
+        </div>
+      </div>
+
+      <button class="btn-gold nav-cta">Book Now</button>
       <button class="icon-btn burger" id="burger" aria-label="Menu">☰</button>
     </div>
   </div>
 
   <div class="nav-search" id="navSearch">
     <div class="container">
-      <input type="text" id="globalSearch" placeholder="Search destinations, hotels, packages…" />
-      <ul id="searchResults" class="search-results"></ul>
+      <input type="text" id="navSearchInput" placeholder="Search destinations, hotels, packages…" />
+      <ul class="search-results" id="navSearchResults"></ul>
     </div>
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="hero" id="top">
+<!-- ============ HERO ============ -->
+```html
+<section class="hero" id="home">
+
   <div class="hero-overlay"></div>
+
+  <!-- ================= LEFT SIDE ================= -->
   <div class="container hero-content">
-    <span class="chip">✨ Travel beyond boundaries</span>
-    <h1>Explore the World with <span class="gold-text">TravelX</span></h1>
-    <p>Find flights, hotels, holiday packages and unforgettable experiences — all in one place, at the best prices.</p>
 
-    <div class="hero-btns">
-      <button class="btn-gold big">Explore Packages →</button>
-      <button class="btn-ghost big">▶ Watch Video</button>
-    </div>
+    <div class="hero-left">
 
-    <div class="popular">
-      <strong>🔥 Popular</strong>
-      <span>🏖 Goa</span><span>🏔 Manali</span><span>🌆 Dubai</span>
-      <span>🏝 Bali</span><span>🏞 Kashmir</span><span>🏛 Jaipur</span>
-    </div>
+      <span class="chip">✨ Travel beyond boundaries</span>
 
-    <!-- Booking tabs -->
-    <div class="tabs" id="tabs">
-      <button class="tab active">✈ Flights</button>
-      <button class="tab">🏨 Hotels</button>
-      <button class="tab">🧳 Packages</button>
-      <button class="tab">🚗 Car Rental</button>
-      <button class="tab">🎡 Activities</button>
-    </div>
+      <h1>
+        Explore the World with
+        <span class="gold-text">TravelX</span>
+      </h1>
 
-    <form class="search-bar" id="bookingForm">
-      <div class="search-field">
-        <label>📍 Destination</label>
-        <input type="text" id="destInput" placeholder="Where to?" autocomplete="off" />
-        <ul class="suggestions" id="destSuggestions"></ul>
+      <p class="hero-description">
+        Find flights, hotels, holiday packages and unforgettable
+        experiences — all in one place, at the best prices.
+      </p>
+
+      <!-- POPULAR -->
+      <div class="popular">
+        <strong>🔥 Popular</strong>
+        <span>🏖 Goa</span>
+        <span>🏔 Manali</span>
+        <span>🌆 Dubai</span>
+        <span>🏝 Bali</span>
+        <span>🏞 Kashmir</span>
+        <span>🏛 Jaipur</span>
       </div>
-      <div class="search-field"><label>📅 Check-in</label><input type="date" /></div>
-      <div class="search-field"><label>📅 Check-out</label><input type="date" /></div>
-      <div class="search-field"><label>👥 Travellers</label>
-        <select><option>2 Adults</option><option>1 Adult</option><option>2 Adults, 1 Child</option><option>4 Adults</option></select>
-      </div>
-      <div class="search-field"><label>⭐ Class</label>
-        <select><option>Economy</option><option>Business</option><option>First</option></select>
-      </div>
-      <button class="btn-gold search-btn" type="submit">🔍 Search</button>
-    </form>
 
-    <div class="stats">
-      <div class="stat"><h3 class="gold-text" data-count="50000">0</h3><p>Happy Travellers</p></div>
-      <div class="stat"><h3 class="gold-text" data-count="120">0</h3><p>Destinations</p></div>
-      <div class="stat"><h3 class="gold-text" data-count="2500">0</h3><p>Hotels</p></div>
-      <div class="stat"><h3 class="gold-text">4.9★</h3><p>Customer Rating</p></div>
+      <!-- TABS -->
+      <div class="tabs" id="heroTabs">
+        <button class="tab active" data-tab="flights">
+          ✈ Flights
+        </button>
+
+        <button class="tab" data-tab="hotels">
+          🏨 Hotels
+        </button>
+
+        <button class="tab" data-tab="packages">
+          🧳 Packages
+        </button>
+
+        <button class="tab" data-tab="cars">
+          🚗 Car Rental
+        </button>
+
+        <button class="tab" data-tab="activities">
+          🎡 Activities
+        </button>
+      </div>
+
+      <!-- SEARCH -->
+      <form class="search-bar" id="searchBar">
+
+        <div class="search-field">
+          <label for="destInput">📍 Destination</label>
+          <input
+            id="destInput"
+            type="text"
+            placeholder="Where to?"
+            autocomplete="off"
+          />
+          <ul
+            class="suggestions"
+            id="suggestions"
+            hidden
+          ></ul>
+        </div>
+
+        <div class="search-field">
+          <label for="checkin">📅 Check-in</label>
+          <input id="checkin" type="date" />
+        </div>
+
+        <div class="search-field">
+          <label for="checkout">📅 Check-out</label>
+          <input id="checkout" type="date" />
+        </div>
+
+        <div class="search-field">
+          <label for="travellers">👥 Travellers</label>
+
+          <select id="travellers">
+            <option>2 Adults</option>
+            <option>1 Adult</option>
+            <option>2 Adults, 1 Child</option>
+            <option>4 Adults</option>
+          </select>
+        </div>
+
+        <div class="search-field">
+          <label for="cabin">⭐ Class</label>
+
+          <select id="cabin">
+            <option>Economy</option>
+            <option>Business</option>
+            <option>First</option>
+          </select>
+        </div>
+
+        <button
+          class="btn-gold search-btn"
+          type="submit"
+        >
+          🔍 Search
+        </button>
+
+      </form>
+
+      <p class="note" id="searchNote"></p>
+
+      <!-- STATS -->
+      <div class="stats" id="statsRow">
+
+        <div class="stat">
+          <h3 class="gold-text">
+            <span
+              class="count"
+              data-target="250000"
+            >0</span>+
+          </h3>
+          <p>Happy Travellers</p>
+        </div>
+
+        <div class="stat">
+          <h3 class="gold-text">
+            <span
+              class="count"
+              data-target="120"
+            >0</span>+
+          </h3>
+          <p>Destinations</p>
+        </div>
+
+        <div class="stat">
+          <h3 class="gold-text">
+            <span
+              class="count"
+              data-target="8500"
+            >0</span>+
+          </h3>
+          <p>Hotels</p>
+        </div>
+
+        <div class="stat">
+          <h3 class="gold-text">4.9★</h3>
+          <p>Customer Rating</p>
+        </div>
+
+      </div>
+
+      <!-- TRUST BADGES -->
+      <div class="badges">
+        <span>🛡 Best Price Guarantee</span>
+        <span>🔒 Secure Payments</span>
+        <span>☎ 24×7 Support</span>
+        <span>✅ Free Cancellation</span>
+      </div>
+
     </div>
 
-    <div class="badges">
-      <span>🛡 Best Price Guarantee</span><span>🔒 Secure Payments</span>
-      <span>☎ 24×7 Support</span><span>✅ Free Cancellation</span>
+  </div>
+
+
+  <!-- ================= RIGHT FLOATING AREA ================= -->
+
+  <div class="hero-visual">
+
+    <!-- WEATHER -->
+    <div class="hero-float hero-float-weather">
+
+      <span class="hf-place">Goa</span>
+
+      <span class="hf-temp">29°C</span>
+
+      <span class="hf-sub">
+        Sunny ☀
+      </span>
+
+    </div>
+
+
+    <!-- GOA PACKAGE -->
+    <div class="hero-float hero-float-card card-1">
+
+      <img
+        src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=200&q=60"
+        alt="Goa package"
+      />
+
+      <div>
+        <strong>Goa Package</strong>
+        <span>★★★★★ ₹12,999</span>
+      </div>
+
+    </div>
+
+
+    <!-- MUMBAI FLIGHT -->
+    <div class="hero-float hero-float-card card-2">
+
+      <img
+        src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=200&q=60"
+        alt="Flight to Mumbai"
+      />
+
+      <div>
+        <strong>Mumbai Flight</strong>
+        <span>Emirates ₹18,499</span>
+      </div>
+
+    </div>
+
+
+    <!-- LUXURY RESORT -->
+    <div class="hero-float hero-float-card card-3">
+
+      <img
+        src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=200&q=60"
+        alt="Luxury resort"
+      />
+
+      <div>
+        <strong>Luxury Resort</strong>
+        <span>Manali · 4.8★</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+```
+
+
+<!-- ============ INTERNATIONAL ============ -->
+<section class="intl-section" id="international">
+  <div class="intl-inner">
+    <div class="intl-cards-wrap">
+      <button class="intl-arrow" id="intlPrev" aria-label="Previous">◀</button>
+      <div class="intl-track" id="intlTrack"></div>
+      <button class="intl-arrow" id="intlNext" aria-label="Next">▶</button>
+    </div>
+
+    <div class="intl-content reveal">
+      <span class="eyebrow-r">Go Global</span>
+      <h2>INTERNATIONAL</h2>
+      <p>An international trip offers a unique opportunity to explore new countries, cultures, and ways of life beyond familiar surroundings. From diverse cuisines and local traditions to iconic landmarks, international travel enriches perspectives and creates lasting memories.</p>
+      <p>With proper planning — passport validity, visa requirements and travel insurance — every journey can be smooth, safe and well organised. Whether for leisure, culture or adventure, TravelX delivers a balanced experience tailored for today's global traveller.</p>
+
+      <div class="intl-stats">
+        <div class="stat"><strong>50+</strong>Destinations</div>
+        <div class="stat"><strong>200+</strong>Tourists</div>
+        <div class="stat"><strong>200+</strong>Hotels</div>
+      </div>
+
+      <a class="btn-discover" href="#packages">Discover more →</a>
     </div>
   </div>
 </section>
-<se
 
-<!-- ==================== INTERNATIONAL ==================== -->
-<div class="trips"></div>
-  <section class="intl-section">
-    <div class="intl-inner">
-
-      <!-- Left: cards carousel -->
-      <div class="intl-cards-wrap">
-        <button class="intl-arrow intl-prev" id="intlPrev" aria-label="Previous">◀</button>
-
-        <div class="intl-track" id="intlTrack">
-          <div class="intl-card">
-            <div class="intl-img">
-              <img src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=600&q=80" alt="Turkey" />
-            </div>
-            <h3>Turkey <span>*****</span></h3>
-            <p>Turkey is where ancient history meets modern charm. From the colorful streets of Istanbul to the surreal landscapes of Cappadocia, Turkey offers a rich blend of culture, architecture, and flavors. It's perfect for travelers who love heritage, vibrant markets, and breathtaking views in one destination.</p>
-          </div>
-
-          <div class="intl-card">
-            <div class="intl-img">
-              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80" alt="Bali" />
-            </div>
-            <h3>Bali <span>*****</span></h3>
-            <p>Bali is a tropical paradise known for its serene beaches, lush rice terraces, and spiritual vibe. With stunning sunsets, traditional temples, and a relaxed lifestyle, Bali is ideal for both adventure seekers and those looking for peace and rejuvenation.</p>
-          </div>
-
-          <div class="intl-card">
-            <div class="intl-img">
-              <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=600&q=80" alt="Thailand" />
-            </div>
-            <h3>Thailand <span>*****</span></h3>
-            <p>Thailand is famous for its lively cities, golden temples, and crystal-clear beaches. From the bustling streets of Bangkok to the calm islands and rich street food culture, Thailand delivers an unforgettable mix of excitement, beauty, and warm hospitality.</p>
-          </div>
-
-          <div class="intl-card">
-            <div class="intl-img">
-              <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=600&q=80" alt="Japan" />
-            </div>
-            <h3>Japan <span>*****</span></h3>
-            <p>Japan blends ancient temples with futuristic cities. From cherry blossoms in Kyoto to neon streets of Tokyo, experience unmatched culture, cuisine, and hospitality in the Land of the Rising Sun.</p>
-          </div>
-
-          <div class="intl-card">
-            <div class="intl-img">
-              <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=600&q=80" alt="Italy" />
-            </div>
-            <h3>Italy <span>*****</span></h3>
-            <p>Italy is a dream for history and food lovers. Explore Rome's ancient ruins, Venice's canals, and Tuscany's vineyards while savoring world-famous pasta, pizza, and gelato.</p>
-          </div>
-        </div>
-
-        <button class="intl-arrow intl-next" id="intlNext" aria-label="Next">▶</button>
-      </div>
-
-      <!-- Right: text content -->
-      <div class="intl-content">
-        <h2>INTERNATIONAL</h2>
-        <p>An international trip offers a unique opportunity to explore new countries, cultures, and ways of life beyond familiar surroundings. From experiencing diverse cuisines and local traditions to visiting iconic landmarks and natural destinations, international travel enriches perspectives and creates lasting memories. With proper planning—including passport validity, visa requirements, and travel insurance—every journey can be smooth, safe, and well-organized.</p>
-        <p>More than just travel, international trips contribute to personal growth and global awareness. Navigating new environments, understanding different cultures, and adapting to international standards build confidence and independence. Whether for leisure, cultural discovery, or adventure, an international trip delivers a well-balanced experience of comfort, learning, and unforgettable moments—perfectly tailored for today's global traveler.</p>
-
-        <div class="intl-stats">
-          <div class="stat"><strong>50+</strong> Destination*</div>
-          <div class="stat"><strong>200+</strong> Tourists</div>
-          <div class="stat"><strong>200+</strong> Hotels</div>
-        </div>
-
-        <a href="#" class="btn-discover">Discover more</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================== INDIA EXPLORATIONS ==================== -->
-  <section class="india-section">
+<!-- ============ INDIA EXPLORATIONS ============ -->
+<section class="india-section" id="destinations">
+  <div class="container">
     <div class="section-head">
+      <span class="eyebrow-r">Closer Home</span>
       <h2>India Explorations</h2>
-      <div class="line"></div>
+      <span class="line"></span>
       <span class="arrow">→</span>
     </div>
 
     <div class="explorations-grid">
-
       <div class="featured-card">
-        <div class="featured-slides" id="featuredSlides">
-          <div class="featured-slide active" data-name="Coorg">
-            <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74070?auto=format&fit=crop&w=1200&q=80" alt="Coorg" />
-          </div>
-          <div class="featured-slide" data-name="Kerala">
-            <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80" alt="Kerala" />
-          </div>
-          <div class="featured-slide" data-name="Himachal">
-            <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80" alt="Himachal" />
-          </div>
-          <div class="featured-slide" data-name="Varanasi">
-            <img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=1200&q=80" alt="Varanasi" />
-          </div>
-        </div>
-
+        <div class="featured-slides" id="featuredSlides"></div>
         <div class="featured-label">
           <span class="name" id="featuredName">Coorg</span>
           <div class="featured-nav">
-            <button id="prevBtn" aria-label="Previous">◀</button>
-            <button id="nextBtn" aria-label="Next">▶</button>
+            <button id="featPrev" aria-label="Previous">◀</button>
+            <button id="featNext" aria-label="Next">▶</button>
           </div>
         </div>
       </div>
-
-      <div class="destinations-grid">
-        <a href="#" class="dest-card">
-          <img src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=600&q=80" alt="Ladakh" />
-          <div class="overlay"><span class="label">Ladakh</span></div>
-        </a>
-        <a href="#" class="dest-card">
-          <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=600&q=80" alt="Rajasthan" />
-          <div class="overlay"><span class="label">Rajasthan</span></div>
-        </a>
-        <a href="#" class="dest-card">
-          <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=600&q=80" alt="Spiti" />
-          <div class="overlay"><span class="label">Spiti</span></div>
-        </a>
-        <a href="#" class="dest-card">
-          <img src="https://images.unsplash.com/photo-1590077428593-a55bb26729d8?auto=format&fit=crop&w=600&q=80" alt="Meghalaya" />
-          <div class="overlay"><span class="label">Meghalaya</span></div>
-        </a>
-      </div>
-
+      <div class="destinations-grid" id="indiaGrid"></div>
     </div>
-  </section>
-</div>
+  </div>
+</section>
 
-<!-- ================= WHY US ================= -->
-<section class="section alt" id="guide">
+
+<!-- ============ WHY CHOOSE ============ -->
+<section class="section alt">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Travel Guide</span>
-      <h2>Why Choose <span class="gold-text">TravelX</span></h2>
+    <div class="section-head">
+      <span class="eyebrow">Our Promise</span>
+      <h2>Why Choose TravelX</h2>
     </div>
     <div class="grid grid-4" id="whyGrid"></div>
   </div>
 </section>
 
-<!-- ================= PACKAGES ================= -->
+<!-- ============ PACKAGES ============ -->
 <section class="section" id="packages">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Curated</span>
-      <h2>Holiday <span class="gold-text">Packages</span></h2>
+    <div class="section-head">
+      <span class="eyebrow">Limited Seats</span>
+      <h2>Trending Tour Packages</h2>
+      <p>Hand-curated itineraries at prices you'll love.</p>
     </div>
-    <div class="filters" id="pkgFilters">
-      <button class="filter active" data-f="all">All</button>
-      <button class="filter" data-f="beach">Beach</button>
-      <button class="filter" data-f="mountain">Mountain</button>
-      <button class="filter" data-f="luxury">Luxury</button>
-      <button class="filter" data-f="international">International</button>
-    </div>
+    <div class="filters" id="pkgFilters"></div>
     <div class="grid grid-3" id="pkgGrid"></div>
   </div>
 </section>
 
-<!-- ================= FLIGHTS ================= -->
-<section class="section alt" id="flights">
+<!-- ============ CATEGORIES ============ -->
+<section class="section alt" id="categories">
   <div class="container">
-    <div class="section-head reveal"><span class="eyebrow">Fly cheap</span><h2>Flight <span class="gold-text">Deals</span></h2></div>
-    <div class="grid grid-3" id="flightGrid"></div>
+    <div class="section-head">
+      <span class="eyebrow">Pick Your Mood</span>
+      <h2>Travel Categories</h2>
+    </div>
+    <div class="grid grid-4" id="catGrid"></div>
   </div>
 </section>
 
-<!-- ================= HOTELS ================= -->
+<!-- ============ OFFER ============ -->
+<section class="section" id="offers">
+  <div class="container">
+    <div class="offer-banner reveal">
+      <div>
+        <span class="offer-tag">🎉 Limited Offer</span>
+        <h3>Flat 25% OFF on all packages</h3>
+        <p>Use code <b class="gold-text">TRAVEL25</b> at checkout. Valid till 31 Aug.</p>
+      </div>
+      <button class="btn-dark">Book Now</button>
+    </div>
+    <div class="countdown">
+      <p>Offer ends in</p>
+      <div class="clock" id="clock">00 : 00 : 00</div>
+    </div>
+  </div>
+</section>
+<!-- ============ HOTELS ============ -->
 <section class="section" id="hotels">
   <div class="container">
-    <div class="section-head reveal"><span class="eyebrow">Stay well</span><h2>Featured <span class="gold-text">Hotels</span></h2></div>
-    <div class="grid grid-3" id="hotelGrid"></div>
-  </div>
-</section>
 
-<!-- ================= OFFERS ================= -->
-<section class="section alt" id="offers">
-  <div class="container">
-    <div class="section-head reveal"><span class="eyebrow">Limited time</span><h2>Exclusive <span class="gold-text">Offers</span></h2></div>
-    <div class="grid grid-3" id="offerGrid"></div>
-    <div class="countdown reveal">
-      <p>Monsoon Sale ends in</p>
-      <div class="clock"><span id="cd-d">00</span>d : <span id="cd-h">00</span>h : <span id="cd-m">00</span>m : <span id="cd-s">00</span>s</div>
+    <div class="section-head">
+      <span class="eyebrow">Stay Your Way</span>
+      <h2>Popular Hotels & Resorts</h2>
+      <p>Handpicked stays with great locations, comfort and value.</p>
+    </div>
+
+    <div class="grid grid-3">
+
+      <article class="travel-card">
+        <div class="card-image">
+          <img
+            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80"
+            alt="Luxury hotel resort"
+          />
+          <span class="card-badge">Top Rated</span>
+        </div>
+
+        <div class="card-body">
+          <span class="eyebrow-r">Goa</span>
+          <h3>Luxury Beach Resort</h3>
+          <p>5-star beachfront stay with pool, spa and ocean views.</p>
+
+          <div class="card-meta">
+            <span>⭐ 4.9</span>
+            <span>🏖 Beachfront</span>
+          </div>
+
+          <div class="card-footer">
+            <strong>₹7,999 <small>/ night</small></strong>
+            <button class="btn-gold">View Hotel</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="travel-card">
+        <div class="card-image">
+          <img
+            src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=80"
+            alt="Luxury hotel in Dubai"
+          />
+          <span class="card-badge">Best Seller</span>
+        </div>
+
+        <div class="card-body">
+          <span class="eyebrow-r">Dubai</span>
+          <h3>Downtown Luxury Hotel</h3>
+          <p>Premium city stay close to Dubai Mall and Burj Khalifa.</p>
+
+          <div class="card-meta">
+            <span>⭐ 4.8</span>
+            <span>🏙 City View</span>
+          </div>
+
+          <div class="card-footer">
+            <strong>₹11,499 <small>/ night</small></strong>
+            <button class="btn-gold">View Hotel</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="travel-card">
+        <div class="card-image">
+          <img
+            src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=900&q=80"
+            alt="Mountain resort"
+          />
+          <span class="card-badge">Popular</span>
+        </div>
+
+        <div class="card-body">
+          <span class="eyebrow-r">Manali</span>
+          <h3>Mountain View Resort</h3>
+          <p>Peaceful Himalayan retreat perfect for couples and families.</p>
+
+          <div class="card-meta">
+            <span>⭐ 4.7</span>
+            <span>🏔 Mountain</span>
+          </div>
+
+          <div class="card-footer">
+            <strong>₹5,499 <small>/ night</small></strong>
+            <button class="btn-gold">View Hotel</button>
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
+<!-- ============ FLIGHTS ============ -->
+<section class="section alt" id="flights">
+  <div class="container">
 
-<!-- ================= TESTIMONIALS ================= -->
+    <div class="section-head">
+      <span class="eyebrow">Fly More, Spend Less</span>
+      <h2>Popular Flight Deals</h2>
+      <p>Compare fares from top airlines and find the best deals.</p>
+    </div>
+
+    <div class="grid grid-3">
+
+      <article class="flight-card">
+        <div class="flight-route">
+          <div>
+            <strong>Mumbai</strong>
+            <span>BOM</span>
+          </div>
+
+          <div class="flight-line">
+            ✈
+          </div>
+
+          <div>
+            <strong>Dubai</strong>
+            <span>DXB</span>
+          </div>
+        </div>
+
+        <div class="flight-info">
+          <span>✈ Emirates</span>
+          <span>⏱ 3h 20m</span>
+          <span>↔ Round Trip</span>
+        </div>
+
+        <div class="flight-price">
+          <div>
+            <small>Starting from</small>
+            <strong>₹18,499</strong>
+          </div>
+
+          <button class="btn-gold">Book Flight</button>
+        </div>
+      </article>
+
+
+      <article class="flight-card">
+        <div class="flight-route">
+          <div>
+            <strong>Mumbai</strong>
+            <span>BOM</span>
+          </div>
+
+          <div class="flight-line">
+            ✈
+          </div>
+
+          <div>
+            <strong>Bali</strong>
+            <span>DPS</span>
+          </div>
+        </div>
+
+        <div class="flight-info">
+          <span>✈ Air India</span>
+          <span>⏱ 8h 10m</span>
+          <span>↔ Round Trip</span>
+        </div>
+
+        <div class="flight-price">
+          <div>
+            <small>Starting from</small>
+            <strong>₹24,999</strong>
+          </div>
+
+          <button class="btn-gold">Book Flight</button>
+        </div>
+      </article>
+
+
+      <article class="flight-card">
+        <div class="flight-route">
+          <div>
+            <strong>Delhi</strong>
+            <span>DEL</span>
+          </div>
+
+          <div class="flight-line">
+            ✈
+          </div>
+
+          <div>
+            <strong>Singapore</strong>
+            <span>SIN</span>
+          </div>
+        </div>
+
+        <div class="flight-info">
+          <span>✈ Singapore Airlines</span>
+          <span>⏱ 5h 40m</span>
+          <span>↔ Round Trip</span>
+        </div>
+
+        <div class="flight-price">
+          <div>
+            <small>Starting from</small>
+            <strong>₹21,499</strong>
+          </div>
+
+          <button class="btn-gold">Book Flight</button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+<!-- ============ ACTIVITIES ============ -->
+<section class="section" id="activities">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="eyebrow">Make Memories</span>
+      <h2>Things To Do</h2>
+      <p>Discover unforgettable experiences wherever you travel.</p>
+    </div>
+
+    <div class="grid grid-4">
+
+      <div class="activity-card">
+        <img
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80"
+          alt="Beach activity"
+        />
+        <div class="activity-overlay">
+          <span>🏖 Beach</span>
+          <h3>Beach Adventures</h3>
+          <p>From ₹999</p>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <img
+          src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=80"
+          alt="Mountain adventure"
+        />
+        <div class="activity-overlay">
+          <span>🏔 Adventure</span>
+          <h3>Mountain Treks</h3>
+          <p>From ₹1,499</p>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <img
+          src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=700&q=80"
+          alt="City tour"
+        />
+        <div class="activity-overlay">
+          <span>🏙 City</span>
+          <h3>City Experiences</h3>
+          <p>From ₹799</p>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <img
+          src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=700&q=80"
+          alt="Water activity"
+        />
+        <div class="activity-overlay">
+          <span>🌊 Water</span>
+          <h3>Water Sports</h3>
+          <p>From ₹1,299</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ============ COUNTRIES ============ -->
+<section class="section alt" id="flights">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Visa Help Included</span>
+      <h2>Featured Countries</h2>
+    </div>
+    <div class="grid grid-4" id="countryGrid"></div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
 <section class="section">
-  <div class="container">
-    <div class="section-head reveal"><span class="eyebrow">Reviews</span><h2>What Travellers <span class="gold-text">Say</span></h2></div>
+  <div class="container narrow">
+    <div class="section-head">
+      <span class="eyebrow">4.9 Average Rating</span>
+      <h2>What Travellers Say</h2>
+    </div>
     <div class="slider">
-      <div class="slides" id="slides"></div>
-      <div class="slider-nav"><button id="prev">‹</button><button id="next">›</button></div>
+      <div class="slides" id="testiSlides"></div>
+    </div>
+    <div class="slider-nav">
+      <button id="testiPrev" aria-label="Previous">◀</button>
+      <button id="testiNext" aria-label="Next">▶</button>
     </div>
   </div>
 </section>
 
-<!-- ================= PARTNERS MARQUEE ================= -->
-<section class="marquee-wrap">
-  <div class="marquee" id="marquee"></div>
+<!-- ============ GALLERY ============ -->
+<section class="section alt" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Shot By Our Travellers</span>
+      <h2>Travel Gallery</h2>
+    </div>
+    <div class="grid grid-4" id="galleryGrid"></div>
+  </div>
 </section>
 
-<!-- ================= FAQ ================= -->
+<!-- ============ BLOG ============ -->
+<section class="section" id="blog">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">From The Guide</span>
+      <h2>Latest Travel Stories</h2>
+    </div>
+    <div class="grid grid-3" id="blogGrid"></div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
 <section class="section alt">
   <div class="container narrow">
-    <div class="section-head reveal"><span class="eyebrow">Help</span><h2>Frequently Asked <span class="gold-text">Questions</span></h2></div>
-    <div class="faq" id="faq"></div>
+    <div class="section-head">
+      <span class="eyebrow">Good To Know</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div id="faqList"></div>
   </div>
 </section>
 
-<!-- ================= NEWSLETTER + CONTACT ================= -->
+<!-- ============ NEWSLETTER ============ -->
+<section class="section">
+  <div class="container narrow">
+    <div class="newsletter-card">
+      <h2>Stay Updated with TravelX</h2>
+      <p>Flash fares, seasonal packages and travel guides — straight to your inbox.</p>
+      <form class="newsletter" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="you@email.com" required />
+        <button class="btn-gold" type="submit">Subscribe</button>
+      </form>
+      <p class="note" id="newsletterNote"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTNERS ============ -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Airlines · Hotels · Payments</span>
+      <h2>Trusted Partners</h2>
+    </div>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee" id="marquee"></div>
+  </div>
+</section>
+
+<!-- ============ HELP ============ -->
 <section class="section" id="contact">
-  <div class="container narrow cta reveal">
-    <h2>Get travel deals in your <span class="gold-text">inbox</span></h2>
-    <p>Join 50,000+ travellers. No spam, unsubscribe anytime.</p>
-    <form class="newsletter" id="newsletter">
-      <input type="email" placeholder="you@example.com" required />
-      <button class="btn-gold" type="submit">Subscribe</button>
-    </form>
-    <p class="note" id="nlNote"></p>
+  <div class="container narrow">
+    <div class="help-card">
+      <div class="help-icon">🎧</div>
+      <h3>Need help planning your trip?</h3>
+      <p>Our travel experts are available 24×7 to build an itinerary around your dates, budget and pace.</p>
+      <a class="btn-gold big" href="mailto:hello@travelx.com">Contact Us</a>
+    </div>
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
+<!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="container footer-grid">
     <div>
-      <a href="#top" class="logo">Travel<span class="gold-text">X</span></a>
-      <p>Your trusted partner for flights, hotels and unforgettable holidays across 120+ destinations.</p>
+      <a href="#" class="logo"><span class="gold-text">✈</span> TravelX</a>
+      <p>Travel beyond boundaries. Flights, stays and curated journeys across 120+ destinations.</p>
+      <p>📞 +91 98765 43210<br />✉ hello@travelx.com</p>
       <div class="socials"><span>f</span><span>in</span><span>ig</span><span>x</span></div>
     </div>
-    <div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Press</a><a href="#">Blog</a></div>
-    <div><h4>Support</h4><a href="#">Help Center</a><a href="#">Cancellation</a><a href="#">Refunds</a><a href="#contact">Contact</a></div>
-    <div><h4>Contact</h4><p>📞 +91 98765 43210</p><p>✉ hello@travelx.com</p><p>📍 Kolkata, India</p></div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a><a href="#destinations">Destinations</a><a href="#packages">Packages</a>
+      <a href="#hotels">Hotels</a><a href="#flights">Flights</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="#">About Us</a><a href="#">Careers</a><a href="#">Press</a><a href="#blog">Travel Guide</a><a href="#blog">Blog</a>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <a href="#contact">Help Centre</a><a href="#">Cancellation</a><a href="#">Refunds</a><a href="#contact">Contact</a>
+      <a href="terms-and-conditions.html">Terms & Conditions</a>
+    </div>
   </div>
-  <div class="container copyright"><p>© 2026 TravelX. All rights reserved.</p></div>
+  <div class="container copyright">© 2026 TravelX. All rights reserved.</div>
 </footer>
 
 <button class="to-top" id="toTop" aria-label="Back to top">↑</button>

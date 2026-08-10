@@ -1,7 +1,8 @@
 /* ================= TravelX — frontend interactions ================= */
 const $ = (s, p = document) => p.querySelector(s);
 const $$ = (s, p = document) => [...p.querySelectorAll(s)];
-const img = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=70`;
+const img = (id, w = 800) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
 
 /* ---------------- data ---------------- */
 const DESTINATIONS = [
@@ -31,325 +32,493 @@ const PACKAGES = [
   { t: "Maldives Villa Stay", s: "5 Days · 4 Nights", p: "₹89,000", r: "5.0", c: "luxury international", img: "photo-1514282401047-d79a71a590e8" },
 ];
 
-const FLIGHTS = [
-  { r: "Mumbai → Dubai", a: "Emirates · Non-stop", p: "₹18,499" },
-  { r: "Delhi → Bali", a: "Singapore Airlines · 1 stop", p: "₹32,900" },
-  { r: "Kolkata → Goa", a: "IndiGo · Non-stop", p: "₹4,299" },
-  { r: "Bengaluru → Male", a: "Air India · Non-stop", p: "₹22,750" },
-  { r: "Chennai → Singapore", a: "Scoot · Non-stop", p: "₹19,200" },
-  { r: "Delhi → Srinagar", a: "Vistara · Non-stop", p: "₹5,850" },
+const FILTERS = [
+  { k: "all", l: "All" },
+  { k: "beach", l: "Beach" },
+  { k: "mountain", l: "Mountain" },
+  { k: "luxury", l: "Luxury" },
+  { k: "international", l: "International" },
 ];
 
-const HOTELS = [
-  { t: "Ocean Pearl Resort", s: "Candolim, Goa", p: "₹6,499", r: "4.8", img: "photo-1566073771259-6a8506099945" },
-  { t: "Snow Ridge Chalet", s: "Old Manali", p: "₹5,200", r: "4.7", img: "photo-1520250497591-112f2f40a3f4" },
-  { t: "Palm Grand Dubai", s: "Palm Jumeirah", p: "₹19,900", r: "4.9", img: "photo-1571003123894-1f0594d2b5d9" },
+const CATEGORIES = [
+  { ico: "🏖", t: "Beach Holidays", d: "Sun, sand and slow mornings." },
+  { ico: "🏔", t: "Mountain Treks", d: "Peaks, passes and pine trails." },
+  { ico: "🛕", t: "Heritage Tours", d: "Forts, temples and old cities." },
+  { ico: "🪂", t: "Adventure", d: "Dive, ski, raft and fly." },
 ];
 
-const OFFERS = [
-  { t: "Monsoon Sale", d: "Flat 25% off on all domestic packages.", c: "MONSOON25" },
-  { t: "First Flight", d: "₹1,500 off your first flight booking.", c: "FLYNEW" },
-  { t: "Weekend Stays", d: "Up to 40% off hotels booked Fri–Sun.", c: "WEEKEND40" },
+const INTERNATIONAL = [
+  { n: "Turkey", d: "Turkey is where ancient history meets modern charm. From the colourful streets of Istanbul to the surreal landscapes of Cappadocia, it blends culture, architecture and flavour.", img: "photo-1541432901042-2d8bd64b4a9b" },
+  { n: "Bali", d: "A tropical paradise known for serene beaches, lush rice terraces and a spiritual vibe — ideal for adventure seekers and peace seekers alike.", img: "photo-1537996194471-e657df975ab4" },
+  { n: "Thailand", d: "Lively cities, golden temples and crystal-clear beaches. From Bangkok's buzz to calm islands and legendary street food.", img: "photo-1528181304800-259b08848526" },
+  { n: "Japan", d: "Ancient temples meet futuristic cities. Cherry blossoms in Kyoto, neon streets in Tokyo, and unmatched hospitality.", img: "photo-1492571350019-22de08371fd3" },
+  { n: "Italy", d: "A dream for history and food lovers — Rome's ruins, Venice's canals and Tuscany's vineyards, with pasta and gelato throughout.", img: "photo-1523906834658-6e24ef2386f9" },
 ];
 
-const REVIEWS = [
-  { q: "TravelX planned our Bali honeymoon down to the last detail. Zero stress, pure magic.", n: "Ananya & Rohit", l: "Kolkata" },
-  { q: "Cheapest Dubai fare I found anywhere, and support answered at 2am. Genuinely impressed.", n: "Vikram Sethi", l: "Mumbai" },
-  { q: "Booked Manali three days before travel — hotel, cab and permits all sorted.", n: "Meera Nair", l: "Bengaluru" },
+const FEATURED_INDIA = [
+  { n: "Coorg", img: "photo-1585320806297-9794b3e4eeae" },
+  { n: "Kerala", img: "photo-1602216056096-3b40cc0c9944" },
+  { n: "Andaman", img: "photo-1544644181-1484b3fdfc62" },
+  { n: "Udaipur", img: "photo-1477587458883-47145ed94245" },
+];
+
+const INDIA_GRID = [
+  { n: "Ladakh", img: "photo-1581793745862-99fde7fa73d2" },
+  { n: "Rajasthan", img: "photo-1477587458883-47145ed94245" },
+  { n: "Spiti", img: "photo-1626621341517-bbf3d9990a23" },
+  { n: "Meghalaya", img: "photo-1595815771614-ade9d652a65d" },
+];
+
+const COUNTRIES = [
+  { n: "United Arab Emirates", s: "Visa on arrival", img: "photo-1512453979798-5ea266f8880c" },
+  { n: "Thailand", s: "e-Visa in 72 hrs", img: "photo-1528181304800-259b08848526" },
+  { n: "Singapore", s: "Visa assistance", img: "photo-1525625293386-3f8f99389edd" },
+  { n: "Switzerland", s: "Schengen support", img: "photo-1530122037265-a5f1f91d3b99" },
+];
+
+const TESTIMONIALS = [
+  { q: "Booked our Bali honeymoon in 10 minutes. The itinerary was perfect and the support team answered at 2 AM.", n: "Ananya & Rohit", r: "Mumbai" },
+  { q: "Best price on our Dubai package by a clear margin, and free cancellation saved us when plans changed.", n: "Karan Mehta", r: "Delhi" },
+  { q: "The Kashmir trip was flawless — great hotels, thoughtful drivers and zero hidden charges.", n: "Sneha Iyer", r: "Bengaluru" },
+];
+
+const GALLERY = [
+  "photo-1512343879784-a960bf40e7f2",
+  "photo-1537996194471-e657df975ab4",
+  "photo-1528181304800-259b08848526",
+  "photo-1492571350019-22de08371fd3",
+  "photo-1523906834658-6e24ef2386f9",
+  "photo-1514282401047-d79a71a590e8",
+  "photo-1525625293386-3f8f99389edd",
+  "photo-1477587458883-47145ed94245",
+];
+
+const BLOG = [
+  { t: "10 underrated beaches in India", s: "5 min read · Beaches", img: "photo-1512343879784-a960bf40e7f2" },
+  { t: "A first-timer's guide to Bali", s: "8 min read · Guides", img: "photo-1537996194471-e657df975ab4" },
+  { t: "How to pack for a snow trip", s: "4 min read · Tips", img: "photo-1626621341517-bbf3d9990a23" },
 ];
 
 const FAQS = [
-  ["Can I cancel my booking for free?", "Yes — most packages and hotels allow free cancellation up to 48 hours before check-in."],
-  ["Do you offer EMI payments?", "Absolutely. No-cost EMI is available on bookings above ₹10,000 with major credit cards."],
-  ["Are visas included in international packages?", "Visa assistance is included; government fees are billed separately at actual cost."],
-  ["How do I contact support?", "Call +91 98765 43210 or email hello@travelx.com — we answer 24×7."],
+  { q: "How do I book a package?", a: "Pick a package, choose your dates and travellers, then pay securely online. You'll get a confirmation email with the full itinerary within minutes." },
+  { q: "Can I cancel for free?", a: "Yes — most bookings can be cancelled free of charge up to 48 hours before departure. The exact policy is shown before payment." },
+  { q: "Do you help with visas?", a: "We provide documentation checklists and end-to-end visa assistance for all featured countries." },
+  { q: "Are flights included in packages?", a: "Packages marked 'with flights' include return airfare. Others cover stays, transfers and activities only." },
+  { q: "What payment methods are accepted?", a: "UPI, all major credit and debit cards, net banking and EMI options on select banks." },
 ];
 
-const PARTNERS = ["Emirates", "IndiGo", "Marriott", "Taj Hotels", "Booking Pay", "Visa", "Airbnb", "Qatar Airways"];
+const PARTNERS = ["Emirates", "IndiGo", "Marriott", "Taj Hotels", "Qatar Airways", "Oberoi", "Visa", "Razorpay"];
 
-/* ---------------- render ---------------- */
-const stars = (r) => `<span class="stars">★ ${r}</span>`;
+/* ---------------- render helpers ---------------- */
+const stars = (r) => "★".repeat(Math.round(Number(r) || 5));
 
-$("#destGrid").innerHTML = DESTINATIONS.map((d) => `
-  <article class="card reveal">
-    <div class="thumb"><span class="tag">${d.tag}</span><img src="${img(d.img)}" alt="${d.name}, ${d.country}" loading="lazy"></div>
-    <div class="card-body">
-      <h3>${d.name}</h3><p class="sub">${d.country}</p>
-      <div class="card-row"><span class="price">${d.price}</span><button class="btn-ghost">Explore</button></div>
-    </div>
-  </article>`).join("");
+function renderDestinations() {
+  const el = $("#destGrid");
+  if (!el) return;
+  el.innerHTML = DESTINATIONS.map(
+    (d) => `
+    <article class="card reveal">
+      <div class="thumb"><img loading="lazy" src="${img(d.img)}" alt="${d.name}" /><span class="tag">${d.tag}</span></div>
+      <div class="card-body">
+        <h3>${d.name}</h3>
+        <p class="sub">${d.country}</p>
+        <div class="card-row"><span class="stars">★★★★★</span><span class="price">${d.price}</span></div>
+      </div>
+    </article>`
+  ).join("");
+}
 
-$("#whyGrid").innerHTML = WHY.map((w) => `
-  <div class="feature reveal"><div class="ico">${w.ico}</div><h3>${w.t}</h3><p>${w.d}</p></div>`).join("");
+function renderWhy() {
+  const el = $("#whyGrid");
+  if (!el) return;
+  el.innerHTML = WHY.map(
+    (w) => `<div class="feature reveal"><div class="ico">${w.ico}</div><h3>${w.t}</h3><p>${w.d}</p></div>`
+  ).join("");
+}
 
 function renderPackages(filter = "all") {
-  $("#pkgGrid").innerHTML = PACKAGES.filter((p) => filter === "all" || p.c.includes(filter))
-    .map((p) => `
-      <article class="card reveal visible">
-        <div class="thumb"><span class="tag">${p.s}</span><img src="${img(p.img)}" alt="${p.t}" loading="lazy"></div>
-        <div class="card-body">
-          <h3>${p.t}</h3><p class="sub">${stars(p.r)} · Flights + Hotel + Meals</p>
-          <div class="card-row"><span class="price">${p.p}</span><button class="btn-gold">Book Now</button></div>
+  const el = $("#pkgGrid");
+  if (!el) return;
+  const list = filter === "all" ? PACKAGES : PACKAGES.filter((p) => p.c.includes(filter));
+  el.innerHTML = list
+    .map(
+      (p) => `
+    <article class="card reveal">
+      <div class="thumb"><img loading="lazy" src="${img(p.img)}" alt="${p.t}" /><span class="tag">${p.s.split("·")[0].trim()}</span></div>
+      <div class="card-body">
+        <h3>${p.t}</h3>
+        <p class="sub">${p.s}</p>
+        <div class="card-row">
+          <span class="stars">${stars(p.r)} ${p.r}</span>
+          <span class="price">${p.p}</span>
         </div>
-      </article>`).join("") || `<p class="sub">No packages in this category yet.</p>`;
+        <div class="card-row" style="margin-top:14px">
+          <button class="btn-ghost">Details</button>
+          <button class="btn-gold">Book Now</button>
+        </div>
+      </div>
+    </article>`
+    )
+    .join("");
+  revealInit();
 }
-renderPackages();
 
-$("#flightGrid").innerHTML = FLIGHTS.map((f) => `
-  <div class="card reveal"><div class="card-body">
-    <h3>✈ ${f.r}</h3><p class="sub">${f.a}</p>
-    <div class="card-row"><span class="price">${f.p}</span><button class="btn-ghost">View Fare</button></div>
-  </div></div>`).join("");
-
-$("#hotelGrid").innerHTML = HOTELS.map((h) => `
-  <article class="card reveal">
-    <div class="thumb"><img src="${img(h.img)}" alt="${h.t}" loading="lazy"></div>
-    <div class="card-body">
-      <h3>${h.t}</h3><p class="sub">${h.s} · ${stars(h.r)}</p>
-      <div class="card-row"><span class="price">${h.p}<small> / night</small></span><button class="btn-gold">Book</button></div>
-    </div>
-  </article>`).join("");
-
-$("#offerGrid").innerHTML = OFFERS.map((o) => `
-  <div class="offer reveal"><h3>${o.t}</h3><p class="sub">${o.d}</p><div class="code">${o.c}</div></div>`).join("");
-
-$("#slides").innerHTML = REVIEWS.map((r) => `
-  <div class="slide"><p>“${r.q}”</p><h4 class="gold-text">${r.n}</h4><p class="sub">${r.l}</p></div>`).join("");
-
-$("#faq").innerHTML = FAQS.map(([q, a]) => `
-  <div class="faq-item"><button class="faq-q">${q}<span>+</span></button><div class="faq-a">${a}</div></div>`).join("");
-
-$("#marquee").innerHTML = [...PARTNERS, ...PARTNERS].map((p) => `<span>${p}</span>`).join("");
-
-/* ---------------- navbar ---------------- */
-const navbar = $("#navbar");
-window.addEventListener("scroll", () => {
-  navbar.classList.toggle("scrolled", window.scrollY > 20);
-  $("#toTop").classList.toggle("show", window.scrollY > 500);
-});
-$("#burger").onclick = () => $("#navLinks").classList.toggle("open");
-$$("#navLinks a").forEach((a) => a.addEventListener("click", () => {
-  $("#navLinks").classList.remove("open");
-  $$("#navLinks a").forEach((x) => x.classList.remove("active"));
-  a.classList.add("active");
-}));
-$("#toTop").onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
-/* theme toggle */
-$("#themeToggle").onclick = (e) => {
-  document.body.classList.toggle("light");
-  e.target.textContent = document.body.classList.contains("light") ? "☀" : "🌙";
-};
-
-/* global search */
-$("#searchToggle").onclick = () => {
-  $("#navSearch").classList.toggle("open");
-  $("#globalSearch").focus();
-};
-const ALL = [...DESTINATIONS.map((d) => d.name), ...PACKAGES.map((p) => p.t), ...HOTELS.map((h) => h.t)];
-$("#globalSearch").addEventListener("input", (e) => {
-  const v = e.target.value.trim().toLowerCase();
-  $("#searchResults").innerHTML = !v ? "" :
-    ALL.filter((x) => x.toLowerCase().includes(v)).slice(0, 6).map((x) => `<li>🔎 ${x}</li>`).join("")
-    || "<li>No matches found</li>";
-});
-
-/* ---------------- hero tabs + destination autocomplete ---------------- */
-$$(".tab").forEach((t) => t.addEventListener("click", () => {
-  $$(".tab").forEach((x) => x.classList.remove("active"));
-  t.classList.add("active");
-}));
-
-const destInput = $("#destInput"), destBox = $("#destSuggestions");
-destInput.addEventListener("input", () => {
-  const v = destInput.value.trim().toLowerCase();
-  const hits = v ? DESTINATIONS.filter((d) => d.name.toLowerCase().startsWith(v)) : [];
-  destBox.innerHTML = hits.map((d) => `<li>${d.name} · ${d.country}</li>`).join("");
-  $$("li", destBox).forEach((li, i) => li.onclick = () => { destInput.value = hits[i].name; destBox.innerHTML = ""; });
-});
-document.addEventListener("click", (e) => { if (!e.target.closest(".search-field")) destBox.innerHTML = ""; });
-
-$("#bookingForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  alert(`Searching ${$(".tab.active").textContent.trim()} for "${destInput.value || "anywhere"}"…`);
-});
-
-/* ---------------- package filters ---------------- */
-$$(".filter").forEach((b) => b.addEventListener("click", () => {
-  $$(".filter").forEach((x) => x.classList.remove("active"));
-  b.classList.add("active");
-  renderPackages(b.dataset.f);
-}));
-
-/* ---------------- testimonials slider ---------------- */
-let idx = 0;
-const move = () => $("#slides").style.transform = `translateX(-${idx * 100}%)`;
-$("#next").onclick = () => { idx = (idx + 1) % REVIEWS.length; move(); };
-$("#prev").onclick = () => { idx = (idx - 1 + REVIEWS.length) % REVIEWS.length; move(); };
-setInterval(() => { idx = (idx + 1) % REVIEWS.length; move(); }, 6000);
-
-/* ---------------- FAQ accordion ---------------- */
-$$(".faq-q").forEach((q) => q.onclick = () => {
-  const item = q.parentElement;
-  $$(".faq-item").forEach((f) => f !== item && f.classList.remove("open"));
-  item.classList.toggle("open");
-});
-
-/* ---------------- newsletter ---------------- */
-$("#newsletter").addEventListener("submit", (e) => {
-  e.preventDefault();
-  $("#nlNote").textContent = "🎉 You're subscribed! Deals are on the way.";
-  e.target.reset();
-});
-
-/* ---------------- scroll reveal ---------------- */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("visible"); io.unobserve(en.target); } });
-}, { threshold: 0.12 });
-$$(".reveal").forEach((el) => io.observe(el));
-
-/* ---------------- animated counters ---------------- */
-const counters = $$("[data-count]");
-const cio = new IntersectionObserver((entries) => {
-  entries.forEach((en) => {
-    if (!en.isIntersecting) return;
-    const el = en.target, target = +el.dataset.count;
-    let cur = 0;
-    const step = Math.ceil(target / 60);
-    const timer = setInterval(() => {
-      cur += step;
-      if (cur >= target) { cur = target; clearInterval(timer); }
-      el.textContent = cur.toLocaleString("en-IN") + "+";
-    }, 24);
-    cio.unobserve(el);
+function renderFilters() {
+  const el = $("#pkgFilters");
+  if (!el) return;
+  el.innerHTML = FILTERS.map(
+    (f, i) => `<button class="filter ${i === 0 ? "active" : ""}" data-filter="${f.k}">${f.l}</button>`
+  ).join("");
+  el.addEventListener("click", (e) => {
+    const btn = e.target.closest(".filter");
+    if (!btn) return;
+    $$(".filter", el).forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderPackages(btn.dataset.filter);
   });
-}, { threshold: 0.5 });
-counters.forEach((c) => cio.observe(c));
+}
 
-/* ---------------- offer countdown ---------------- */
-const end = new Date().getTime() + 5 * 24 * 60 * 60 * 1000;
-setInterval(() => {
-  const t = Math.max(0, end - Date.now());
-  const pad = (n) => String(n).padStart(2, "0");
-  $("#cd-d").textContent = pad(Math.floor(t / 86400000));
-  $("#cd-h").textContent = pad(Math.floor(t / 3600000) % 24);
-  $("#cd-m").textContent = pad(Math.floor(t / 60000) % 60);
-  $("#cd-s").textContent = pad(Math.floor(t / 1000) % 60);
-}, 1000);
+function renderCategories() {
+  const el = $("#catGrid");
+  if (!el) return;
+  el.innerHTML = CATEGORIES.map(
+    (c) => `<div class="feature reveal"><div class="ico">${c.ico}</div><h3>${c.t}</h3><p>${c.d}</p></div>`
+  ).join("");
+}
 
+function renderCountries() {
+  const el = $("#countryGrid");
+  if (!el) return;
+  el.innerHTML = COUNTRIES.map(
+    (c) => `
+    <article class="card reveal">
+      <div class="thumb"><img loading="lazy" src="${img(c.img)}" alt="${c.n}" /></div>
+      <div class="card-body"><h3>${c.n}</h3><p class="sub">${c.s}</p></div>
+    </article>`
+  ).join("");
+}
 
+function renderGallery() {
+  const el = $("#galleryGrid");
+  if (!el) return;
+  el.innerHTML = GALLERY.map(
+    (g, i) => `<div class="gallery-item reveal"><img loading="lazy" src="${img(g, 600)}" alt="Traveller photo ${i + 1}" /></div>`
+  ).join("");
+}
 
+function renderBlog() {
+  const el = $("#blogGrid");
+  if (!el) return;
+  el.innerHTML = BLOG.map(
+    (b) => `
+    <article class="card reveal">
+      <div class="thumb"><img loading="lazy" src="${img(b.img)}" alt="${b.t}" /></div>
+      <div class="card-body"><h3>${b.t}</h3><p class="sub">${b.s}</p><a class="btn-ghost" href="#blog">Read story →</a></div>
+    </article>`
+  ).join("");
+}
 
-/* =====================================================================
-   Scoped JS — only runs inside .trips, safe for the rest of the site
-   ===================================================================== */
-document.addEventListener('DOMContentLoaded', () => {
-  const root = document.querySelector('.trips');
-  if (!root) return;
+function renderMarquee() {
+  const el = $("#marquee");
+  if (!el) return;
+  const row = PARTNERS.map((p) => `<span>${p}</span>`).join("");
+  el.innerHTML = row + row;
+}
 
-  /* ---------- INTERNATIONAL carousel ---------- */
-  const track = root.querySelector('#intlTrack');
-  const prevIntl = root.querySelector('#intlPrev');
-  const nextIntl = root.querySelector('#intlNext');
-  const cards = track ? track.querySelectorAll('.intl-card') : [];
+/* ---------------- FAQ ---------------- */
+function renderFaq() {
+  const el = $("#faqList");
+  if (!el) return;
+  el.innerHTML = FAQS.map(
+    (f) => `
+    <div class="faq-item">
+      <button class="faq-q" type="button">${f.q}<span>+</span></button>
+      <div class="faq-a"><p>${f.a}</p></div>
+    </div>`
+  ).join("");
+  el.addEventListener("click", (e) => {
+    const btn = e.target.closest(".faq-q");
+    if (!btn) return;
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains("open");
+    $$(".faq-item", el).forEach((i) => i.classList.remove("open"));
+    if (!wasOpen) item.classList.add("open");
+  });
+}
 
-  let intlIndex = 0;
+/* ---------------- International slider ---------------- */
+function initIntl() {
+  const track = $("#intlTrack");
+  if (!track) return;
+  track.innerHTML = INTERNATIONAL.map(
+    (c) => `
+    <div class="intl-card">
+      <div class="intl-img"><img loading="lazy" src="${img(c.img)}" alt="${c.n}" /></div>
+      <h3>${c.n} <span>★★★★★</span></h3>
+      <p>${c.d}</p>
+    </div>`
+  ).join("");
 
-  function getVisible() {
-    if (window.innerWidth <= 640) return 1;
-    if (window.innerWidth <= 1024) return 2;
-    return 3;
-  }
+  const step = () => track.clientWidth * 0.6;
+  $("#intlNext")?.addEventListener("click", () => {
+    const max = track.scrollWidth - track.clientWidth - 4;
+    track.scrollLeft = track.scrollLeft >= max ? 0 : track.scrollLeft + step();
+  });
+  $("#intlPrev")?.addEventListener("click", () => {
+    track.scrollLeft = track.scrollLeft <= 4 ? track.scrollWidth : track.scrollLeft - step();
+  });
+}
 
-  function updateIntl() {
-    if (!track || !cards.length) return;
-    const visible = getVisible();
-    const maxIndex = Math.max(0, cards.length - visible);
-    if (intlIndex > maxIndex) intlIndex = maxIndex;
-    const cardWidth = cards[0].offsetWidth + 16;
-    track.scrollTo({ left: intlIndex * cardWidth, behavior: 'smooth' });
-  }
+/* ---------------- India explorations ---------------- */
+function initIndia() {
+  const slidesEl = $("#featuredSlides");
+  const gridEl = $("#indiaGrid");
+  if (!slidesEl || !gridEl) return;
 
-  if (nextIntl) {
-    nextIntl.addEventListener('click', () => {
-      const visible = getVisible();
-      const maxIndex = Math.max(0, cards.length - visible);
-      intlIndex = Math.min(intlIndex + 1, maxIndex);
-      updateIntl();
+  slidesEl.innerHTML = FEATURED_INDIA.map(
+    (f, i) => `<div class="featured-slide ${i === 0 ? "active" : ""}"><img loading="lazy" src="${img(f.img, 1000)}" alt="${f.n}" /></div>`
+  ).join("");
+
+  gridEl.innerHTML = INDIA_GRID.map(
+    (d) => `
+    <a class="dest-card" href="#packages">
+      <img loading="lazy" src="${img(d.img, 600)}" alt="${d.n}" />
+      <span class="overlay"><span class="label">${d.n}</span></span>
+    </a>`
+  ).join("");
+
+  let idx = 0;
+  const slides = $$(".featured-slide", slidesEl);
+  const nameEl = $("#featuredName");
+  const show = (n) => {
+    idx = (n + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle("active", i === idx));
+    if (nameEl) nameEl.textContent = FEATURED_INDIA[idx].n;
+  };
+  $("#featNext")?.addEventListener("click", () => show(idx + 1));
+  $("#featPrev")?.addEventListener("click", () => show(idx - 1));
+  setInterval(() => show(idx + 1), 5000);
+}
+
+/* ---------------- Testimonials ---------------- */
+function initTestimonials() {
+  const el = $("#testiSlides");
+  if (!el) return;
+  el.innerHTML = TESTIMONIALS.map(
+    (t) => `
+    <div class="slide">
+      <span class="stars">★★★★★</span>
+      <p>“${t.q}”</p>
+      <h4 class="gold-text">${t.n}</h4>
+      <p style="font-style:normal;font-size:var(--fs-xs);color:var(--muted)">${t.r}</p>
+    </div>`
+  ).join("");
+
+  let i = 0;
+  const go = (n) => {
+    i = (n + TESTIMONIALS.length) % TESTIMONIALS.length;
+    el.style.transform = `translateX(-${i * 100}%)`;
+  };
+  $("#testiNext")?.addEventListener("click", () => go(i + 1));
+  $("#testiPrev")?.addEventListener("click", () => go(i - 1));
+  setInterval(() => go(i + 1), 6000);
+}
+
+/* ---------------- Navbar ---------------- */
+function initNav() {
+  const navbar = $("#navbar");
+  const links = $("#navLinks");
+
+  $("#burger")?.addEventListener("click", () => links?.classList.toggle("open"));
+  links?.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") links.classList.remove("open");
+  });
+
+  window.addEventListener("scroll", () => {
+    navbar?.classList.toggle("scrolled", window.scrollY > 20);
+    $("#toTop")?.classList.toggle("show", window.scrollY > 500);
+  });
+
+  $("#toTop")?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+  // theme
+  const themeBtn = $("#themeToggle");
+  const saved = localStorage.getItem("travelx-theme");
+  if (saved === "light") { document.body.classList.add("light"); if (themeBtn) themeBtn.textContent = "☀"; }
+  themeBtn?.addEventListener("click", () => {
+    const light = document.body.classList.toggle("light");
+    themeBtn.textContent = light ? "☀" : "🌙";
+    localStorage.setItem("travelx-theme", light ? "light" : "dark");
+  });
+
+  // nav search
+  const search = $("#navSearch");
+  const input = $("#navSearchInput");
+  const results = $("#navSearchResults");
+  $("#searchToggle")?.addEventListener("click", () => {
+    search?.classList.toggle("open");
+    if (search?.classList.contains("open")) input?.focus();
+  });
+  input?.addEventListener("input", () => {
+    const q = input.value.trim().toLowerCase();
+    if (!q) { results.innerHTML = ""; return; }
+    const hits = [
+      ...DESTINATIONS.map((d) => `${d.name} — ${d.country}`),
+      ...PACKAGES.map((p) => `${p.t} — ${p.p}`),
+    ].filter((s) => s.toLowerCase().includes(q)).slice(0, 6);
+    results.innerHTML = hits.length
+      ? hits.map((h) => `<li>${h}</li>`).join("")
+      : `<li>No results for “${input.value}”</li>`;
+  });
+
+  // active link on scroll
+  const sections = $$("section[id]");
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY + 120;
+    let current = "home";
+    sections.forEach((s) => { if (s.offsetTop <= y) current = s.id; });
+    $$(".nav-links > a").forEach((a) =>
+      a.classList.toggle("active", a.getAttribute("href") === `#${current}`)
+    );
+  });
+}
+
+/* ---------------- Hero search ---------------- */
+function initHeroSearch() {
+  $("#heroTabs")?.addEventListener("click", (e) => {
+    const tab = e.target.closest(".tab");
+    if (!tab) return;
+    $$("#heroTabs .tab").forEach((t) => t.classList.remove("active"));
+    tab.classList.add("active");
+  });
+
+  const input = $("#destInput");
+  const box = $("#suggestions");
+  input?.addEventListener("input", () => {
+    const q = input.value.trim().toLowerCase();
+    const hits = DESTINATIONS.filter((d) => d.name.toLowerCase().includes(q));
+    if (!q || !hits.length) { box.hidden = true; return; }
+    box.hidden = false;
+    box.innerHTML = hits.slice(0, 5).map((d) => `<li>${d.name}, ${d.country}</li>`).join("");
+  });
+  box?.addEventListener("click", (e) => {
+    if (e.target.tagName !== "LI") return;
+    input.value = e.target.textContent.split(",")[0];
+    box.hidden = true;
+  });
+  document.addEventListener("click", (e) => {
+    if (box && !box.contains(e.target) && e.target !== input) box.hidden = true;
+  });
+
+  $("#searchBar")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const where = input?.value.trim();
+    const note = $("#searchNote");
+    if (note) {
+      note.textContent = where
+        ? `Searching ${$("#heroTabs .tab.active")?.textContent.trim()} for “${where}”…`
+        : "Please enter a destination to search.";
+    }
+  });
+
+  // popular chips
+  $$(".popular span").forEach((chip) =>
+    chip.addEventListener("click", () => {
+      if (input) input.value = chip.textContent.replace(/[^\p{L}\s]/gu, "").trim();
+      input?.focus();
+    })
+  );
+}
+
+/* ---------------- Counters ---------------- */
+function initCounters() {
+  const counters = $$(".count");
+  if (!counters.length) return;
+  const run = (el) => {
+    const target = Number(el.dataset.target);
+    const start = performance.now();
+    const dur = 1600;
+    const tick = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      el.textContent = Math.floor(target * (1 - Math.pow(1 - p, 3))).toLocaleString("en-IN");
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) { run(en.target); io.unobserve(en.target); }
     });
+  }, { threshold: 0.4 });
+  counters.forEach((c) => io.observe(c));
+}
+
+/* ---------------- Countdown ---------------- */
+function initCountdown() {
+  const el = $("#clock");
+  if (!el) return;
+  const end = new Date();
+  end.setHours(23, 59, 59, 999);
+  const tick = () => {
+    let diff = Math.max(0, end - new Date());
+    const h = String(Math.floor(diff / 3.6e6)).padStart(2, "0");
+    const m = String(Math.floor((diff % 3.6e6) / 6e4)).padStart(2, "0");
+    const s = String(Math.floor((diff % 6e4) / 1000)).padStart(2, "0");
+    el.textContent = `${h} : ${m} : ${s}`;
+  };
+  tick();
+  setInterval(tick, 1000);
+}
+
+/* ---------------- Newsletter ---------------- */
+function initNewsletter() {
+  $("#newsletterForm")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = $("#newsletterEmail");
+    const note = $("#newsletterNote");
+    if (note) note.textContent = `Thanks! We'll send deals to ${email.value}.`;
+    e.target.reset();
+  });
+}
+
+/* ---------------- Reveal on scroll ---------------- */
+let revealObserver;
+function revealInit() {
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            en.target.classList.add("visible");
+            revealObserver.unobserve(en.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
   }
+  $$(".reveal:not(.visible)").forEach((el) => revealObserver.observe(el));
+}
 
-  if (prevIntl) {
-    prevIntl.addEventListener('click', () => {
-      intlIndex = Math.max(intlIndex - 1, 0);
-      updateIntl();
-    });
-  }
-
-  window.addEventListener('resize', updateIntl);
-
-  /* ---------- INDIA featured carousel ---------- */
-  const slides = root.querySelectorAll('.featured-slide');
-  const nameEl = root.querySelector('#featuredName');
-  const prevBtn = root.querySelector('#prevBtn');
-  const nextBtn = root.querySelector('#nextBtn');
-
-  let current = 0;
-  let autoTimer = null;
-  const AUTO_MS = 4500;
-
-  function showSlide(index) {
-    slides.forEach((s, i) => s.classList.toggle('active', i === index));
-    if (nameEl) nameEl.textContent = slides[index]?.dataset.name || '';
-    current = index;
-  }
-
-  function next() {
-    if (!slides.length) return;
-    showSlide((current + 1) % slides.length);
-  }
-
-  function prev() {
-    if (!slides.length) return;
-    showSlide((current - 1 + slides.length) % slides.length);
-  }
-
-  function startAuto() {
-    stopAuto();
-    autoTimer = setInterval(next, AUTO_MS);
-  }
-
-  function stopAuto() {
-    if (autoTimer) clearInterval(autoTimer);
-  }
-
-  if (nextBtn) nextBtn.addEventListener('click', () => { next(); startAuto(); });
-  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); startAuto(); });
-
-  const card = root.querySelector('.featured-card');
-  if (card) {
-    card.addEventListener('mouseenter', stopAuto);
-    card.addEventListener('mouseleave', startAuto);
-  }
-
-  let touchStartX = 0;
-  if (card) {
-    card.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    card.addEventListener('touchend', (e) => {
-      const diff = e.changedTouches[0].screenX - touchStartX;
-      if (Math.abs(diff) > 40) {
-        if (diff < 0) next();
-        else prev();
-        startAuto();
-      }
-    }, { passive: true });
-  }
-
-  if (slides.length) {
-    showSlide(0);
-    startAuto();
-  }
+/* ---------------- boot ---------------- */
+document.addEventListener("DOMContentLoaded", () => {
+  renderDestinations();
+  renderWhy();
+  renderFilters();
+  renderPackages();
+  renderCategories();
+  renderCountries();
+  renderGallery();
+  renderBlog();
+  renderMarquee();
+  renderFaq();
+  initIntl();
+  initIndia();
+  initTestimonials();
+  initNav();
+  initHeroSearch();
+  initCounters();
+  initCountdown();
+  initNewsletter();
+  revealInit();
 });
