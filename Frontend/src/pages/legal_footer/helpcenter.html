@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help Center | Voyageora Travels</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="legal.css" />
+  <style>
+    /* small supplement for the FAQ accordion + quick-help cards — reuses legal.css tokens */
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: var(--sp-section);
+    }
+    .help-topic {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      text-align: center;
+      transition: transform var(--dur-fast), border-color var(--dur-fast);
+    }
+    .help-topic:hover { transform: translateY(-4px); border-color: rgba(245,185,66,0.35); }
+    .help-topic .emoji { font-size: 28px; margin-bottom: 10px; }
+    .help-topic h3 { font-size: var(--fs-base); margin-bottom: 6px; }
+    .help-topic p { font-size: var(--fs-xs); color: var(--muted); margin: 0; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 4px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      font-size: var(--fs-base);
+      font-weight: 600;
+      color: var(--text);
+      padding: 16px 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      color: var(--gold2);
+      font-size: 20px;
+      flex-shrink: 0;
+      transition: transform var(--dur-fast);
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item p {
+      font-size: var(--fs-sm);
+      color: var(--muted);
+      padding: 0 4px 18px;
+      line-height: 1.7;
+    }
+    .contact-cta {
+      background: var(--gradient-gold-soft);
+      border: 1px solid rgba(245,185,66,0.25);
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      margin-top: 32px;
+    }
+    .contact-cta h3 { margin-bottom: 6px; }
+    .contact-cta p { font-size: var(--fs-sm); color: var(--muted); margin-bottom: 18px; }
+    @media (max-width: 700px) { .help-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="../Dashboard/index.html" class="navbar-brand">
+      <div class="navbar-logo"><img src="/Frontend/public/images/logo.png" alt="TravelX"></div>
+      <span>TravelX</span>
+    </a>
+    <ul class="navbar-links">
+      <li><a href="../Dashboard/index.html">Home</a></li>
+      <li><a href="../Travel/packages.html">Packages</a></li>
+      <li><a href="../Travel/hotels.html">Hotels</a></li>
+      <li><a href="../Travel/flights.html">Flights</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="../passworddrama/signup.html" class="signup-btn">Sign Up</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Open menu">☰</button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <button class="mobile-close" style="position:absolute;top:24px;right:28px;background:none;color:#fff;font-size:28px;">✕</button>
+    <a href="../Dashboard/index.html">Home</a>
+    <a href="../Travel/packages.html">Packages</a>
+    <a href="../Travel/hotels.html">Hotels</a>
+    <a href="../Travel/flights.html">Flights</a>
+    <a href="contact.html">Contact</a>
+    <a href="../passworddrama/signup.html">Sign Up</a>
+  </div>
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <div class="breadcrumb"><a href="../Dashboard/index.html">Home</a> · Help Center</div>
+      <h1>Help Center</h1>
+      <p>Answers to the questions we get most — about bookings, payments, cancellations, and your account.</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <section class="legal-section">
+    <div class="section-inner">
+
+      <div class="help-grid">
+        <div class="help-topic">
+          <div class="emoji">🎫</div>
+          <h3>Bookings</h3>
+          <p>Manage, modify or track a booking</p>
+        </div>
+        <div class="help-topic">
+          <div class="emoji">💳</div>
+          <h3>Payments</h3>
+          <p>Refunds, invoices & payment methods</p>
+        </div>
+        <div class="help-topic">
+          <div class="emoji">👤</div>
+          <h3>Account</h3>
+          <p>Login, profile & password help</p>
+        </div>
+      </div>
+
+      <div class="legal-card">
+        <span class="last-updated">Frequently Asked Questions</span>
+
+        <h2>Bookings & Travel</h2>
+        <details class="faq-item" open>
+          <summary>How do I view or manage my bookings?</summary>
+          <p>Go to <a href="../Booking/booking-history.html">My Bookings</a> from your profile menu. You'll see every upcoming and past booking, along with options to view details, download vouchers, or request changes.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I change my travel dates after booking?</summary>
+          <p>Most hotel and package bookings can be rescheduled up to 48 hours before check-in, subject to availability and any fare difference. Flight date changes depend on the airline's fare rules. Head to My Bookings and select "Modify" on the relevant booking.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What's your cancellation policy?</summary>
+          <p>Cancellation terms vary by booking type and how close to departure you cancel. Full details are on our <a href="../Admin_and_legal/cancellation-policy.html">Cancellation Policy</a> page.</p>
+        </details>
+
+        <h2>Payments & Refunds</h2>
+        <details class="faq-item">
+          <summary>What payment methods do you accept?</summary>
+          <p>We accept all major credit and debit cards, UPI, net banking, and popular wallets. All payments are processed through PCI-DSS compliant gateways — we never store your full card number.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How long do refunds take?</summary>
+          <p>Approved refunds are processed within 5–7 business days, though it can take a few extra days to reflect depending on your bank or card issuer.</p>
+        </details>
+
+        <h2>Account & Access</h2>
+        <details class="faq-item">
+          <summary>I forgot my password — what do I do?</summary>
+          <p>Go to the <a href="../passworddrama/signin.html">Sign In</a> page and click "Forgot password?" to receive a reset link by email.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I update my profile or notification settings?</summary>
+          <p>Visit your <a href="profile.html">Profile</a> to update personal details, or <a href="settings.html">Settings</a> to manage notifications, password, and privacy preferences.</p>
+        </details>
+      </div>
+
+      <div class="contact-cta">
+        <h3>Still need help?</h3>
+        <p>Our support team typically responds within a few hours.</p>
+        <a href="contact.html" class="signup-btn">Contact Support</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="../Dashboard/index.html" class="navbar-brand">
+          <div class="navbar-logo"><img src="/Frontend/public/images/logo.png" alt="TravelX"></div>
+          <span>TravelX</span>
+        </a>
+        <p>Discover the world with confidence. Premium travel packages, hotels, and flights curated for unforgettable journeys.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../Travel/packages.html">Packages</a></li>
+          <li><a href="../Travel/hotels.html">Hotels</a></li>
+          <li><a href="../Travel/flights.html">Flights</a></li>
+          <li><a href="../Travel/destinations.html">Destinations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../company/about-us.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="../company/careers.html">Careers</a></li>
+          <li><a href="../Information/blogs.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="../Admin_and_legal/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../Admin_and_legal/terms-and-conditions.html">Terms & Conditions</a></li>
+          <li><a href="../Admin_and_legal/cancellation-policy.html">Cancellation Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 TravelX Travels. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

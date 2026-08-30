@@ -936,3 +936,6 @@ Glass Card
     display: block;
     margin: 0 auto;
 }
+
+/* ---------- footer ---------- */
+.cp-footer { border-top: 1px solid var(--border); padding: 26px var(--container-pad); text-align: center; color: var(--muted); font-size: var(--fs-xs); }

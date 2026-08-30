@@ -516,3 +516,7 @@ a:hover { text-decoration: underline; }
   .form-wrap h1 { font-size: 26px; }
   .submit-btn { font-size: 15px; padding: 16px; }
 }
+
+
+/* ---------- footer ---------- */
+.cp-footer { border-top: 1px solid var(--border); padding: 26px var(--container-pad); text-align: center; color: var(--muted); font-size: var(--fs-xs); }
