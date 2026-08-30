@@ -75,6 +75,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 img { max-width: 100%; display: block; }
 :focus-visible { outline: 2px solid var(--gold2); outline-offset: 2px; }
 
+.bg-img {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 /* ---------- shared top bar ---------- */
 .bk-topbar {
   display: flex; align-items: center; justify-content: space-between;
