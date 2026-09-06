@@ -1,4 +1,4 @@
-package com.travelx.backend.dto;
+package com.travelx.backend.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

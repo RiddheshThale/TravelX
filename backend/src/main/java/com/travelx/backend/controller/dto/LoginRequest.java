@@ -1,4 +1,4 @@
-package com.travelx.backend.dto;
+package com.travelx.backend.controller.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

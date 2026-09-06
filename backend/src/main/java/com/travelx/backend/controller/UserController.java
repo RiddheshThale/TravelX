@@ -1,6 +1,6 @@
 package com.travelx.backend.controller;
 
-import com.travelx.backend.dto.RegisterRequest;
+import com.travelx.backend.controller.dto.RegisterRequest;
 import com.travelx.backend.entity.User;
 import com.travelx.backend.service.UserService;
 import jakarta.validation.Valid;
