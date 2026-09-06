@@ -53,6 +53,13 @@ const INTERNATIONAL = [
   { n: "Thailand", d: "Lively cities, golden temples and crystal-clear beaches. From Bangkok's buzz to calm islands and legendary street food.", img: "photo-1528181304800-259b08848526" },
   { n: "Japan", d: "Ancient temples meet futuristic cities. Cherry blossoms in Kyoto, neon streets in Tokyo, and unmatched hospitality.", img: "photo-1492571350019-22de08371fd3" },
   { n: "Italy", d: "A dream for history and food lovers — Rome's ruins, Venice's canals and Tuscany's vineyards, with pasta and gelato throughout.", img: "photo-1523906834658-6e24ef2386f9" },
+  { n: "Switzerland", d: "Snow-capped Alps, pristine lakes and charming villages. Ideal for skiing, hiking and indulging in Swiss chocolate.", img: "photo-1525625293386-3f8f99389edd" },
+  { n: "Singapore", d: "A city-state of contrasts — futuristic architecture, lush gardens and a melting pot of cultures and cuisines.", img: "photo-1477587458883-47145ed94245" },
+  {
+  n: "Dubai", d: "A city of superlatives — towering skyscrapers, luxury shopping and desert adventures, blending modernity with Arabian charm.", img: "photo-1512453979798-5ea266f8880c"
+  },
+  { n: "Maldives", d: "A tropical paradise of overwater bungalows, turquoise waters and vibrant marine life — perfect for honeymooners and divers.", img: "photo-1514282401047-d79a71a590e8"},
+  { n: "New Zealand", d: "A land of breathtaking landscapes — fjords, mountains and beaches. Ideal for adventure sports and nature lovers.", img: "photo-1595815771614-ade9d652a65d" },
 ];
 
 const FEATURED_INDIA = [
@@ -60,6 +67,14 @@ const FEATURED_INDIA = [
   { n: "Kerala", img: "photo-1602216056096-3b40cc0c9944" },
   { n: "Andaman", img: "photo-1544644181-1484b3fdfc62" },
   { n: "Udaipur", img: "photo-1477587458883-47145ed94245" },
+  { n: "Darjeeling", img: "photo-1626621341517-bbf3d9990a23" },
+  { n: "Rishikesh", img: "photo-1595815771614-ade9d652a65d" },
+  { n: "Spiti", img: "photo-1581793745862-99fde7fa73d2" },
+  { n: "Ladakh", img: "photo-1512343879784-a960bf40e7f2" },
+  { n: "Sikkim", img: "photo-1528181304800-259b08848526" },{ n: "Meghalaya", img: "photo-1537996194471-e657df975ab4" },
+  { n: "Rajasthan", img: "photo-1512453979798-5ea266f8880c" },
+  { n: "Himachal Pradesh", img: "photo-1525625293386-3f8f99389edd" },
+  { n: "Mizoram", img: "photo-1492571350019-22de08371fd3" },
 ];
 
 const INDIA_GRID = [

@@ -165,10 +165,18 @@ button, input, select { font-family: inherit; }
 
 .nav-inner { display: flex; align-items: center; gap: 20px; height: var(--nav-h); }
 
-.logo {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: "Poppins", sans-serif; font-weight: 800;
-  font-size: clamp(18px, 2vw, 22px); letter-spacing: -0.4px; flex-shrink: 0;
+.nav-logo {
+  width: 50px;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: clamp(18px, 2vw, 22px);
+  letter-spacing: -0.4px;
+  flex-shrink: 0;
+  border:#c8c8d0
 }
 
 .nav-links {
@@ -225,17 +233,15 @@ button, input, select { font-family: inherit; }
 
 /* ---------- 5. Hero ---------- */
 .hero {
+  height: 1500px; width: 100%;
   position: relative;
   padding: calc(var(--nav-h) + clamp(48px, 8vw, 80px)) 0 clamp(60px, 8vw, 100px);
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background:
-    linear-gradient(135deg, rgba(13, 13, 16, 0.5), rgba(26, 26, 34, 0.5)),
-    url("C:/Users/Laksh/OneDrive/Desktop/TravelX/Frontend/public/images/hero.jpg");
-
+  background-image: url("/Frontend/public/pietro-de-grandi-T7K4aEPoGGk-unsplash.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: cover;
   background-repeat: no-repeat;
 }
 .hero-overlay {
@@ -515,7 +521,7 @@ button, input, select { font-family: inherit; }
 
 .intl-img {
   border-radius: var(--radius-lg); overflow: hidden;
-  height: clamp(240px, 40vw, 360px); margin-bottom: 12px;
+  height: clamp(280px, 42vw, 420px); margin-bottom: 12px;
   box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.6);
 }
 .intl-img img { transition: transform 0.5s var(--ease); width: 100%; height: 100%; object-fit: cover; }
@@ -524,6 +530,17 @@ button, input, select { font-family: inherit; }
 .intl-card h3 {
   font-family: "Poppins", sans-serif; font-size: var(--fs-md);
   font-weight: 700; color: var(--gold2); margin: 0 0 8px;
+  font-size: calc(var(--fs-md) * 1.15);
+}
+.intl-card p {
+    font-size: calc(var(--fs-xs) * 1.1);
+    max-width: 340px;
+}
+
+.intl-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
 }
 .intl-card h3 span { font-size: 0.85em; letter-spacing: 1px; }
 .intl-card p { font-size: var(--fs-xs); color: var(--muted); line-height: 1.65; max-width: 280px; margin: 0 auto; }
@@ -589,7 +606,7 @@ button, input, select { font-family: inherit; }
 
 .featured-card {
   position: relative; border-radius: var(--radius-lg); overflow: hidden;
-  background: #1a1a20; min-height: 300px; box-shadow: 0 14px 36px -14px rgba(0, 0, 0, 0.65);
+  background: #1a1a20; min-height: 320px; box-shadow: 0 14px 36px -14px rgba(0, 0, 0, 0.65);
 }
 .featured-slides { position: relative; width: 100%; height: 100%; min-height: 300px; }
 .featured-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.6s var(--ease); pointer-events: none; }
