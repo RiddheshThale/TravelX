@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Wishlist | Voyageora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0d;
+      --bg-elevated: #111116;
+      --panel: #17171c;
+      --surface: #1c1c23;
+      --surface-2: #232329;
+      --text: #f6f6f8;
+      --text-dim: #c7c7d1;
+      --muted: #9797a3;
+      --border: rgba(255, 255, 255, 0.12);
+      --gold1: #ffe29a;
+      --gold2: #f5b942;
+      --gold3: #d9932a;
+      --gold-ink: #241a05;
+      --gradient-gold: linear-gradient(100deg, var(--gold1), var(--gold2) 45%, var(--gold3));
+      --gradient-gold-soft: linear-gradient(135deg, rgba(255, 226, 154, 0.16), rgba(245, 185, 66, 0.05));
+      --shadow-gold: 0 18px 45px -18px rgba(245, 185, 66, 0.55);
+      --shadow-gold-lg: 0 28px 70px -20px rgba(245, 185, 66, 0.4);
+      --shadow-card: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+      --radius-sm: 10px;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --dur-fast: 0.22s;
+      --dur: 0.4s;
+      --fs-xs: clamp(0.72rem, 0.68rem + 0.18vw, 0.82rem);
+      --fs-sm: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+      --fs-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --fs-md: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+      --fs-lg: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem);
+      --fs-hero: clamp(2.4rem, 1.8rem + 3vw, 3.8rem);
+      --sp-section: clamp(48px, 7vw, 100px);
+      --container-pad: clamp(16px, 4vw, 40px);
+      --danger: #f87171;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: radial-gradient(1000px 500px at 80% -5%, rgba(245, 185, 66, 0.07), transparent 55%), var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: var(--fs-base);
+      line-height: 1.65;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: "Poppins", sans-serif; line-height: 1.2; letter-spacing: -0.01em; }
+    a { color: inherit; text-decoration: none; transition: color var(--dur-fast); }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+    :focus-visible { outline: 2px solid var(--gold2); outline-offset: 3px; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; padding: 0 var(--container-pad); }
+
+    /* Navbar */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--container-pad); height: 68px;
+      backdrop-filter: blur(20px) saturate(160%);
+      background: color-mix(in srgb, var(--panel) 72%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .navbar-logo {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--gradient-gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; box-shadow: var(--shadow-gold); flex-shrink: 0;
+      transition: transform var(--dur-fast);
+    }
+    .navbar-logo:hover { transform: scale(1.08) rotate(6deg); }
+    .navbar-brand {
+      display: flex; align-items: center; gap: 12px;
+      font-family: "Poppins", sans-serif; font-weight: 800;
+      font-size: clamp(17px, 2vw, 20px); color: var(--text);
+    }
+    .navbar-links {
+      display: flex; align-items: center; gap: 28px;
+      font-weight: 500; font-size: var(--fs-sm);
+    }
+    .navbar-links a {
+      position: relative; color: var(--muted); padding: 6px 0;
+    }
+    .navbar-links a::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      height: 2px; width: 0; background: var(--gradient-gold);
+      border-radius: 2px; transition: width var(--dur) var(--ease);
+    }
+    .navbar-links a:hover, .navbar-links a.active { color: var(--text); }
+    .navbar-links a:hover::after, .navbar-links a.active::after { width: 100%; }
+    .signup-btn {
+      background: var(--gradient-gold); color: var(--gold-ink);
+      font-weight: 700; font-size: var(--fs-sm);
+      padding: 10px 20px; border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-gold);
+      transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+    }
+    .signup-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold-lg); }
+    .nav-toggle { display: none; background: transparent; color: var(--text); font-size: 24px; padding: 6px; }
+    .nav-toggle:hover { color: var(--gold2); }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: color-mix(in srgb, var(--bg) 96%, transparent);
+      backdrop-filter: blur(16px); z-index: 99;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 24px; opacity: 0; pointer-events: none;
+      transition: opacity 0.35s var(--ease);
+    }
+    .mobile-menu.open { display: flex; opacity: 1; pointer-events: auto; }
+    .mobile-menu a {
+      font-size: var(--fs-lg); font-weight: 600;
+      font-family: "Poppins", sans-serif; color: var(--text-dim);
+    }
+    .mobile-menu a:hover { color: var(--gold2); }
+    .mobile-close {
+      position: absolute; top: 22px; right: 26px;
+      background: none; color: var(--text); font-size: 28px;
+    }
+
+    /* Hero */
+    .page-hero {
+      min-height: 200px;
+      padding: clamp(70px, 10vw, 100px) var(--container-pad) clamp(36px, 4vw, 48px);
+      background:
+        radial-gradient(ellipse at 25% 20%, rgba(245, 185, 66, 0.1) 0%, transparent 55%),
+        linear-gradient(160deg, #14141a 0%, var(--bg) 100%);
+      display: flex; align-items: flex-end;
+      border-radius: 0 0 28px 28px;
+    }
+    .page-hero-content { max-width: 1100px; margin: 0 auto; width: 100%; }
+    .page-hero .breadcrumb { font-size: var(--fs-xs); color: var(--muted); margin-bottom: 12px; }
+    .page-hero .breadcrumb a:hover { color: var(--gold2); }
+    .page-hero h1 {
+      font-size: var(--fs-hero); font-weight: 800;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .page-hero p { margin-top: 10px; font-size: var(--fs-sm); color: var(--text-dim); max-width: 480px; }
+
+    /* Wishlist */
+    .wishlist-section { padding: var(--sp-section) 0; }
+
+    .wishlist-header {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px; margin-bottom: 28px;
+    }
+    .wishlist-header h2 {
+      font-size: var(--fs-md); font-weight: 700; color: var(--text);
+    }
+    .wishlist-header .count {
+      font-size: var(--fs-sm); color: var(--muted); font-weight: 400;
+    }
+    .sort-select {
+      padding: 10px 36px 10px 16px;
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); color: var(--text);
+      font-size: var(--fs-sm); font-family: inherit;
+      appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%239797a3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+    }
+    .sort-select:focus {
+      outline: none; border-color: var(--gold2);
+      box-shadow: 0 0 0 3px rgba(245, 185, 66, 0.18);
+    }
+    .sort-select option { background: var(--panel); }
+
+    .wishlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .wish-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: border-color var(--dur-fast), transform var(--dur-fast);
+      animation: fadeUp 0.5s var(--ease) both;
+      display: flex; flex-direction: column;
+    }
+    .wish-card:hover {
+      border-color: rgba(245, 185, 66, 0.35);
+      transform: translateY(-4px);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .wish-img {
+      height: 180px;
+      background: linear-gradient(145deg, #1c1c23 0%, #2a2535 50%, #1a1a22 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+    }
+    .wish-img .remove {
+      position: absolute; top: 12px; right: 12px;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(10, 10, 13, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      color: var(--text-dim); font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all var(--dur-fast); cursor: pointer;
+    }
+    .wish-img .remove:hover {
+      background: rgba(248, 113, 113, 0.2);
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+    .wish-img .tag {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--gradient-gold); color: var(--gold-ink);
+      font-size: var(--fs-xs); font-weight: 700;
+      padding: 4px 10px; border-radius: var(--radius-pill);
+    }
+
+    .wish-body {
+      padding: 20px; flex: 1;
+      display: flex; flex-direction: column;
+    }
+    .wish-body .location {
+      font-size: var(--fs-xs); color: var(--muted); margin-bottom: 6px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .wish-body h3 {
+      font-size: var(--fs-base); font-weight: 700; color: var(--text);
+      margin-bottom: 8px; line-height: 1.3;
+    }
+    .wish-body .desc {
+      font-size: var(--fs-xs); color: var(--muted);
+      line-height: 1.6; margin-bottom: 16px; flex: 1;
+    }
+    .wish-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .wish-price {
+      font-family: "Poppins", sans-serif;
+      font-size: var(--fs-md); font-weight: 700; color: var(--gold2);
+    }
+    .wish-price span {
+      font-size: var(--fs-xs); font-weight: 500; color: var(--muted);
+      text-decoration: line-through; margin-left: 6px;
+    }
+    .btn-sm {
+      padding: 8px 16px; border-radius: var(--radius-pill);
+      font-size: var(--fs-xs); font-weight: 600;
+      background: var(--gradient-gold); color: var(--gold-ink);
+      box-shadow: var(--shadow-gold);
+      transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+      white-space: nowrap;
+    }
+    .btn-sm:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-gold-lg);
+    }
+
+    .empty-state {
+      text-align: center; padding: 80px 20px;
+      background: var(--panel); border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      grid-column: 1 / -1;
+    }
+    .empty-state .icon { font-size: 3.5rem; margin-bottom: 16px; opacity: 0.4; }
+    .empty-state h3 { font-size: var(--fs-md); color: var(--text); margin-bottom: 8px; }
+    .empty-state p { font-size: var(--fs-sm); color: var(--muted); margin-bottom: 24px; max-width: 360px; margin-left: auto; margin-right: auto; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 24px; background: var(--gradient-gold);
+      color: var(--gold-ink); border-radius: var(--radius-pill);
+      font-size: var(--fs-sm); font-weight: 700;
+      box-shadow: var(--shadow-gold);
+      transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold-lg); }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 28px; right: 28px;
+      background: var(--panel); border: 1px solid rgba(245, 185, 66, 0.35);
+      color: var(--text); padding: 14px 22px; border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-gold); font-size: var(--fs-sm); font-weight: 500;
+      transform: translateY(100px); opacity: 0;
+      transition: transform 0.4s var(--ease), opacity 0.4s;
+      z-index: 200;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* Footer */
+    .footer { border-top: 1px solid var(--border); background: var(--panel); margin-top: 20px; }
+    .footer-inner {
+      max-width: 1180px; margin: 0 auto;
+      padding: clamp(36px, 5vw, 56px) var(--container-pad) 24px;
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: clamp(24px, 3vw, 40px);
+    }
+    .footer-brand p { font-size: var(--fs-sm); color: var(--muted); line-height: 1.75; margin-top: 14px; max-width: 280px; }
+    .footer-col h4 { font-size: var(--fs-sm); font-weight: 700; color: var(--gold2); margin-bottom: 14px; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: var(--fs-sm); color: var(--muted); transition: color var(--dur-fast), padding-left var(--dur-fast); }
+    .footer-col a:hover { color: var(--gold2); padding-left: 4px; }
+    .footer-bottom {
+      text-align: center; padding: 18px var(--container-pad) 28px;
+      font-size: var(--fs-xs); color: var(--muted); border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 900px) {
+      .navbar-links { display: none; }
+      .nav-toggle { display: block; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .page-hero { border-radius: 0 0 20px 20px; }
+      .wishlist-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ===== Sign Out Modal ===== */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.open {
+      opacity: 1; pointer-events: auto;
+    }
+    .modal {
+      background: #17171c;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 36px 32px;
+      max-width: 400px; width: 100%;
+      text-align: center;
+      box-shadow: 0 28px 70px -20px rgba(0, 0, 0, 0.7);
+      transform: scale(0.92) translateY(16px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.open .modal {
+      transform: scale(1) translateY(0);
+    }
+    .modal-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255, 226, 154, 0.16), rgba(245, 185, 66, 0.05));
+      border: 1.5px solid rgba(245, 185, 66, 0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin: 0 auto 18px;
+      color: #f5b942;
+    }
+    .modal h3 {
+      font-family: "Poppins", sans-serif;
+      font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+      font-weight: 700; color: #f6f6f8;
+      margin-bottom: 10px;
+    }
+    .modal p {
+      font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+      color: #9797a3; line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .modal-actions {
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .modal-actions .btn {
+      flex: 1; min-width: 120px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+      font-weight: 700; font-family: inherit;
+      cursor: pointer; border: none;
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+    .modal-actions .btn-cancel {
+      background: transparent;
+      color: #f5b942;
+      border: 1.5px solid rgba(245, 185, 66, 0.45);
+    }
+    .modal-actions .btn-cancel:hover {
+      background: linear-gradient(135deg, rgba(255, 226, 154, 0.16), rgba(245, 185, 66, 0.05));
+      border-color: #f5b942;
+    }
+    .modal-actions .btn-confirm {
+      background: linear-gradient(100deg, #ffe29a, #f5b942 45%, #d9932a);
+      color: #241a05;
+      box-shadow: 0 18px 45px -18px rgba(245, 185, 66, 0.55);
+    }
+    .modal-actions .btn-confirm:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 28px 70px -20px rgba(245, 185, 66, 0.4);
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">
+      <div class="navbar-logo">✈</div>
+      Voyageora
+    </a>
+    <div class="navbar-links">
+      <a href="#">Home</a>
+      <a href="voyageora-bookings.html">My Bookings</a>
+      <a href="voyageora-wishlist.html" class="active">Wishlist</a>
+      <a href="voyageora-profile.html">Profile</a>
+      <a href="#" class="signup-btn">Sign Out</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+    <a href="#">Home</a>
+    <a href="voyageora-bookings.html">My Bookings</a>
+    <a href="voyageora-wishlist.html">Wishlist</a>
+    <a href="voyageora-profile.html">Profile</a>
+    <a href="#" class="signup-btn">Sign Out</a>
+  </div>
+
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <div class="breadcrumb"><a href="#">Home</a> · My Wishlist</div>
+      <h1>My Wishlist</h1>
+      <p>Save destinations you love and book them when you’re ready to go.</p>
+    </div>
+  </header>
+
+  <section class="wishlist-section">
+    <div class="section-inner">
+      <div class="wishlist-header">
+        <h2>Saved Trips <span class="count" id="itemCount">(8 items)</span></h2>
+        <select class="sort-select" id="sortSelect" aria-label="Sort wishlist">
+          <option value="recent">Recently Added</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="name">Name A–Z</option>
+        </select>
+      </div>
+
+      <div class="wishlist-grid" id="wishlistGrid">
+        <article class="wish-card" data-price="2480" data-name="Swiss Alps Adventure" style="animation-delay: 0.05s">
+          <div class="wish-img">
+            🏔
+            <span class="tag">Popular</span>
+            <button class="remove" title="Remove from wishlist" aria-label="Remove">♡</button>
+          </div>
+          <div class="wish-body">
+            <div class="location">📍 Interlaken, Switzerland</div>
+            <h3>Swiss Alps Adventure</h3>
+            <p class="desc">7-day alpine escape with mountain trails, scenic trains, and lakeside stays.</p>
+            <div class="wish-footer">
+              <div class="wish-price">$2,480 <span>$2,890</span></div>
+              <button class="btn-sm">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="wish-card" data-price="3120" data-name="Maldives Island Escape" style="animation-delay: 0.1s">
+          <div class="wish-img">
+            🏖
+            <button class="remove" title="Remove from wishlist" aria-label="Remove">♡</button>
+          </div>
+          <div class="wish-body">
+            <div class="location">📍 Male, Maldives</div>
+            <h3>Maldives Island Escape</h3>
+            <p class="desc">Overwater villas, private beaches, and sunset cruises in paradise.</p>
+            <div class="wish-footer">
+              <div class="wish-price">$3,120</div>
+              <button class="btn-sm">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="wish-card" data-price="1890" data-name="Tokyo Neon Nights" style="animation-delay: 0.15s">
+          <div class="wish-img">
+            🏯
+            <span class="tag">New</span>
+            <button class="remove" title="Remove from wishlist" aria-label="Remove">♡</button>
+          </div>
+          <div class="wish-body">
+            <div class="location">📍 Tokyo, Japan</div>
+            <h3>Tokyo Neon Nights</h3>
+            <p class="desc">Culture, cuisine, and cyberpunk streets across 6 unforgettable days.</p>
+            <div class="wish-footer">
+              <div class="wish-price">$1,890</div>
+              <button class="btn-sm">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="wish-card" data-price="1650" data-name="Paris City Break" style="animation-delay: 0.2s">
+          <div class="wish-img">
+            🗼
+            <button class="remove" title="Remove from wishlist" aria-label="Remove">♡</button>
+          </div>
+          <div class="wish-body">
+            <div class="location">📍 Paris, France</div>
+            <h3>Paris City Break</h3>
+            <p class="desc">Art, cafés, and romance along the Seine — the classic European escape.</p>
+            <div class="wish-footer">
+              <div class="wish-price">$1,650 <span>$1,890</span></div>
+              <button class="btn-sm">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="wish-card" data-price="2890" data-name="Dubai Desert Safari" style="animation-delay: 0.25s">
+          <div class="wish-img">
+            🏜
+            <button class="remove" title="Remove from wishlist" aria-label="Remove">♡</button>
+          </div>
+          <div class="wish-body">
+            <div class="location">📍 Dubai, UAE</div>
+            <h3>Dubai Desert Safari</h3>
+            <p class="desc">Luxury skyscrapers by day, dune bashing and stargazing by night.</p>
+            <div class="wish-footer">
+              <div class="wish-price">$2,890</div>
+              <button class="btn-sm">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="wish-card" data-price="2200" data-name="Iceland Northern Lights" style="animation-delay: 0.3s">
+          <div class="wish-img">
+            🌋
+            <span class="tag">Limited</span>
+            <button class="remove" title="Remove from wishlist" aria-label="Remove">♡</button>
+          </div>
+          <div class="wish-body">
+            <div class="location">📍 Reykjavik, Iceland</div>
+            <h3>Iceland Northern Lights</h3>
+            <p class="desc">Glaciers, hot springs, and the magic of the aurora borealis.</p>
+            <div class="wish-footer">
+              <div class="wish-price">$2,200</div>
+              <button class="btn-sm">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="wish-card" data-price="1420" data-name="Bali Bliss Retreat" style="animation-delay: 0.35s">
+          <div class="wish-img">
+            🌴
+            <button class="remove" title="Remove from wishlist" aria-label="Remove">♡</button>
+          </div>
+          <div class="wish-body">
+            <div class="location">📍 Ubud, Bali</div>
+            <h3>Bali Bliss Retreat</h3>
+            <p class="desc">Yoga, rice terraces, and temple visits in the Island of the Gods.</p>
+            <div class="wish-footer">
+              <div class="wish-price">$1,420 <span>$1,680</span></div>
+              <button class="btn-sm">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="wish-card" data-price="3750" data-name="Safari Serengeti" style="animation-delay: 0.4s">
+          <div class="wish-img">
+            🦁
+            <button class="remove" title="Remove from wishlist" aria-label="Remove">♡</button>
+          </div>
+          <div class="wish-body">
+            <div class="location">📍 Serengeti, Tanzania</div>
+            <h3>Safari Serengeti</h3>
+            <p class="desc">Big Five game drives and luxury tented camps under African skies.</p>
+            <div class="wish-footer">
+              <div class="wish-price">$3,750</div>
+              <button class="btn-sm">Book Now</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="navbar-brand" style="margin-bottom: 4px;">
+          <div class="navbar-logo" style="width: 32px; height: 32px; font-size: 14px;">✈</div>
+          Voyageora
+        </a>
+        <p>Crafting unforgettable journeys with care, transparency, and a touch of gold.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">Destinations</a></li>
+          <li><a href="#">Packages</a></li>
+          <li><a href="#">Experiences</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="voyageora-refund.html">Refund Request</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Cancellation Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Voyageora. All rights reserved.</div>
+  </footer>
+
+  <div class="toast" id="toast">Removed from wishlist</div>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+    navToggle.addEventListener('click', () => mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    const toast = document.getElementById('toast');
+    const grid = document.getElementById('wishlistGrid');
+    const itemCount = document.getElementById('itemCount');
+
+    function updateCount() {
+      const n = grid.querySelectorAll('.wish-card').length;
+      itemCount.textContent = n === 0 ? '' : `(${n} item${n === 1 ? '' : 's'})`;
+      if (n === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <div class="icon">♡</div>
+            <h3>Your wishlist is empty</h3>
+            <p>Start exploring destinations and save the ones that inspire you.</p>
+            <a href="#" class="btn">Explore Destinations</a>
+          </div>`;
+      }
+    }
+
+    grid.addEventListener('click', e => {
+      const btn = e.target.closest('.remove');
+      if (!btn) return;
+      const card = btn.closest('.wish-card');
+      card.style.transition = 'opacity 0.3s, transform 0.3s';
+      card.style.opacity = '0';
+      card.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        card.remove();
+        updateCount();
+        toast.textContent = 'Removed from wishlist';
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      }, 280);
+    });
+
+    // Sort
+    document.getElementById('sortSelect').addEventListener('change', e => {
+      const cards = [...grid.querySelectorAll('.wish-card')];
+      const val = e.target.value;
+      cards.sort((a, b) => {
+        if (val === 'price-low') return +a.dataset.price - +b.dataset.price;
+        if (val === 'price-high') return +b.dataset.price - +a.dataset.price;
+        if (val === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+      });
+      cards.forEach(c => grid.appendChild(c));
+    });
+  </script>
+
+  <!-- Sign Out Modal -->
+  <div class="modal-overlay" id="signOutModal" role="dialog" aria-modal="true" aria-labelledby="signOutTitle">
+    <div class="modal">
+      <div class="modal-icon">👋</div>
+      <h3 id="signOutTitle">Sign out of Voyageora?</h3>
+      <p>You'll need to sign in again to access your bookings, wishlist, and profile.</p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-cancel" id="signOutCancel">Cancel</button>
+        <button type="button" class="btn btn-confirm" id="signOutConfirm">Yes, Sign Out</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    // ===== Sign Out Modal =====
+    (function() {
+      const modal = document.getElementById('signOutModal');
+      if (!modal) return;
+      const cancelBtn = document.getElementById('signOutCancel');
+      const confirmBtn = document.getElementById('signOutConfirm');
+
+      function openModal(e) {
+        if (e) e.preventDefault();
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('a, button').forEach(el => {
+        const text = (el.textContent || '').trim().toLowerCase();
+        if (text === 'sign out' || text === 'signout') {
+          el.addEventListener('click', openModal);
+        }
+      });
+
+      cancelBtn.addEventListener('click', closeModal);
+      confirmBtn.addEventListener('click', () => {
+        window.location.href = 'voyageora-signed-out.html';
+      });
+      modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+    })();
+  </script>
+
+</body>
+</html>

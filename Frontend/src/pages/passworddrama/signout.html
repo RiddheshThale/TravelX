@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signed Out | Voyageora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0d;
+      --panel: #17171c;
+      --surface: #1c1c23;
+      --text: #f6f6f8;
+      --text-dim: #c7c7d1;
+      --muted: #9797a3;
+      --border: rgba(255, 255, 255, 0.12);
+      --gold1: #ffe29a;
+      --gold2: #f5b942;
+      --gold3: #d9932a;
+      --gold-ink: #241a05;
+      --gradient-gold: linear-gradient(100deg, var(--gold1), var(--gold2) 45%, var(--gold3));
+      --gradient-gold-soft: linear-gradient(135deg, rgba(255, 226, 154, 0.16), rgba(245, 185, 66, 0.05));
+      --shadow-gold: 0 18px 45px -18px rgba(245, 185, 66, 0.55);
+      --shadow-gold-lg: 0 28px 70px -20px rgba(245, 185, 66, 0.4);
+      --shadow-card: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+      --radius-sm: 10px;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --dur-fast: 0.22s;
+      --fs-xs: clamp(0.72rem, 0.68rem + 0.18vw, 0.82rem);
+      --fs-sm: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+      --fs-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --fs-md: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+      --fs-lg: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem);
+      --container-pad: clamp(16px, 4vw, 40px);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background:
+        radial-gradient(900px 450px at 50% 0%, rgba(245, 185, 66, 0.1), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: var(--fs-base);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--container-pad);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2 { font-family: "Poppins", sans-serif; line-height: 1.2; }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(36px, 5vw, 52px);
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      animation: fadeUp 0.6s var(--ease);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    
+}
+
+.logo img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+    border:#f6f6f8 4px solid;
+}
+
+    .check {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--gradient-gold-soft);
+      border: 1.5px solid rgba(245, 185, 66, 0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: var(--gold2);
+      margin: 0 auto 20px;
+      animation: pop 0.45s var(--ease);
+    }
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      font-size: var(--fs-lg); font-weight: 800; color: var(--text);
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: var(--fs-sm); color: var(--muted);
+      line-height: 1.7; margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 100%; padding: 14px 24px;
+      background: var(--gradient-gold); color: var(--gold-ink);
+      border: none; border-radius: var(--radius-pill);
+      font-size: var(--fs-sm); font-weight: 700; font-family: inherit;
+      cursor: pointer; box-shadow: var(--shadow-gold);
+      transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+      text-decoration: none; margin-bottom: 12px;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold-lg); }
+
+    .btn-outline {
+      background: transparent; color: var(--gold2);
+      border: 1.5px solid rgba(245, 185, 66, 0.45); box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: var(--gradient-gold-soft);
+      border-color: var(--gold2); box-shadow: none;
+    }
+
+    .brand {
+      margin-top: 32px; font-size: var(--fs-xs); color: var(--muted);
+    }
+    .brand span {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo"><img src="/Frontend/public/images/logo.png" alt="TravelX Logo" /></div>
+    <div class="check">✓</div>
+    <h1>You're signed out</h1>
+    <p>You've been successfully signed out of your TravelX account. Come back anytime to continue planning your next adventure.</p>
+    <a href="travelx-profile.html" class="btn">Sign In Again</a>
+    <a href="#" class="btn btn-outline">Back to Home</a>
+    <div class="brand">© 2026 <span>TravelX</span></div>
+  </div>
+</body>
+</html>

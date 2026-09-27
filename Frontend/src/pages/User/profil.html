@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile | TravelX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0d;
+      --bg-elevated: #111116;
+      --panel: #17171c;
+      --surface: #1c1c23;
+      --surface-2: #232329;
+      --glass: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --text: #f6f6f8;
+      --text-dim: #c7c7d1;
+      --muted: #9797a3;
+      --border: rgba(255, 255, 255, 0.12);
+      --gold1: #ffe29a;
+      --gold2: #f5b942;
+      --gold3: #d9932a;
+      --gold-ink: #241a05;
+      --gradient-gold: linear-gradient(100deg, var(--gold1), var(--gold2) 45%, var(--gold3));
+      --gradient-gold-soft: linear-gradient(135deg, rgba(255, 226, 154, 0.16), rgba(245, 185, 66, 0.05));
+      --shadow-gold: 0 18px 45px -18px rgba(245, 185, 66, 0.55);
+      --shadow-gold-lg: 0 28px 70px -20px rgba(245, 185, 66, 0.4);
+      --shadow-card: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+      --radius-sm: 10px;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --dur-fast: 0.22s;
+      --dur: 0.4s;
+      --fs-xs: clamp(0.72rem, 0.68rem + 0.18vw, 0.82rem);
+      --fs-sm: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+      --fs-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --fs-md: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+      --fs-lg: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem);
+      --fs-hero: clamp(2.4rem, 1.8rem + 3vw, 3.8rem);
+      --sp-section: clamp(48px, 7vw, 100px);
+      --container-pad: clamp(16px, 4vw, 40px);
+      --error: #f87171;
+      --success: #34d399;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: radial-gradient(1000px 500px at 80% -5%, rgba(245, 185, 66, 0.07), transparent 55%), var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: var(--fs-base);
+      line-height: 1.65;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: "Poppins", sans-serif; line-height: 1.2; letter-spacing: -0.01em; }
+    a { color: inherit; text-decoration: none; transition: color var(--dur-fast); }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+    :focus-visible { outline: 2px solid var(--gold2); outline-offset: 3px; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; padding: 0 var(--container-pad); }
+    .gold-text {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--container-pad); height: 68px;
+      backdrop-filter: blur(20px) saturate(160%);
+      background: color-mix(in srgb, var(--panel) 72%, transparent);
+      border-bottom: 1px solid var(--border);
+      animation: slideDown 0.5s var(--ease);
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .navbar-logo {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--gradient-gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; box-shadow: var(--shadow-gold);
+      transition: transform var(--dur-fast); flex-shrink: 0;
+    }
+    .navbar-logo:hover { transform: scale(1.08) rotate(6deg); }
+    .navbar-brand {
+      display: flex; align-items: center; gap: 12px;
+      font-family: "Poppins", sans-serif; font-weight: 800;
+      font-size: clamp(17px, 2vw, 20px); letter-spacing: -0.3px; color: var(--text);
+    }
+    .navbar-links {
+      display: flex; align-items: center; gap: 28px;
+      font-weight: 500; font-size: var(--fs-sm);
+    }
+    .navbar-links a {
+      position: relative; color: var(--muted); padding: 6px 0;
+      transition: color var(--dur-fast);
+    }
+    .navbar-links a::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      height: 2px; width: 0; background: var(--gradient-gold);
+      border-radius: 2px; transition: width var(--dur) var(--ease);
+    }
+    .navbar-links a:hover, .navbar-links a.active { color: var(--text); }
+    .navbar-links a:hover::after, .navbar-links a.active::after { width: 100%; }
+    .signup-btn {
+      background: var(--gradient-gold); color: var(--gold-ink);
+      font-weight: 700; font-size: var(--fs-sm);
+      padding: 10px 20px; border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-gold);
+      transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+    }
+    .signup-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold-lg); }
+    .nav-toggle {
+      display: none; background: transparent; color: var(--text);
+      font-size: 24px; padding: 6px;
+    }
+    .nav-toggle:hover { color: var(--gold2); }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: color-mix(in srgb, var(--bg) 96%, transparent);
+      backdrop-filter: blur(16px); z-index: 99;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 24px; opacity: 0; pointer-events: none;
+      transition: opacity 0.35s var(--ease);
+    }
+    .mobile-menu.open { display: flex; opacity: 1; pointer-events: auto; }
+    .mobile-menu a {
+      font-size: var(--fs-lg); font-weight: 600;
+      font-family: "Poppins", sans-serif; color: var(--text-dim);
+    }
+    .mobile-menu a:hover { color: var(--gold2); }
+    .mobile-close {
+      position: absolute; top: 22px; right: 26px;
+      background: none; color: var(--text); font-size: 28px;
+    }
+
+    /* Hero */
+    .page-hero {
+      position: relative; min-height: 200px;
+      padding: clamp(70px, 10vw, 100px) var(--container-pad) clamp(36px, 4vw, 48px);
+      background:
+        radial-gradient(ellipse at 25% 20%, rgba(245, 185, 66, 0.1) 0%, transparent 55%),
+        linear-gradient(160deg, #14141a 0%, var(--bg) 100%);
+      display: flex; align-items: flex-end;
+      border-radius: 0 0 28px 28px; overflow: hidden;
+      animation: fadeIn 0.7s var(--ease);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .page-hero-content { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; width: 100%; }
+    .page-hero .breadcrumb { font-size: var(--fs-xs); color: var(--muted); margin-bottom: 12px; }
+    .page-hero .breadcrumb a:hover { color: var(--gold2); }
+    .page-hero h1 {
+      font-size: var(--fs-hero); font-weight: 800;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .page-hero p { margin-top: 10px; font-size: var(--fs-sm); color: var(--text-dim); max-width: 480px; }
+
+    /* Profile layout */
+    .profile-section { padding: var(--sp-section) 0; }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: clamp(24px, 3vw, 36px);
+      align-items: start;
+    }
+
+    /* Sidebar nav */
+    .profile-nav {
+      background: var(--panel);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 12px;
+      box-shadow: var(--shadow-card);
+      position: sticky; top: 88px;
+    }
+    .profile-nav a {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 14px; border-radius: var(--radius-sm);
+      font-size: var(--fs-sm); font-weight: 500; color: var(--muted);
+      transition: background var(--dur-fast), color var(--dur-fast);
+    }
+    .profile-nav a:hover { background: var(--surface); color: var(--text); }
+    .profile-nav a.active {
+      background: var(--gradient-gold-soft);
+      color: var(--gold2);
+      border: 1px solid rgba(245, 185, 66, 0.25);
+    }
+    .profile-nav .icon { font-size: 1.1rem; width: 24px; text-align: center; }
+
+    /* Main content cards */
+    .profile-main { display: flex; flex-direction: column; gap: 24px; }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: clamp(24px, 3vw, 36px);
+      box-shadow: var(--shadow-card);
+      animation: fadeUp 0.6s var(--ease) both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card h2 {
+      font-size: var(--fs-md); font-weight: 700; color: var(--text);
+      margin-bottom: 6px;
+    }
+    .card .subtitle { font-size: var(--fs-sm); color: var(--muted); margin-bottom: 24px; }
+
+    /* Avatar header */
+    .avatar-header {
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+      margin-bottom: 28px; padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .avatar {
+      width: 88px; height: 88px; border-radius: 50%;
+      background: var(--gradient-gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; font-weight: 800; color: var(--gold-ink);
+      box-shadow: var(--shadow-gold); flex-shrink: 0;
+      position: relative;
+    }
+    .avatar-edit {
+      position: absolute; bottom: 0; right: 0;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--surface); border: 2px solid var(--panel);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; cursor: pointer;
+      transition: background var(--dur-fast);
+    }
+    .avatar-edit:hover { background: var(--gold2); color: var(--gold-ink); }
+    .avatar-info h3 { font-size: var(--fs-md); color: var(--text); margin-bottom: 4px; }
+    .avatar-info p { font-size: var(--fs-sm); color: var(--muted); }
+    .avatar-info .badge {
+      display: inline-block; margin-top: 8px;
+      background: var(--gradient-gold-soft);
+      color: var(--gold2); font-size: var(--fs-xs); font-weight: 700;
+      padding: 4px 12px; border-radius: var(--radius-pill);
+      border: 1px solid rgba(245, 185, 66, 0.3);
+    }
+
+    /* Form */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group.full { grid-column: 1 / -1; }
+    label {
+      display: block; font-size: var(--fs-xs); font-weight: 600;
+      color: var(--text-dim); margin-bottom: 7px; letter-spacing: 0.02em;
+    }
+    input, select, textarea {
+      width: 100%; padding: 12px 16px;
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); font-size: var(--fs-sm);
+      font-family: inherit; color: var(--text);
+      transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+    }
+    input::placeholder, textarea::placeholder { color: var(--muted); opacity: 0.7; }
+    input:focus, select:focus, textarea:focus {
+      outline: none; border-color: var(--gold2);
+      box-shadow: 0 0 0 3px rgba(245, 185, 66, 0.18);
+      background: var(--surface-2);
+    }
+    input:disabled {
+      opacity: 0.6; cursor: not-allowed;
+    }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%239797a3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+      padding-right: 36px; cursor: pointer;
+    }
+    select option { background: var(--panel); color: var(--text); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 24px; background: var(--gradient-gold);
+      color: var(--gold-ink); border: none; border-radius: var(--radius-pill);
+      font-size: var(--fs-sm); font-weight: 700; font-family: inherit;
+      cursor: pointer; box-shadow: var(--shadow-gold);
+      transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold-lg); }
+    .btn-outline {
+      background: transparent; color: var(--gold2);
+      border: 1.5px solid rgba(245, 185, 66, 0.45); box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: var(--gradient-gold-soft); border-color: var(--gold2); box-shadow: none;
+    }
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+
+    /* Stats */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin-bottom: 8px;
+    }
+    .stat-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 18px; text-align: center;
+    }
+    .stat-box .num {
+      font-family: "Poppins", sans-serif; font-size: var(--fs-lg);
+      font-weight: 800; color: var(--gold2);
+    }
+    .stat-box .label { font-size: var(--fs-xs); color: var(--muted); margin-top: 4px; }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 28px; right: 28px;
+      background: var(--panel); border: 1px solid rgba(245, 185, 66, 0.35);
+      color: var(--text); padding: 14px 22px; border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-gold); font-size: var(--fs-sm); font-weight: 500;
+      transform: translateY(100px); opacity: 0;
+      transition: transform 0.4s var(--ease), opacity 0.4s;
+      z-index: 200;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* Footer */
+    .footer { border-top: 1px solid var(--border); background: var(--panel); margin-top: 20px; }
+    .footer-inner {
+      max-width: 1180px; margin: 0 auto;
+      padding: clamp(36px, 5vw, 56px) var(--container-pad) 24px;
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: clamp(24px, 3vw, 40px);
+    }
+    .footer-brand p { font-size: var(--fs-sm); color: var(--muted); line-height: 1.75; margin-top: 14px; max-width: 280px; }
+    .footer-col h4 { font-size: var(--fs-sm); font-weight: 700; color: var(--gold2); margin-bottom: 14px; letter-spacing: 0.04em; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: var(--fs-sm); color: var(--muted); transition: color var(--dur-fast), padding-left var(--dur-fast); }
+    .footer-col a:hover { color: var(--gold2); padding-left: 4px; }
+    .footer-bottom {
+      text-align: center; padding: 18px var(--container-pad) 28px;
+      font-size: var(--fs-xs); color: var(--muted); border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 900px) {
+      .navbar-links { display: none; }
+      .nav-toggle { display: block; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .profile-grid { grid-template-columns: 1fr; }
+      .profile-nav { position: static; display: flex; flex-wrap: wrap; gap: 6px; padding: 10px; }
+      .profile-nav a { flex: 1 1 auto; justify-content: center; min-width: 120px; }
+    }
+    @media (max-width: 560px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .page-hero { border-radius: 0 0 20px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr; }
+      .avatar-header { flex-direction: column; text-align: center; }
+    }
+  
+    /* ===== Sign Out Modal ===== */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.open {
+      opacity: 1; pointer-events: auto;
+    }
+    .modal {
+      background: #17171c;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 36px 32px;
+      max-width: 400px; width: 100%;
+      text-align: center;
+      box-shadow: 0 28px 70px -20px rgba(0, 0, 0, 0.7);
+      transform: scale(0.92) translateY(16px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.open .modal {
+      transform: scale(1) translateY(0);
+    }
+    .modal-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255, 226, 154, 0.16), rgba(245, 185, 66, 0.05));
+      border: 1.5px solid rgba(245, 185, 66, 0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin: 0 auto 18px;
+      color: #f5b942;
+    }
+    .modal h3 {
+      font-family: "Poppins", sans-serif;
+      font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+      font-weight: 700; color: #f6f6f8;
+      margin-bottom: 10px;
+    }
+    .modal p {
+      font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+      color: #9797a3; line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .modal-actions {
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .modal-actions .btn {
+      flex: 1; min-width: 120px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+      font-weight: 700; font-family: inherit;
+      cursor: pointer; border: none;
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+    .modal-actions .btn-cancel {
+      background: transparent;
+      color: #f5b942;
+      border: 1.5px solid rgba(245, 185, 66, 0.45);
+    }
+    .modal-actions .btn-cancel:hover {
+      background: linear-gradient(135deg, rgba(255, 226, 154, 0.16), rgba(245, 185, 66, 0.05));
+      border-color: #f5b942;
+    }
+    .modal-actions .btn-confirm {
+      background: linear-gradient(100deg, #ffe29a, #f5b942 45%, #d9932a);
+      color: #241a05;
+      box-shadow: 0 18px 45px -18px rgba(245, 185, 66, 0.55);
+    }
+    .modal-actions .btn-confirm:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 28px 70px -20px rgba(245, 185, 66, 0.4);
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">
+      <div class="navbar-logo"><img src="/Frontend/public/images/logo.png"/></div>
+      <span class="navbar-title">TravelX</span>
+    </a>
+    <div class="navbar-links">
+      <a href="/Frontend/src/pages/Dashboard/index.html">Home</a>
+      <a href="/Frontend/src/pages/Booking/booking-history.html">My Bookings</a>
+      <a href="/Frontend/src/pages/User/wishlist.html">Wishlist</a>
+      <a href="/Frontend/src/pages/User/profil.html" class="active">Profile</a>
+      <a href="/Frontend/src/pages/passworddrama/signout.html" class="signup-btn">Sign Out</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+    <a href="/Frontend/src/pages/Dashboard/index.html">Home</a>
+    <a href="/Frontend/src/pages/Booking/booking-history.html">My Bookings</a>
+    <a href="/Frontend/src/pages/User/wishlist.html">Wishlist</a>
+    <a href="/Frontend/src/pages/User/profil.html">Profile</a>
+    <a href="/Frontend/src/pages/passworddrama/signout.html" class="signup-btn">Sign Out</a>
+  </div>
+
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <div class="breadcrumb"><a href="/Frontend/src/pages/Dashboard/index.html">Home</a> · My Profile</div>
+      <h1>My Profile</h1>
+      <p>Manage your personal details, preferences, and account security.</p>
+    </div>
+  </header>
+
+  <section class="profile-section">
+    <div class="section-inner">
+      <div class="profile-grid">
+        <nav class="profile-nav">
+          <a href="#personal" class="active" data-tab="personal"><span class="icon">👤</span> Personal Info</a>
+          <a href="#preferences" data-tab="preferences"><span class="icon">⚙️</span> Preferences</a>
+          <a href="#security" data-tab="security"><span class="icon">🔒</span> Security</a>
+          <a href="/Frontend/src/pages/Booking/booking-history.html"><span class="icon">🎫</span> My Bookings</a>
+          <a href="/Frontend/src/pages/User/wishlist.html"><span class="icon">♡</span> Wishlist</a>
+          <a href="/Frontend/src/pages/Booking/refund.html"><span class="icon">↩</span> Refunds</a>
+        </nav>
+
+        <div class="profile-main">
+          <!-- Personal Info -->
+          <div class="card" id="personal">
+            <div class="avatar-header">
+              <div class="avatar">
+                JD
+                <button class="avatar-edit" title="Change photo">📷</button>
+              </div>
+              <div class="avatar-info">
+                <h3>John Doe</h3>
+                <p>john.doe@email.com</p>
+                <span class="badge">Gold Member</span>
+              </div>
+            </div>
+
+            <div class="stats-row">
+              <div class="stat-box">
+                <div class="num">12</div>
+                <div class="label">Trips Completed</div>
+              </div>
+              <div class="stat-box">
+                <div class="num">3</div>
+                <div class="label">Upcoming</div>
+              </div>
+              <div class="stat-box">
+                <div class="num">8</div>
+                <div class="label">Wishlist</div>
+              </div>
+            </div>
+
+            <h2 style="margin-top: 28px;">Personal Details</h2>
+            <p class="subtitle">Update your information so we can personalize your experience.</p>
+
+            <form id="profileForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" value="John" />
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" value="Doe" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" value="john.doe@email.com" />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" value="+1 555 0123" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="dob">Date of Birth</label>
+                  <input type="date" id="dob" value="1992-06-15" />
+                </div>
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <select id="country">
+                    <option>United States</option>
+                    <option>United Kingdom</option>
+                    <option>India</option>
+                    <option>Canada</option>
+                    <option>Australia</option>
+                    <option>Germany</option>
+                    <option>France</option>
+                    <option>UAE</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group full">
+                <label for="address">Address</label>
+                <input type="text" id="address" value="123 Explorer Lane, New York, NY 10001" />
+              </div>
+              <div class="btn-row">
+                <button type="submit" class="btn">Save Changes</button>
+                <button type="button" class="btn btn-outline" id="resetBtn">Reset</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Preferences -->
+          <div class="card" id="preferences">
+            <h2>Travel Preferences</h2>
+            <p class="subtitle">Help us recommend better trips and experiences for you.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="seat">Preferred Seat</label>
+                <select id="seat">
+                  <option>Window</option>
+                  <option selected>Aisle</option>
+                  <option>No preference</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="meal">Meal Preference</label>
+                <select id="meal">
+                  <option>Standard</option>
+                  <option selected>Vegetarian</option>
+                  <option>Vegan</option>
+                  <option>Halal</option>
+                  <option>Kosher</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="currency">Currency</label>
+                <select id="currency">
+                  <option selected>USD ($)</option>
+                  <option>EUR (€)</option>
+                  <option>GBP (£)</option>
+                  <option>INR (₹)</option>
+                  <option>AED</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="lang">Language</label>
+                <select id="lang">
+                  <option selected>English</option>
+                  <option>Español</option>
+                  <option>Français</option>
+                  <option>Deutsch</option>
+                  <option>हिन्दी</option>
+                </select>
+              </div>
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn" id="savePrefs">Save Preferences</button>
+            </div>
+          </div>
+
+          <!-- Security -->
+          <div class="card" id="security">
+            <h2>Security</h2>
+            <p class="subtitle">Keep your account safe. We recommend using a strong, unique password.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="currentPass">Current Password</label>
+                <input type="password" id="currentPass" placeholder="••••••••" />
+              </div>
+              <div class="form-group">
+                <label for="newPass">New Password</label>
+                <input type="password" id="newPass" placeholder="••••••••" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="confirmPass">Confirm New Password</label>
+              <input type="password" id="confirmPass" placeholder="••••••••" style="max-width: 50%;" />
+            </div>
+            <div class="btn-row">
+              <button type="button" class="btn" id="changePass">Update Password</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/Frontend/src/pages/Dashboard/index.html" class="navbar-brand" style="margin-bottom: 4px;">
+          <div class="navbar-logo"><img src="/Frontend/public/images/logo.png" alt="TravelX Logo" /></div>
+          TravelX
+        </a>
+        <p>Crafting unforgettable journeys with care, transparency, and a touch of gold.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/Frontend/src/pages/Dashboard/index.html">Destinations</a></li>
+          <li><a href="/Frontend/src/pages/Travel/packages.html">Packages</a></li>
+          <li><a href="/Frontend/src/pages/Travel/experiences.html">Experiences</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="/Frontend/src/pages/Information/help-center.html">Help Center</a></li>
+          <li><a href="/Frontend/src/pages/Booking/refund.html">Refund Request</a></li>
+          <li><a href="/Frontend/src/pages/Information/contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/Frontend/src/pages/Information/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/Frontend/src/pages/Information/terms-conditions.html">Terms & Conditions</a></li>
+          <li><a href="/Frontend/src/pages/Information/cancellation-policy.html">Cancellation Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 TravelX. All rights reserved.</div>
+  </footer>
+
+  <div class="toast" id="toast">Changes saved successfully</div>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+    navToggle.addEventListener('click', () => mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    const toast = document.getElementById('toast');
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+
+    document.getElementById('profileForm').addEventListener('submit', e => {
+      e.preventDefault();
+      showToast('Profile updated successfully');
+    });
+    document.getElementById('savePrefs').addEventListener('click', () => showToast('Preferences saved'));
+    document.getElementById('changePass').addEventListener('click', () => showToast('Password updated'));
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      document.getElementById('profileForm').reset();
+      showToast('Form reset');
+    });
+
+    // Highlight nav on scroll
+    const navLinks = document.querySelectorAll('.profile-nav a[data-tab]');
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        document.getElementById(link.dataset.tab)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+  <!-- Sign Out Modal -->
+  <div class="modal-overlay" id="signOutModal" role="dialog" aria-modal="true" aria-labelledby="signOutTitle">
+    <div class="modal">
+      <div class="modal-icon">👋</div>
+      <h3 id="signOutTitle">Sign out of Voyageora?</h3>
+      <p>You'll need to sign in again to access your bookings, wishlist, and profile.</p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-cancel" id="signOutCancel">Cancel</button>
+        <button type="button" class="btn btn-confirm" id="signOutConfirm">Yes, Sign Out</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    // ===== Sign Out Modal =====
+    (function() {
+      const modal = document.getElementById('signOutModal');
+      if (!modal) return;
+      const cancelBtn = document.getElementById('signOutCancel');
+      const confirmBtn = document.getElementById('signOutConfirm');
+
+      function openModal(e) {
+        if (e) e.preventDefault();
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('a, button').forEach(el => {
+        const text = (el.textContent || '').trim().toLowerCase();
+        if (text === 'sign out' || text === 'signout') {
+          el.addEventListener('click', openModal);
+        }
+      });
+
+      cancelBtn.addEventListener('click', closeModal);
+      confirmBtn.addEventListener('click', () => {
+        window.location.href = 'voyageora-signed-out.html';
+      });
+      modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+    })();
+  </script>
+
+</body>
+</html>

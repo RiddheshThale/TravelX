@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request a Refund | Voyageora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* =====================================================================
+       Voyageora Legal Pages — midnight black + gold
+       Shared by: privacy-policy, terms-and-conditions, cancellation-policy
+       Fluid type · glassmorphism · mobile-first · 320px → 4K
+       ===================================================================== */
+
+    /* ---------- 1. tokens ---------- */
+    :root {
+      --bg: #0a0a0d;
+      --bg-elevated: #111116;
+      --panel: #17171c;
+      --surface: #1c1c23;
+      --surface-2: #232329;
+      --glass: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-strong: rgba(255, 255, 255, 0.1);
+
+      --text: #f6f6f8;
+      --text-dim: #c7c7d1;
+      --muted: #9797a3;
+      --border: rgba(255, 255, 255, 0.12);
+
+      --gold1: #ffe29a;
+      --gold2: #f5b942;
+      --gold3: #d9932a;
+      --gold-ink: #241a05;
+      --gradient-gold: linear-gradient(100deg, var(--gold1), var(--gold2) 45%, var(--gold3));
+      --gradient-gold-soft: linear-gradient(135deg, rgba(255, 226, 154, 0.16), rgba(245, 185, 66, 0.05));
+
+      --shadow-gold: 0 18px 45px -18px rgba(245, 185, 66, 0.55);
+      --shadow-gold-lg: 0 28px 70px -20px rgba(245, 185, 66, 0.4);
+      --shadow-deep: 0 24px 60px -24px rgba(0, 0, 0, 0.85);
+      --shadow-card: 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+
+      --radius-sm: 10px;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+      --dur-fast: 0.22s;
+      --dur: 0.4s;
+      --dur-slow: 0.7s;
+
+      --fs-xs: clamp(0.72rem, 0.68rem + 0.18vw, 0.82rem);
+      --fs-sm: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+      --fs-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --fs-md: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+      --fs-lg: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem);
+      --fs-xl: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem);
+      --fs-2xl: clamp(2.3rem, 1.7rem + 2.6vw, 3.6rem);
+      --fs-hero: clamp(2.4rem, 1.8rem + 3vw, 3.8rem);
+
+      --sp-section: clamp(48px, 7vw, 100px);
+      --container-pad: clamp(16px, 4vw, 40px);
+
+      --error: #f87171;
+      --success: #34d399;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ---------- 2. base ---------- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      background:
+        radial-gradient(1000px 500px at 80% -5%, rgba(245, 185, 66, 0.07), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-size: var(--fs-base);
+      line-height: 1.65;
+      overflow-x: hidden;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: "Poppins", sans-serif;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    a { color: inherit; text-decoration: none; transition: color var(--dur-fast); }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; }
+    :focus-visible { outline: 2px solid var(--gold2); outline-offset: 3px; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--container-pad);
+    }
+
+    .gold-text {
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* ---------- 3. navbar ---------- */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--container-pad);
+      height: 68px;
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      background: color-mix(in srgb, var(--panel) 72%, transparent);
+      border-bottom: 1px solid var(--border);
+      animation: slideDown 0.5s var(--ease);
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .navbar-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gradient-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: var(--shadow-gold);
+      transition: transform var(--dur-fast);
+      flex-shrink: 0;
+    }
+
+    .navbar-logo:hover { transform: scale(1.08) rotate(6deg); }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-size: clamp(17px, 2vw, 20px);
+      letter-spacing: -0.3px;
+      color: var(--text);
+    }
+
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-weight: 500;
+      font-size: var(--fs-sm);
+    }
+
+    .navbar-links a {
+      position: relative;
+      color: var(--muted);
+      padding: 6px 0;
+      transition: color var(--dur-fast);
+    }
+
+    .navbar-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background: var(--gradient-gold);
+      border-radius: 2px;
+      transition: width var(--dur) var(--ease);
+    }
+
+    .navbar-links a:hover,
+    .navbar-links a.active { color: var(--text); }
+    .navbar-links a:hover::after,
+    .navbar-links a.active::after { width: 100%; }
+
+    .signup-btn {
+      background: var(--gradient-gold);
+      color: var(--gold-ink);
+      font-weight: 700;
+      font-size: var(--fs-sm);
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-gold);
+      transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+    }
+
+    .signup-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold-lg);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 24px;
+      padding: 6px;
+      transition: color var(--dur-fast);
+    }
+
+    .nav-toggle:hover { color: var(--gold2); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: color-mix(in srgb, var(--bg) 96%, transparent);
+      backdrop-filter: blur(16px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s var(--ease);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-menu a {
+      font-size: var(--fs-lg);
+      font-weight: 600;
+      font-family: "Poppins", sans-serif;
+      color: var(--text-dim);
+      transition: color var(--dur-fast);
+    }
+
+    .mobile-menu a:hover { color: var(--gold2); }
+
+    .mobile-close {
+      position: absolute;
+      top: 22px;
+      right: 26px;
+      background: none;
+      color: var(--text);
+      font-size: 28px;
+    }
+
+    /* ---------- 4. page hero ---------- */
+    .page-hero {
+      position: relative;
+      min-height: 240px;
+      padding: clamp(80px, 12vw, 110px) var(--container-pad) clamp(40px, 5vw, 56px);
+      background:
+        radial-gradient(ellipse at 25% 20%, rgba(245, 185, 66, 0.1) 0%, transparent 55%),
+        linear-gradient(160deg, #14141a 0%, var(--bg) 100%);
+      display: flex;
+      align-items: flex-end;
+      border-radius: 0 0 28px 28px;
+      overflow: hidden;
+      animation: fadeIn 0.7s var(--ease);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .page-hero .breadcrumb {
+      font-size: var(--fs-xs);
+      color: var(--muted);
+      margin-bottom: 12px;
+      animation: fadeIn 0.7s var(--ease) 0.1s both;
+    }
+
+    .page-hero .breadcrumb a:hover { color: var(--gold2); }
+
+    .page-hero h1 {
+      font-size: var(--fs-hero);
+      font-weight: 800;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: fadeIn 0.7s var(--ease) 0.2s both;
+    }
+
+    .page-hero p {
+      margin-top: 12px;
+      font-size: var(--fs-sm);
+      color: var(--text-dim);
+      max-width: 520px;
+      line-height: 1.7;
+      animation: fadeIn 0.7s var(--ease) 0.3s both;
+    }
+
+    /* ---------- 5. main refund layout ---------- */
+    .refund-section {
+      padding: var(--sp-section) 0;
+    }
+
+    .refund-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: clamp(24px, 3vw, 40px);
+      align-items: start;
+    }
+
+    /* Form card */
+    .form-card {
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      padding: clamp(28px, 4vw, 44px);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-card);
+      animation: fadeUp 0.7s var(--ease) 0.15s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-card h2 {
+      font-size: var(--fs-md);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .form-card .subtitle {
+      font-size: var(--fs-sm);
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      color: var(--text-dim);
+      margin-bottom: 7px;
+      letter-spacing: 0.02em;
+    }
+
+    label .required {
+      color: var(--gold2);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: var(--fs-sm);
+      font-family: inherit;
+      color: var(--text);
+      transition: border-color var(--dur-fast), box-shadow var(--dur-fast), background var(--dur-fast);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--muted);
+      opacity: 0.7;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--gold2);
+      box-shadow: 0 0 0 3px rgba(245, 185, 66, 0.18);
+      background: var(--surface-2);
+    }
+
+    input.error,
+    select.error,
+    textarea.error {
+      border-color: var(--error);
+    }
+
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%239797a3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    select option {
+      background: var(--panel);
+      color: var(--text);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .error-msg {
+      color: var(--error);
+      font-size: var(--fs-xs);
+      margin-top: 5px;
+      display: none;
+    }
+
+    .error-msg.show {
+      display: block;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 22px 0 26px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--gold2);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .checkbox-group label {
+      font-weight: 400;
+      font-size: var(--fs-sm);
+      color: var(--muted);
+      margin: 0;
+      cursor: pointer;
+      line-height: 1.5;
+    }
+
+    .checkbox-group a {
+      color: var(--gold2);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .checkbox-group a:hover {
+      color: var(--gold1);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--gradient-gold);
+      color: var(--gold-ink);
+      border: none;
+      border-radius: var(--radius-pill);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform var(--dur-fast), box-shadow var(--dur-fast), opacity var(--dur-fast);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold-lg);
+    }
+
+    .btn:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-spinner {
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(36, 26, 5, 0.25);
+      border-top-color: var(--gold-ink);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+
+    .btn.loading .btn-spinner {
+      display: block;
+    }
+
+    .btn.loading .btn-text {
+      display: none;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold2);
+      border: 1.5px solid rgba(245, 185, 66, 0.45);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover:not(:disabled) {
+      background: var(--gradient-gold-soft);
+      border-color: var(--gold2);
+      box-shadow: none;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .info-card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 22px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-card);
+      animation: fadeUp 0.7s var(--ease) 0.25s both;
+    }
+
+    .info-card h3 {
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--gold2);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .info-card h3 span {
+      font-size: 1.1rem;
+    }
+
+    .policy-list li {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: var(--fs-xs);
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .policy-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .policy-list .icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--gradient-gold-soft);
+      color: var(--gold2);
+      border: 1px solid rgba(245, 185, 66, 0.3);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 22px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: rgba(245, 185, 66, 0.25);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 18px;
+      font-size: var(--fs-xs);
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -22px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gold2);
+      border: 3px solid rgba(245, 185, 66, 0.25);
+      box-shadow: 0 0 0 3px var(--panel);
+    }
+
+    .timeline-item strong {
+      display: block;
+      color: var(--text-dim);
+      font-weight: 600;
+      margin-bottom: 3px;
+      font-size: var(--fs-sm);
+    }
+
+    .timeline-item span {
+      color: var(--muted);
+    }
+
+    /* Success state */
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .success-state.show {
+      display: block;
+      animation: fadeUp 0.5s var(--ease);
+    }
+
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--gradient-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.8rem;
+      color: var(--gold-ink);
+      box-shadow: var(--shadow-gold);
+      animation: pop 0.45s var(--ease);
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.4); opacity: 0; }
+      70% { transform: scale(1.08); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .success-state h2 {
+      font-size: var(--fs-lg);
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .success-state p {
+      color: var(--muted);
+      font-size: var(--fs-sm);
+      margin-bottom: 22px;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .ref-box {
+      background: var(--gradient-gold-soft);
+      border: 1px solid rgba(245, 185, 66, 0.3);
+      border-radius: var(--radius-sm);
+      padding: 12px 18px;
+      display: inline-block;
+      margin-bottom: 24px;
+      font-size: var(--fs-sm);
+      color: var(--text-dim);
+    }
+
+    .ref-box strong {
+      color: var(--gold2);
+      letter-spacing: 0.06em;
+      font-weight: 700;
+    }
+
+    /* ---------- 6. footer ---------- */
+    .footer {
+      border-top: 1px solid var(--border);
+      background: var(--panel);
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(36px, 5vw, 56px) var(--container-pad) 24px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: clamp(24px, 3vw, 40px);
+    }
+
+    .footer-brand p {
+      font-size: var(--fs-sm);
+      color: var(--muted);
+      line-height: 1.75;
+      margin-top: 14px;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--gold2);
+      margin-bottom: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-col a {
+      font-size: var(--fs-sm);
+      color: var(--muted);
+      transition: color var(--dur-fast), padding-left var(--dur-fast);
+    }
+
+    .footer-col a:hover {
+      color: var(--gold2);
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 18px var(--container-pad) 28px;
+      font-size: var(--fs-xs);
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ---------- 7. responsive ---------- */
+    @media (max-width: 900px) {
+      .navbar-links { display: none; }
+      .nav-toggle { display: block; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .refund-grid {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        order: -1;
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        gap: 16px;
+      }
+      .info-card {
+        min-width: 260px;
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .page-hero { border-radius: 0 0 20px 20px; }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        flex-direction: column;
+      }
+      .info-card {
+        min-width: unset;
+      }
+    }
+
+    @media (min-width: 1600px) {
+      .section-inner { max-width: 1200px; }
+      .footer-inner { max-width: 1320px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">
+      <div class="navbar-logo">✈</div>
+      Voyageora
+    </a>
+    <div class="navbar-links">
+      <a href="#">Home</a>
+      <a href="#">My Bookings</a>
+      <a href="#">Support</a>
+      <a href="#" class="active">Refund</a>
+      <a href="#" class="signup-btn">Sign In</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+    <a href="#">Home</a>
+    <a href="#">My Bookings</a>
+    <a href="#">Support</a>
+    <a href="#">Refund</a>
+    <a href="#" class="signup-btn">Sign In</a>
+  </div>
+
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <div class="page-hero-content">
+      <div class="breadcrumb">
+        <a href="#">Home</a> · <a href="#">Support</a> · Refund Request
+      </div>
+      <h1>Request a Refund</h1>
+      <p>Submit your refund request in minutes. Our team reviews every case carefully and responds within 3–5 business days.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <section class="refund-section">
+    <div class="section-inner">
+      <div class="refund-grid">
+        <!-- Form Card -->
+        <div class="form-card">
+          <div id="formView">
+            <h2>Refund Request Form</h2>
+            <p class="subtitle">Please provide your booking details. Fields marked with <span class="gold-text">*</span> are required.</p>
+
+            <form id="refundForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fullName">Full Name <span class="required">*</span></label>
+                  <input type="text" id="fullName" name="fullName" placeholder="John Doe" autocomplete="name" />
+                  <div class="error-msg" id="fullNameError">Please enter your full name</div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address <span class="required">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email" />
+                  <div class="error-msg" id="emailError">Please enter a valid email</div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="bookingId">Booking Reference <span class="required">*</span></label>
+                  <input type="text" id="bookingId" name="bookingId" placeholder="e.g. VOY-8F2K9A" />
+                  <div class="error-msg" id="bookingIdError">Please enter your booking ID</div>
+                </div>
+                <div class="form-group">
+                  <label for="travelDate">Travel / Departure Date <span class="required">*</span></label>
+                  <input type="date" id="travelDate" name="travelDate" />
+                  <div class="error-msg" id="travelDateError">Please select the travel date</div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="amount">Refund Amount (USD)</label>
+                  <input type="number" id="amount" name="amount" placeholder="0.00" min="0" step="0.01" />
+                </div>
+                <div class="form-group">
+                  <label for="reason">Reason for Refund <span class="required">*</span></label>
+                  <select id="reason" name="reason">
+                    <option value="">Select a reason</option>
+                    <option value="cancellation">Trip cancellation by me</option>
+                    <option value="airline">Flight cancelled / delayed by airline</option>
+                    <option value="medical">Medical emergency</option>
+                    <option value="visa">Visa / documentation issues</option>
+                    <option value="duplicate">Duplicate booking</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div class="error-msg" id="reasonError">Please select a reason</div>
+                </div>
+              </div>
+
+              <div class="form-group full">
+                <label for="comments">Additional Details</label>
+                <textarea id="comments" name="comments" placeholder="Tell us more about your request (optional)..."></textarea>
+              </div>
+
+              <div class="checkbox-group">
+                <input type="checkbox" id="agree" name="agree" />
+                <label for="agree">
+                  I confirm that the information provided is accurate and I have read the
+                  <a href="#">Cancellation & Refund Policy</a>.
+                </label>
+              </div>
+              <div class="error-msg" id="agreeError" style="margin-top: -16px; margin-bottom: 16px;">You must agree to the policy</div>
+
+              <button type="submit" class="btn" id="submitBtn">
+                <span class="btn-text">Submit Refund Request</span>
+                <span class="btn-spinner"></span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Success State -->
+          <div class="success-state" id="successView">
+            <div class="success-icon">✓</div>
+            <h2>Request Submitted</h2>
+            <p>We’ve received your refund request. Our team will review it and contact you at the email you provided.</p>
+            <div class="ref-box">
+              Reference: <strong id="refNumber">VOY-REF-000000</strong>
+            </div>
+            <button type="button" class="btn btn-outline" id="newRequestBtn">Submit Another Request</button>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="info-card">
+            <h3><span>📋</span> Policy Highlights</h3>
+            <ul class="policy-list">
+              <li>
+                <span class="icon">1</span>
+                Full refund if cancelled 7+ days before departure
+              </li>
+              <li>
+                <span class="icon">2</span>
+                50% refund between 3–6 days before travel
+              </li>
+              <li>
+                <span class="icon">3</span>
+                Airline cancellations: 100% refund + credit
+              </li>
+              <li>
+                <span class="icon">4</span>
+                Processing: 5–10 business days after approval
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3><span>⏱</span> What Happens Next</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <strong>Request received</strong>
+                <span>Instant email confirmation</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Review (1–3 days)</strong>
+                <span>We verify your booking details</span>
+              </div>
+              <div class="timeline-item">
+                <strong>Decision & refund</strong>
+                <span>Funds returned to original method</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="navbar-brand" style="margin-bottom: 4px;">
+          <div class="navbar-logo" style="width: 32px; height: 32px; font-size: 14px;">✈</div>
+          Voyageora
+        </a>
+        <p>Crafting unforgettable journeys with care, transparency, and a touch of gold.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">Destinations</a></li>
+          <li><a href="#">Packages</a></li>
+          <li><a href="#">Experiences</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Refund Request</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/Frontend/src/pages/">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Cancellation Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Voyageora. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+
+    navToggle.addEventListener('click', () => mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // Form elements
+    const form = document.getElementById('refundForm');
+    const formView = document.getElementById('formView');
+    const successView = document.getElementById('successView');
+    const submitBtn = document.getElementById('submitBtn');
+    const newRequestBtn = document.getElementById('newRequestBtn');
+    const refNumber = document.getElementById('refNumber');
+
+    const fields = {
+      fullName: document.getElementById('fullName'),
+      email: document.getElementById('email'),
+      bookingId: document.getElementById('bookingId'),
+      travelDate: document.getElementById('travelDate'),
+      reason: document.getElementById('reason'),
+      agree: document.getElementById('agree')
+    };
+
+    function showError(id, show) {
+      const el = document.getElementById(id + 'Error');
+      if (el) el.classList.toggle('show', show);
+      if (fields[id]) fields[id].classList.toggle('error', show);
+    }
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function validate() {
+      let valid = true;
+
+      if (!fields.fullName.value.trim()) {
+        showError('fullName', true);
+        valid = false;
+      } else {
+        showError('fullName', false);
+      }
+
+      if (!fields.email.value.trim() || !validateEmail(fields.email.value)) {
+        showError('email', true);
+        valid = false;
+      } else {
+        showError('email', false);
+      }
+
+      if (!fields.bookingId.value.trim()) {
+        showError('bookingId', true);
+        valid = false;
+      } else {
+        showError('bookingId', false);
+      }
+
+      if (!fields.travelDate.value) {
+        showError('travelDate', true);
+        valid = false;
+      } else {
+        showError('travelDate', false);
+      }
+
+      if (!fields.reason.value) {
+        showError('reason', true);
+        valid = false;
+      } else {
+        showError('reason', false);
+      }
+
+      if (!fields.agree.checked) {
+        showError('agree', true);
+        valid = false;
+      } else {
+        showError('agree', false);
+      }
+
+      return valid;
+    }
+
+    Object.keys(fields).forEach(key => {
+      const el = fields[key];
+      if (!el) return;
+      const event = el.type === 'checkbox' ? 'change' : 'input';
+      el.addEventListener(event, () => showError(key, false));
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validate()) return;
+
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        const ref = 'VOY-REF-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+        refNumber.textContent = ref;
+
+        formView.style.display = 'none';
+        successView.classList.add('show');
+
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+      }, 1400);
+    });
+
+    newRequestBtn.addEventListener('click', () => {
+      form.reset();
+      successView.classList.remove('show');
+      formView.style.display = 'block';
+      Object.keys(fields).forEach(key => showError(key, false));
+    });
+
+    // Optional: prevent future dates for travel date
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('travelDate').setAttribute('max', today);
+  </script>
+</body>
+</html>
