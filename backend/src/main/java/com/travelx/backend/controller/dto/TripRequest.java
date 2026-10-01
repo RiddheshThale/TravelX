@@ -1,5 +1,5 @@
 package com.travelx.backend.controller.dto;
 
-public class RegisterRequest {
+public class TripRequest {
 
 }

@@ -1,29 +1,22 @@
 package com.travelx.backend.controller;
 
-import com.travelx.backend.controller.dto.RegisterRequest;
 import com.travelx.backend.entity.User;
 import com.travelx.backend.service.UserService;
-import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 public class UserController {
+  private final UserService userService;
 
-  @Autowired
-  private UserService userService;
+  public UserController(UserService userService) {
+    this.userService = userService;
+  }
 
   @PostMapping("/register")
-  public User register(@Valid @RequestBody RegisterRequest request) {
-
-    User user = new User();
-
-    user.setName(request.getName());
-    user.setEmail(request.getEmail());
-    user.setPassword(request.getPassword());
-
-    return userService.saveUser(user);
+  public ResponseEntity<User> register(@RequestBody User user) {
+    return ResponseEntity.ok(userService.saveUser(user));
   }
 }
