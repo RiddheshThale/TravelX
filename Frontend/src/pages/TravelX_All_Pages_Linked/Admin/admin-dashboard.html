@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | TravelX Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+  <style>
+    .admin-section { display: none; }
+    .admin-section.active { display: block; }
+    .review-list { display:grid; gap:14px; }
+    .review-item { padding:18px; border:1px solid var(--border, #e5e7eb); border-radius:12px; }
+    .review-top { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .review-stars { color:#d69e00; letter-spacing:2px; }
+    .review-item p { margin:10px 0; color:var(--muted, #777); }
+    .review-actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .review-actions button, .action-btns button { cursor:pointer; }
+    .form-message { margin-top:12px; font-size:14px; color:var(--gold2, #9a7200); }
+    .settings-check { display:flex; align-items:center; gap:10px; margin:12px 0; }
+    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.65); backdrop-filter:blur(5px); display:none; align-items:center; justify-content:center; z-index:9999; padding:20px; }
+    .modal-overlay.active { display:flex; }
+    .modal { width:100%; max-width:420px; background:#fff; color:#171717; border-radius:16px; padding:28px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.25); }
+    .modal-icon { font-size:40px; margin-bottom:12px; }
+    .modal h3 { margin:0 0 10px; }
+    .modal p { color:#666; line-height:1.5; margin-bottom:22px; }
+    .modal-actions { display:flex; gap:10px; }
+    .modal-actions button { flex:1; cursor:pointer; }
+    @media(max-width:480px) { .modal-actions { flex-direction:column; } }
+  </style>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo"><img src="/Frontend/public/images/logo.png" alt="TravelX Logo" /></div>
+        <span>TravelX</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-label">Main</div>
+        <a href="#dashboard" data-section="dashboard" class="active"><span class="icon">📊</span> Dashboard</a>
+        <a href="manage-bookings.html"><span class="icon">📅</span> Bookings</a>
+        <a href="manage-packages.html"><span class="icon">🎒</span> Packages</a>
+        <a href="manage-hotels.html"><span class="icon">🏨</span> Hotels</a>
+        <a href="manage-flights.html"><span class="icon">✈️</span> Flights</a>
+        <a href="#reviews" data-section="reviews"><span class="icon">⭐</span> Reviews</a>
+        <a href="#refunds" data-section="refunds"><span class="icon">↩</span> Refunds <span class="badge">3</span></a>
+        <a href="#users" data-section="users"><span class="icon">👥</span> Users</a>
+        <a href="#reports" data-section="reports"><span class="icon">📈</span> Reports</a>
+        <div class="nav-label">Management</div>
+        <a href="admin-profile.html" data-section="profile"><span class="icon">👤</span> Admin Profile</a>
+        <a href="#settings" data-section="settings"><span class="icon">⚙️</span> Settings</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../Dashboard/index.html"><span class="icon">🌐</span> View Site</a>
+        <a href="admin-login.html" id="logoutLink"><span class="icon">🚪</span> Logout</a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <div class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+          <h1 id="pageTitle">Dashboard</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="search" id="adminSearch" placeholder="Search..." aria-label="Search dashboard" />
+          </div>
+          <div class="user-menu"><div class="user-avatar">A</div><span class="user-name">Admin</span></div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <!-- DASHBOARD -->
+        <section id="section-dashboard" class="admin-section active">
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-icon yellow">📅</div><div class="stat-value">1,248</div><div class="stat-label">Total Bookings</div><div class="stat-change up">↑ 12% this month</div></div>
+            <div class="stat-card"><div class="stat-icon green">💰</div><div class="stat-value">₹42.8L</div><div class="stat-label">Revenue</div><div class="stat-change up">↑ 8.4% this month</div></div>
+            <div class="stat-card"><div class="stat-icon blue">👥</div><div class="stat-value">3,842</div><div class="stat-label">Active Users</div><div class="stat-change up">↑ 5.2% this month</div></div>
+            <div class="stat-card"><div class="stat-icon red">⏳</div><div class="stat-value">47</div><div class="stat-label">Pending Bookings</div><div class="stat-change down">↓ 3 from yesterday</div></div>
+          </div>
+          <div class="chart-card">
+            <div class="section-header"><h2>Bookings Overview (Last 7 Days)</h2></div>
+            <div class="chart-placeholder">
+              <div class="chart-bar" data-height="45%"><span>Mon</span></div><div class="chart-bar" data-height="70%"><span>Tue</span></div><div class="chart-bar" data-height="55%"><span>Wed</span></div><div class="chart-bar" data-height="90%"><span>Thu</span></div><div class="chart-bar" data-height="65%"><span>Fri</span></div><div class="chart-bar" data-height="80%"><span>Sat</span></div><div class="chart-bar" data-height="50%"><span>Sun</span></div>
+            </div>
+          </div>
+          <div class="section-header"><h2>Recent Bookings</h2><a href="manage-bookings.html" class="btn-outline btn-sm">View All</a></div>
+          <div class="table-card"><div class="table-wrap"><table>
+            <thead><tr><th>Booking ID</th><th>Customer</th><th>Type</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
+            <tbody>
+              <tr><td>#TX-28491</td><td>Priya Sharma</td><td>Package – Goa</td><td>₹28,500</td><td><span class="status confirmed">Confirmed</span></td><td>07 Aug 2026</td></tr>
+              <tr><td>#TX-28490</td><td>Rahul Mehta</td><td>Flight – DEL→BOM</td><td>₹6,420</td><td><span class="status pending">Pending</span></td><td>07 Aug 2026</td></tr>
+              <tr><td>#TX-28489</td><td>Ananya Patel</td><td>Hotel – Taj Palace</td><td>₹18,900</td><td><span class="status confirmed">Confirmed</span></td><td>06 Aug 2026</td></tr>
+              <tr><td>#TX-28488</td><td>Vikram Singh</td><td>Package – Kashmir</td><td>₹45,200</td><td><span class="status cancelled">Cancelled</span></td><td>06 Aug 2026</td></tr>
+              <tr><td>#TX-28487</td><td>Sneha Reddy</td><td>Flight – BLR→DXB</td><td>₹22,150</td><td><span class="status confirmed">Confirmed</span></td><td>05 Aug 2026</td></tr>
+            </tbody>
+          </table></div></div>
+        </section>
+
+        <!-- USERS -->
+        <section id="section-users" class="admin-section">
+          <div class="card"><div class="card-header"><h2>Users</h2><span style="font-size:var(--fs-xs);color:var(--muted)">3,567 total</span></div>
+            <div class="table-wrap"><table><thead><tr><th>User</th><th>Joined</th><th>Bookings</th><th>Spent</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td><div class="user-cell"><div class="user-avatar">JD</div><div><strong>John Doe</strong><span>john@email.com</span></div></div></td><td>Jan 12, 2025</td><td>12</td><td>₹18,450</td><td><span class="status-pill confirmed">● Active</span></td><td><div class="action-btns"><button type="button" title="View John">👁</button><button type="button" title="Edit John">✏️</button></div></td></tr>
+                <tr><td><div class="user-cell"><div class="user-avatar">AM</div><div><strong>Anna Miller</strong><span>anna@email.com</span></div></div></td><td>Mar 5, 2025</td><td>5</td><td>₹9,200</td><td><span class="status-pill confirmed">● Active</span></td><td><div class="action-btns"><button type="button" title="View Anna">👁</button><button type="button" title="Edit Anna">✏️</button></div></td></tr>
+                <tr><td><div class="user-cell"><div class="user-avatar">RK</div><div><strong>Raj Kumar</strong><span>raj@email.com</span></div></div></td><td>Jun 18, 2025</td><td>3</td><td>₹4,890</td><td><span class="status-pill confirmed">● Active</span></td><td><div class="action-btns"><button type="button" title="View Raj">👁</button><button type="button" title="Edit Raj">✏️</button></div></td></tr>
+                <tr><td><div class="user-cell"><div class="user-avatar">SL</div><div><strong>Sara Lee</strong><span>sara@email.com</span></div></div></td><td>Aug 22, 2025</td><td>2</td><td>₹3,850</td><td><span class="status-pill pending">● Inactive</span></td><td><div class="action-btns"><button type="button" title="View Sara">👁</button><button type="button" title="Edit Sara">✏️</button></div></td></tr>
+              </tbody></table></div>
+          </div>
+        </section>
+
+        <!-- REFUNDS -->
+        <section id="section-refunds" class="admin-section">
+          <div class="card"><div class="card-header"><h2>Refund Requests</h2><span style="font-size:var(--fs-xs);color:var(--muted)">2 pending</span></div>
+            <div class="table-wrap"><table><thead><tr><th>Ref</th><th>Customer</th><th>Booking</th><th>Amount</th><th>Reason</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td>TX-REF-A3K9</td><td>Mike Park</td><td>Dubai Desert Safari</td><td>₹2,890</td><td>Medical emergency</td><td><span class="status-pill pending">● Pending</span></td><td><div class="action-btns"><button type="button" data-refund="approve">✓</button><button type="button" data-refund="reject">✕</button></div></td></tr>
+                <tr><td>TX-REF-B7M2</td><td>Sara Lee</td><td>Iceland Lights</td><td>₹2,200</td><td>Trip cancellation</td><td><span class="status-pill pending">● Pending</span></td><td><div class="action-btns"><button type="button" data-refund="approve">✓</button><button type="button" data-refund="reject">✕</button></div></td></tr>
+                <tr><td>TX-REF-C1P8</td><td>Anna Miller</td><td>Maldives Escape</td><td>₹1,560</td><td>Airline cancelled</td><td><span class="status-pill confirmed">● Approved</span></td><td><button type="button">👁</button></td></tr>
+              </tbody></table></div>
+          </div>
+        </section>
+
+        <!-- PACKAGES -->
+        <section id="section-packages" class="admin-section">
+          <div class="card"><div class="card-header"><h2>Travel Packages</h2></div><p>Manage destination packages, pricing, and availability here.</p><div class="btn-row" style="margin-top:20px"><button type="button" class="btn" id="addPackage">+ Add Package</button></div></div>
+        </section>
+
+        <!-- REVIEWS -->
+        <section id="section-reviews" class="admin-section">
+          <div class="card">
+            <div class="card-header"><h2>Customer Reviews</h2><span style="font-size:var(--fs-xs);color:var(--muted)">Moderation queue</span></div>
+            <div class="review-list" id="reviewList">
+              <article class="review-item">
+                <div class="review-top"><strong>Priya Sharma · Goa Package</strong><span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span></div>
+                <p>Wonderful trip and smooth booking experience. The hotel and local guide were excellent.</p>
+                <div class="review-actions"><button type="button" class="btn btn-outline" data-review="approve">Approve</button><button type="button" class="btn btn-outline" data-review="hide">Hide</button><button type="button" class="btn btn-outline" data-review="reply">Reply</button></div>
+              </article>
+              <article class="review-item">
+                <div class="review-top"><strong>Rahul Mehta · Flight booking</strong><span class="review-stars" aria-label="3 out of 5 stars">★★★☆☆</span></div>
+                <p>Booking was fine, but I had difficulty finding the baggage information.</p>
+                <div class="review-actions"><button type="button" class="btn btn-outline" data-review="approve">Approve</button><button type="button" class="btn btn-outline" data-review="hide">Hide</button><button type="button" class="btn btn-outline" data-review="reply">Reply</button></div>
+              </article>
+              <article class="review-item">
+                <div class="review-top"><strong>Ananya Patel · Hotel stay</strong><span class="review-stars" aria-label="4 out of 5 stars">★★★★☆</span></div>
+                <p>Good stay and helpful support team. Check-in took longer than expected.</p>
+                <div class="review-actions"><button type="button" class="btn btn-outline" data-review="approve">Approve</button><button type="button" class="btn btn-outline" data-review="hide">Hide</button><button type="button" class="btn btn-outline" data-review="reply">Reply</button></div>
+              </article>
+            </div>
+            <p id="reviewMessage" class="form-message" role="status" aria-live="polite"></p>
+          </div>
+        </section>
+
+        <!-- REPORTS -->
+        <section id="section-reports" class="admin-section">
+          <div class="card"><div class="card-header"><h2>Reports &amp; Analytics</h2></div><p>Revenue charts, booking trends, and exportable reports.</p><button type="button" class="btn" id="exportReport">Export CSV</button></div>
+        </section>
+
+        <!-- ADMIN PROFILE -->
+        <section id="section-profile" class="admin-section">
+          <div class="profile-card">
+            <div class="profile-avatar">SA</div><div class="profile-info"><h2 id="profileDisplayName">TravelX Admin</h2><p id="profileDisplayEmail">admin@travelx.com</p><span class="role-badge">Super Admin</span></div>
+            <div class="profile-meta"><div class="meta-item"><div class="num">2.4yr</div><div class="lbl">With TravelX</div></div><div class="meta-item"><div class="num">1,847</div><div class="lbl">Actions</div></div><div class="meta-item"><div class="num">98%</div><div class="lbl">Response Rate</div></div></div>
+          </div>
+          <div class="card"><div class="card-header"><h2>Admin Details</h2></div>
+            <form id="adminForm">
+              <div class="form-row"><div class="form-group"><label for="firstName">First Name</label><input id="firstName" name="firstName" type="text" value="TravelX" required /></div><div class="form-group"><label for="lastName">Last Name</label><input id="lastName" name="lastName" type="text" value="Admin" required /></div></div>
+              <div class="form-row"><div class="form-group"><label for="adminEmail">Email</label><input id="adminEmail" name="email" type="email" value="admin@travelx.com" required /></div><div class="form-group"><label for="adminPhone">Phone</label><input id="adminPhone" name="phone" type="tel" value="+91 00000 00000" /></div></div>
+              <div class="form-row"><div class="form-group"><label for="adminRole">Role</label><input id="adminRole" type="text" value="Super Admin" disabled /></div><div class="form-group"><label for="department">Department</label><select id="department" name="department"><option selected>Operations</option><option>Customer Support</option><option>Finance</option><option>Marketing</option></select></div></div>
+              <div class="btn-row"><button type="submit" class="btn">Save Changes</button><button type="reset" class="btn btn-outline" id="resetAdmin">Reset</button></div>
+              <p id="profileMessage" class="form-message" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+          <div class="card" style="margin-top:20px"><div class="card-header"><h2>Security</h2></div>
+            <form id="passwordForm"><div class="form-row"><div class="form-group"><label for="currentPassword">Current Password</label><input id="currentPassword" type="password" autocomplete="current-password" required /></div><div class="form-group"><label for="newPassword">New Password</label><input id="newPassword" type="password" minlength="8" autocomplete="new-password" required /></div></div><div class="btn-row"><button type="submit" class="btn">Update Password</button></div><p id="passwordMessage" class="form-message" role="status" aria-live="polite"></p></form>
+          </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section id="section-settings" class="admin-section">
+          <div class="card"><div class="card-header"><h2>Platform Settings</h2></div>
+            <form id="settingsForm">
+              <div class="form-row"><div class="form-group"><label for="siteName">Site Name</label><input id="siteName" type="text" value="TravelX" required /></div><div class="form-group"><label for="supportEmail">Support Email</label><input id="supportEmail" type="email" value="support@travelx.com" required /></div></div>
+              <div class="form-row"><div class="form-group"><label for="currency">Default Currency</label><select id="currency"><option selected>INR (₹)</option><option>USD ($)</option><option>EUR (€)</option><option>GBP (£)</option></select></div><div class="form-group"><label for="timezone">Timezone</label><select id="timezone"><option selected>UTC+05:30 (IST)</option><option>UTC+00:00</option><option>UTC-05:00 (EST)</option><option>UTC+01:00 (CET)</option></select></div></div>
+              <label class="settings-check"><input id="emailNotifications" type="checkbox" checked /> Enable email notifications</label>
+              <label class="settings-check"><input id="maintenanceMode" type="checkbox" /> Maintenance mode</label>
+              <div class="btn-row"><button type="submit" class="btn">Save Settings</button><button type="reset" class="btn btn-outline">Reset</button></div>
+              <p id="settingsMessage" class="form-message" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer class="cp-footer">© 2026 TravelX. All rights reserved.</footer>
+
+  <!-- Sign Out Modal -->
+  <div class="modal-overlay" id="signOutModal" role="dialog" aria-modal="true" aria-labelledby="signOutTitle" aria-describedby="signOutDescription">
+    <div class="modal">
+      <div class="modal-icon">👋</div>
+      <h3 id="signOutTitle">Sign out of Admin Panel?</h3>
+      <p id="signOutDescription">You'll need to sign in again to access the TravelX admin dashboard.</p>
+      <div class="modal-actions"><button type="button" class="btn btn-outline" id="signOutCancel">Cancel</button><button type="button" class="btn" id="signOutConfirm">Yes, Sign Out</button></div>
+    </div>
+  </div>
+  <script src="admin.js"></script>
+
+<script src="../travelx-global-nav.js" defer></script>
+</body>
+</html>

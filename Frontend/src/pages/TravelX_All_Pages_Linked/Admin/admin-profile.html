@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Profile | TravelX</title>
+  <link rel="stylesheet" href="profile.css">
+  <script src="profile.js" defer></script>
+</head>
+<body>
+  <div class="profile-page">
+    <header class="topbar">
+      <a class="brand" href="#">Travel<span>X</span></a>
+      <div class="topbar-right"><span class="status-dot"></span> Admin Workspace <span class="avatar-mini">LS</span></div>
+    </header>
+
+    <main class="container">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">ACCOUNT CENTER</p>
+          <h1>My Profile</h1>
+          <p class="subheading">Manage your personal information and account security.</p>
+        </div>
+        <a class="back-link" href="admin-dashboard.html">← Back to dashboard</a>
+      </div>
+
+      <section class="profile-layout">
+        <aside class="profile-card">
+          <div class="cover"></div>
+          <div class="identity">
+            <div class="avatar" id="avatarInitials">LS</div>
+            <h2 id="sideName">Laksh Surve</h2>
+            <p id="sideRole">Super Administrator</p>
+            <span class="verified">✓ Verified account</span>
+          </div>
+          <div class="profile-meta">
+            <div><span>EMAIL</span><strong id="sideEmail">laksh@travelx.com</strong></div>
+            <div><span>MEMBER SINCE</span><strong>January 2026</strong></div>
+            <div><span>ACCOUNT STATUS</span><strong class="active-status">● Active</strong></div>
+          </div>
+        </aside>
+
+        <div class="content-column">
+          <section class="panel">
+            <div class="panel-heading">
+              <div><h2>Personal Information</h2><p>Update the details associated with your admin account.</p></div>
+              <span class="edit-label">PROFILE</span>
+            </div>
+            <form id="profileForm">
+              <div class="form-grid">
+                <label>Full name<input id="fullName" name="fullName" value="Laksh Surve" required></label>
+                <label>Display role<input id="role" name="role" value="Super Administrator" required></label>
+                <label>Email address<input id="email" name="email" type="email" value="laksh@travelx.com" required></label>
+                <label>Phone number<input id="phone" name="phone" type="tel" value="+91 98765 43210"></label>
+                <label>Department<select id="department" name="department"><option>Administration</option><option>Customer Support</option><option>Operations</option><option>Marketing</option></select></label>
+                <label>Location<input id="location" name="location" value="Mumbai, India"></label>
+              </div>
+              <div class="form-actions"><span class="form-message" id="profileMessage" aria-live="polite"></span><button class="primary-btn" type="submit">Save Changes</button></div>
+            </form>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading"><div><h2>Change Password</h2><p>Use a strong password that you do not use elsewhere.</p></div><span class="lock-icon">⌑</span></div>
+            <form id="passwordForm">
+              <div class="form-grid">
+                <label>Current password<input id="currentPassword" type="password" placeholder="Enter current password" required></label>
+                <label>New password<input id="newPassword" type="password" placeholder="At least 8 characters" minlength="8" required></label>
+                <label class="full-width">Confirm new password<input id="confirmPassword" type="password" placeholder="Re-enter new password" required></label>
+              </div>
+              <div class="form-actions"><span class="form-message" id="passwordMessage" aria-live="polite"></span><button class="secondary-btn" type="submit">Update Password</button></div>
+            </form>
+          </section>
+
+          <section class="security-note"><span class="shield">✓</span><div><strong>Your account is protected</strong><p>This page demonstrates front-end form behavior. Connect it to your backend authentication API to securely save profile changes and update passwords.</p></div></section>
+        </div>
+      </section>
+    </main>
+    <footer>© 2026 TravelX Admin Portal <span>Made for smoother journeys.</span></footer>
+  </div>
+
+<script src="../travelx-global-nav.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1378 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Settings | TravelX Admin</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== RESET ===== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0b0b0c;
+  --panel: #141414;
+  --panel2: #1b1b1d;
+  --yellow: #f4c92c;
+  --yellow-dark: #d9ad1a;
+  --white: #fff;
+  --muted: #b9b9bd;
+  --border: #2a2a2c;
+  --success: #37c987;
+  --danger: #ff5c5c;
+  --font: 'Inter', sans-serif;
+  --display: 'Poppins', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font);
+  overflow-x: hidden;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== APP LAYOUT ===== */
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar {
+  width: 250px;
+  background: #101011;
+  border-right: 1px solid var(--border);
+  padding: 25px 15px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: transform .3s ease;
+}
+
+.logo {
+  font-family: var(--display);
+  font-size: 25px;
+  font-weight: 800;
+  padding: 0 15px 35px;
+}
+
+.logo span {
+  color: var(--yellow);
+}
+
+.admin-label {
+  font-size: 10px;
+  color: #777;
+  letter-spacing: 2px;
+  font-weight: 700;
+  padding: 0 15px;
+  margin-bottom: 15px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 12px 15px;
+  color: var(--muted);
+  border-radius: 9px;
+  font-size: 13px;
+  transition: .2s ease;
+}
+
+.nav a:hover,
+.nav a.active {
+  background: rgba(244,201,44,.12);
+  color: var(--yellow);
+}
+
+.nav a.active {
+  border-left: 3px solid var(--yellow);
+}
+
+.icon {
+  width: 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.badge {
+  margin-left: auto;
+  background: var(--yellow);
+  color: #111;
+  padding: 3px 7px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+}
+
+.admin-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: #111;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.admin-info strong {
+  display: block;
+  font-size: 12px;
+}
+
+.admin-info span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+/* ===== MAIN ===== */
+
+.main {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  min-width: 0;
+}
+
+/* ===== TOPBAR ===== */
+
+.topbar {
+  height: 70px;
+  padding: 0 35px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15,15,16,.95);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.menu-btn {
+  display: none;
+  background: transparent;
+  color: var(--yellow);
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.online {
+  width: 7px;
+  height: 7px;
+  background: var(--success);
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+/* ===== CONTENT ===== */
+
+.content {
+  padding: 38px 40px;
+  max-width: 1250px;
+  margin: auto;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  color: var(--yellow);
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.heading h1 {
+  font-family: var(--display);
+  font-size: 30px;
+}
+
+.heading p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 7px;
+}
+
+/* ===== SETTINGS LAYOUT ===== */
+
+.settings-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 22px;
+}
+
+.settings-nav {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  height: fit-content;
+}
+
+.settings-nav button {
+  width: 100%;
+  background: transparent;
+  color: var(--muted);
+  border: none;
+  text-align: left;
+  padding: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: .2s;
+}
+
+.settings-nav button:hover,
+.settings-nav button.active {
+  background: rgba(244,201,44,.12);
+  color: var(--yellow);
+}
+
+/* ===== PANEL ===== */
+
+.settings-content {
+  min-width: 0;
+}
+
+.section {
+  display: none;
+  animation: fadeUp .35s ease;
+}
+
+.section.active {
+  display: block;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  padding: 27px;
+  margin-bottom: 20px;
+}
+
+.panel-heading {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+  margin-bottom: 22px;
+}
+
+.panel-heading h2 {
+  font-family: var(--display);
+  font-size: 17px;
+}
+
+.panel-heading p {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 7px;
+  line-height: 1.6;
+}
+
+/* ===== FORM ===== */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  color: #d4d4d4;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  background: var(--panel2);
+  border: 1px solid #303033;
+  border-radius: 8px;
+  color: var(--white);
+  padding: 13px;
+  font-size: 13px;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 3px rgba(244,201,44,.1);
+}
+
+.form-group select option {
+  background: var(--panel2);
+}
+
+/* ===== TOGGLE ROW ===== */
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.setting-row:last-child {
+  border-bottom: none;
+}
+
+.setting-info strong {
+  font-size: 13px;
+  display: block;
+}
+
+.setting-info p {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* ===== SWITCH ===== */
+
+.switch {
+  position: relative;
+  width: 43px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #3a3a3c;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+.switch input:checked + .slider {
+  background: var(--yellow);
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(19px);
+  background: #111;
+}
+
+/* ===== BUTTONS ===== */
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 10px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn-primary {
+  background: var(--yellow);
+  color: #111;
+  border: 1px solid var(--yellow);
+}
+
+.btn-primary:hover {
+  background: var(--yellow-dark);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.btn-outline:hover {
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+/* ===== DANGER ZONE ===== */
+
+.danger-zone {
+  border: 1px solid rgba(255,92,92,.25);
+  background: rgba(255,92,92,.04);
+}
+
+.danger-zone h2 {
+  color: var(--danger);
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 22px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+footer span {
+  color: var(--yellow);
+}
+
+/* ===== TOAST ===== */
+
+.toast {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--success);
+  color: #062c1c;
+  padding: 14px 20px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: .3s;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.error {
+  background: var(--danger);
+  color: #300;
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width: 1050px) {
+  .content {
+    padding: 30px 22px;
+  }
+
+  .settings-layout {
+    grid-template-columns: 190px minmax(0,1fr);
+  }
+}
+
+@media(max-width: 760px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .topbar {
+    padding: 0 20px;
+  }
+
+  .content {
+    padding: 25px 16px;
+  }
+
+  .settings-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 5px;
+  }
+
+  .settings-nav button {
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .heading h1 {
+    font-size: 25px;
+  }
+}
+
+@media(max-width: 480px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full {
+    grid-column: auto;
+  }
+
+  .panel {
+    padding: 19px;
+  }
+
+  .setting-row {
+    gap: 10px;
+  }
+
+  .setting-info p {
+    max-width: 230px;
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+
+  .topbar-right {
+    font-size: 10px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- ===== SIDEBAR ===== -->
+
+<aside class="sidebar" id="sidebar">
+
+  <a href="#" class="logo">Travel<span>X</span></a>
+
+  <p class="admin-label">MAIN MENU</p>
+
+  <nav class="nav">
+
+    <a href="admin-dashboard.html">
+      <span class="icon">▦</span> Dashboard
+    </a>
+
+    <a href="#bookings">
+      <span class="icon">▣</span> Bookings
+    </a>
+
+    <a href="#destinations">
+      <span class="icon">⌖</span> Destinations
+    </a>
+
+    <a href="#packages">
+      <span class="icon">✈</span> Packages
+    </a>
+
+    <a href="#hotels">
+      <span class="icon">⌂</span> Hotels
+    </a>
+
+    <a href="#reviews" data-section="reviews">
+      <span class="icon">⭐</span> Reviews
+    </a>
+
+    <a href="#refunds" data-section="refunds">
+      <span class="icon">↩</span> Refunds
+      <span class="badge">3</span>
+    </a>
+
+    <a href="#users" data-section="users">
+      <span class="icon">👥</span> Users
+    </a>
+
+    <a href="#reports" data-section="reports">
+      <span class="icon">▤</span> Reports
+    </a>
+
+    <a href="settings.html" class="active">
+      <span class="icon">⚙</span> Settings
+    </a>
+
+  </nav>
+
+  <div class="sidebar-bottom">
+    <div class="admin-profile">
+      <div class="admin-avatar">LS</div>
+      <div class="admin-info">
+        <strong>Laksh Surve</strong>
+        <span>Super Administrator</span>
+      </div>
+    </div>
+  </div>
+
+</aside>
+
+<!-- ===== MAIN ===== -->
+
+<main class="main">
+
+<header class="topbar">
+
+  <button class="menu-btn" id="menuBtn">☰</button>
+
+  <div class="topbar-right">
+    <span><i class="online"></i> Admin Workspace</span>
+    <span>● LS</span>
+  </div>
+
+</header>
+
+<div class="content">
+
+  <div class="heading">
+    <div>
+      <div class="eyebrow">ADMINISTRATION / PREFERENCES</div>
+      <h1>Settings</h1>
+      <p>Manage your TravelX workspace and application preferences.</p>
+    </div>
+  </div>
+
+  <div class="settings-layout">
+
+    <!-- SETTINGS NAVIGATION -->
+
+    <div class="settings-nav">
+
+      <button class="active" data-tab="general">⚙ General</button>
+      <button data-tab="notifications">♧ Notifications</button>
+      <button data-tab="security">🔒 Security</button>
+      <button data-tab="appearance">◐ Appearance</button>
+      <button data-tab="preferences">✦ Preferences</button>
+
+    </div>
+
+    <!-- SETTINGS CONTENT -->
+
+    <div class="settings-content">
+
+      <!-- GENERAL -->
+
+      <section class="section active" id="general">
+
+        <div class="panel">
+
+          <div class="panel-heading">
+            <h2>General Settings</h2>
+            <p>Configure basic information about your TravelX platform.</p>
+          </div>
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label>Platform Name</label>
+              <input id="platformName" value="TravelX">
+            </div>
+
+            <div class="form-group">
+              <label>Support Email</label>
+              <input id="supportEmail" type="email" value="support@travelx.com">
+            </div>
+
+            <div class="form-group">
+              <label>Contact Number</label>
+              <input id="contactNumber" value="+91 98765 43210">
+            </div>
+
+            <div class="form-group">
+              <label>Default Currency</label>
+              <select id="currency">
+                <option value="INR">INR - Indian Rupee</option>
+                <option value="USD">USD - US Dollar</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="GBP">GBP - Pound Sterling</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Timezone</label>
+              <select id="timezone">
+                <option value="Asia/Kolkata">India Standard Time</option>
+                <option value="Europe/London">London</option>
+                <option value="America/New_York">New York</option>
+                <option value="Asia/Dubai">Dubai</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Language</label>
+              <select id="language">
+                <option value="English">English</option>
+                <option value="Hindi">Hindi</option>
+                <option value="French">French</option>
+                <option value="Arabic">Arabic</option>
+              </select>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- NOTIFICATIONS -->
+
+      <section class="section" id="notifications">
+
+        <div class="panel">
+
+          <div class="panel-heading">
+            <h2>Notification Settings</h2>
+            <p>Choose which activities you want to receive updates about.</p>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Email Notifications</strong>
+              <p>Receive important updates through email.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="emailNotifications" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>New Bookings</strong>
+              <p>Get notified whenever a customer makes a booking.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="bookingAlerts" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Refund Requests</strong>
+              <p>Receive alerts for new refund requests.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="refundAlerts" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Customer Reviews</strong>
+              <p>Get notified when customers submit reviews.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="reviewAlerts">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Marketing Updates</strong>
+              <p>Receive promotional and platform announcements.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="marketingAlerts">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- SECURITY -->
+
+      <section class="section" id="security">
+
+        <div class="panel">
+
+          <div class="panel-heading">
+            <h2>Security Settings</h2>
+            <p>Manage security preferences for your administrator account.</p>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Two-Factor Authentication</strong>
+              <p>Add another verification step to your login process.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="twoFactor">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Login Alerts</strong>
+              <p>Get notified about new login activity.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="loginAlerts" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Session Timeout</strong>
+              <p>Automatically end inactive admin sessions.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="sessionTimeout" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="form-grid" style="margin-top:25px">
+
+            <div class="form-group">
+              <label>Auto Logout Duration</label>
+              <select id="logoutDuration">
+                <option value="15">15 Minutes</option>
+                <option value="30">30 Minutes</option>
+                <option value="60">1 Hour</option>
+                <option value="120">2 Hours</option>
+              </select>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- APPEARANCE -->
+
+      <section class="section" id="appearance">
+
+        <div class="panel">
+
+          <div class="panel-heading">
+            <h2>Appearance</h2>
+            <p>Personalize your administrator workspace.</p>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Compact Sidebar</strong>
+              <p>Use a smaller navigation layout.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="compactSidebar">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Animations</strong>
+              <p>Enable interface transitions and animations.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="animations" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="form-grid" style="margin-top:25px">
+
+            <div class="form-group">
+              <label>Accent Color</label>
+              <select id="accentColor">
+                <option value="#f4c92c">TravelX Gold</option>
+                <option value="#4da3ff">Ocean Blue</option>
+                <option value="#37c987">Emerald Green</option>
+                <option value="#b58aff">Royal Purple</option>
+              </select>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- PREFERENCES -->
+
+      <section class="section" id="preferences">
+
+        <div class="panel">
+
+          <div class="panel-heading">
+            <h2>Platform Preferences</h2>
+            <p>Control how the TravelX administration system operates.</p>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Maintenance Mode</strong>
+              <p>Mark the platform as temporarily unavailable to customers.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="maintenanceMode">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Automatic Booking Confirmation</strong>
+              <p>Enable automatic confirmation for eligible bookings.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="autoConfirm" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <strong>Customer Reviews Moderation</strong>
+              <p>Require admin review before publishing customer feedback.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" data-setting="reviewModeration" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- SAVE ACTIONS -->
+
+      <div class="panel">
+
+        <div class="actions">
+          <button class="btn btn-outline" id="resetBtn" type="button">
+            Reset Changes
+          </button>
+
+          <button class="btn btn-primary" id="saveBtn" type="button">
+            Save Settings
+          </button>
+        </div>
+
+      </div>
+
+      <!-- DANGER ZONE -->
+
+      <div class="panel danger-zone">
+
+        <div class="panel-heading">
+          <h2>Danger Zone</h2>
+          <p>Actions that may affect your current workspace preferences.</p>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-info">
+            <strong>Reset All Preferences</strong>
+            <p>Restore the settings to their original default values.</p>
+          </div>
+
+          <button class="btn btn-outline" id="dangerReset" type="button">
+            Reset
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 TravelX Admin Portal <span>· Made for smoother journeys.</span>
+</footer>
+
+</main>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+
+/* =====================================
+   TRAVELX SETTINGS JAVASCRIPT
+===================================== */
+
+const tabs = document.querySelectorAll("[data-tab]");
+const sections = document.querySelectorAll(".section");
+const toast = document.getElementById("toast");
+
+const defaultSettings = {
+  platformName: "TravelX",
+  supportEmail: "support@travelx.com",
+  contactNumber: "+91 98765 43210",
+  currency: "INR",
+  timezone: "Asia/Kolkata",
+  language: "English",
+  logoutDuration: "15",
+  accentColor: "#f4c92c",
+
+  emailNotifications: true,
+  bookingAlerts: true,
+  refundAlerts: true,
+  reviewAlerts: false,
+  marketingAlerts: false,
+
+  twoFactor: false,
+  loginAlerts: true,
+  sessionTimeout: true,
+
+  compactSidebar: false,
+  animations: true,
+
+  maintenanceMode: false,
+  autoConfirm: true,
+  reviewModeration: true
+};
+
+let settings = {
+  ...defaultSettings,
+  ...JSON.parse(localStorage.getItem("travelXSettings") || "{}")
+};
+
+/* ===== TOAST ===== */
+
+let toastTimer;
+
+function showToast(message, type = "success") {
+  toast.textContent = message;
+  toast.className = "toast show";
+
+  if (type === "error") {
+    toast.classList.add("error");
+  }
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2800);
+}
+
+/* ===== TAB NAVIGATION ===== */
+
+function activateTab(tabId) {
+
+  tabs.forEach(tab => {
+    tab.classList.toggle("active", tab.dataset.tab === tabId);
+  });
+
+  sections.forEach(section => {
+    section.classList.toggle("active", section.id === tabId);
+  });
+
+}
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    activateTab(tab.dataset.tab);
+  });
+});
+
+/* ===== LOAD SETTINGS ===== */
+
+function loadSettings() {
+
+  Object.keys(settings).forEach(key => {
+
+    const element = document.getElementById(key);
+
+    if (element) {
+      element.value = settings[key];
+    }
+
+    const toggle = document.querySelector(
+      `[data-setting="${key}"]`
+    );
+
+    if (toggle) {
+      toggle.checked = Boolean(settings[key]);
+    }
+
+  });
+
+  applyAccentColor();
+}
+
+loadSettings();
+
+/* ===== COLLECT SETTINGS ===== */
+
+function collectSettings() {
+
+  const updated = {};
+
+  Object.keys(defaultSettings).forEach(key => {
+
+    const element = document.getElementById(key);
+
+    const toggle = document.querySelector(
+      `[data-setting="${key}"]`
+    );
+
+    if (element) {
+      updated[key] = element.value;
+    } else if (toggle) {
+      updated[key] = toggle.checked;
+    }
+
+  });
+
+  return updated;
+}
+
+/* ===== SAVE SETTINGS ===== */
+
+document.getElementById("saveBtn").addEventListener("click", () => {
+
+  const updated = collectSettings();
+
+  if (!updated.platformName.trim()) {
+    showToast("Platform name cannot be empty.", "error");
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(updated.supportEmail)) {
+    showToast("Please enter a valid support email.", "error");
+    return;
+  }
+
+  settings = updated;
+
+  localStorage.setItem(
+    "travelXSettings",
+    JSON.stringify(settings)
+  );
+
+  applyAccentColor();
+
+  showToast("✓ Settings saved successfully!");
+
+});
+
+/* ===== RESET ===== */
+
+function resetSettings() {
+
+  settings = { ...defaultSettings };
+
+  localStorage.setItem(
+    "travelXSettings",
+    JSON.stringify(settings)
+  );
+
+  loadSettings();
+
+  showToast("Settings restored to defaults.");
+
+}
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+
+  if (confirm("Discard your current settings and restore defaults?")) {
+    resetSettings();
+  }
+
+});
+
+document.getElementById("dangerReset").addEventListener("click", () => {
+
+  if (confirm("Are you sure you want to reset all preferences?")) {
+    resetSettings();
+  }
+
+});
+
+/* ===== ACCENT COLOR ===== */
+
+function applyAccentColor() {
+
+  document.documentElement.style.setProperty(
+    "--yellow",
+    settings.accentColor || "#f4c92c"
+  );
+
+}
+
+/* ===== MOBILE SIDEBAR ===== */
+
+const sidebar = document.getElementById("sidebar");
+
+document.getElementById("menuBtn").addEventListener("click", () => {
+  sidebar.classList.toggle("open");
+});
+
+/* ===== SIDEBAR NAVIGATION ===== */
+
+document.querySelectorAll(".nav a[data-section]").forEach(link => {
+
+  link.addEventListener("click", event => {
+
+    const section = link.dataset.section;
+
+    if (["reviews", "refunds", "users", "reports"].includes(section)) {
+
+      event.preventDefault();
+
+      showToast(
+        section.charAt(0).toUpperCase() + section.slice(1) +
+        " module navigation is ready to connect."
+      );
+
+    }
+
+  });
+
+});
+
+/* ===== ACTIVE NAVIGATION ===== */
+
+document.querySelectorAll(".nav a").forEach(link => {
+
+  link.addEventListener("click", () => {
+
+    document.querySelectorAll(".nav a").forEach(item => {
+      item.classList.remove("active");
+    });
+
+    link.classList.add("active");
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
